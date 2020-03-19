@@ -1,17 +1,18 @@
 $(document).on('turbolinks:load', function() {
+  var input = "";
   setInterval(function(){
-    let input = $.trim($('#search').val());
+    input = $.trim($('#search').val());
     destroy(input);
   }, 500);
 
   $(document).on('input', '#search', function(e){
     e.preventDefault();
-    let input = $.trim($(this).val());
+    input = $.trim($(this).val());
     update(input);
   });
 
   $(document).click(function(event) {
-    let input = $.trim($(this).val());
+    input = $.trim($(this).val());
     if(!$(event.target).closest('#search').length) {
       destroy(input);
     }else{
