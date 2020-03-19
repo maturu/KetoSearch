@@ -1,0 +1,52 @@
+div.p-root
+  div.r-intro
+    div.r-intro-content
+      div.r-intro-symbol
+      div.r-intro-form-content
+        = form_tag chart_show_path, method: :get, enforce_utf8: false, class: "r-intro-form" do
+          = text_field_tag :search, '', class: "r-intro-searchModel", placeholder: "食材名・調味料名を入力", autocomplete: "off"
+          span.fas.fa-search
+          = button_tag "", type: 'submit', name: nil, class: "r-intro-searchButton"
+
+        div.incremental-search
+          div.incremental-wrapper
+            ul.incremental-content
+      div.r-intro-description
+        |ケトサーチは、食材や調味料の糖質・タンパク質・脂質などの情報を検索するためのサービスです。
+  section.r-concept
+    div.r-heading
+      div.r-heading-label CONCEPT
+      h2.r-heading-text ケトサーチの思想
+    section.r-concept-section
+      h3.r-concept-heading
+        |ケトジェニックダイエットを実施する人のためになる信用性の高い情報が集まる場をつくる
+      p.r-concept-text
+        |ケトサーチ(KetoSearch)は、「食材や調味料の糖質・タンパク質・脂質などの情報を検索
+        |するためのサービス」ですので、ケトジェニックダイエットを行っている人の役に立つ信用
+        |性の高い情報を提供していきたいと考えています。そのため、食料や調味料の成分情報は
+        = link_to "日本食品標準成分表2015年版（七訂）", "http://www.mext.go.jp/a_menu/syokuhinseibun/1365297.htm", target: "_blank", rel: "noopener noreferrer", class: "external-link"
+        |より作成しており、グラフなどを用いて分かりやすくなっています。
+    section.r-concept-section
+      h3.r-concept-heading
+        |「健康なカラダ」や「美しいカラダ」を追い求める全ての人を応援します
+      p.r-concept-text
+        |あなたが正しく糖質制限したり、トレーニングすることは、ダイエットの成功につながります。
+        |運営は、正しく健康的なダイエットを行えるよう理想のカラダを求める人を全力で応援します。
+        |そのために、必要な機能があればどんどん追加し、サービスを改善していこうと考えています。
+        |もしも何かご意見などがあれば
+        = link_to "@ketosearch", "https://twitter.com/ketosearch", target: "_blank", rel: "noopener noreferrer", class: "external-link"
+        |に問い合わせてください。
+    section.r-concept-section
+      h3.r-concept-heading
+        |ダイエッターとしての知識や情報を身につけ、自立していこう
+      p.r-concept-text
+        |ケトサーチは、食材の情報を提供することを通して、ケトジェニックダイエットのための糖質
+        |制限の知識を身につけ、あなたがダイエッターとして自立することを支援します。ケトサーチを
+        |利用すればするほど、食材の成分情報を覚えることができ、ダイエット中に食べることができる
+        |食材を判断する能力が身につきます。
+  section.r-share
+    div.r-share-content
+      div.r-share-image.r-share-image--left
+      div.r-share-button
+        = render 'search/follow'
+      div.r-share-image.r-share-image--right

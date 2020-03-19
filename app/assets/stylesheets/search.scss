@@ -1,0 +1,134 @@
+@import 'common.scss';
+
+.p-root {
+  width: 100%;
+  background-color: #fff;
+  .r-intro {
+    background-color: $theme-color;
+    background-image: url(image-path("root-background.svg"));
+    background-size: 88px;
+    color: #fff;
+    .r-intro-content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 64px 24px;
+      background-color: $theme-color;
+      .r-intro-symbol {
+        fill: currentColor;
+        background-image: url(image-path("symbol.svg"));
+        background-position: top;
+        background-repeat: no-repeat;
+        max-width: 350px;
+        height: 216px;
+        margin: 0 auto;
+      }
+      .r-intro-form-content {
+        max-width: 500px;
+        margin: 0 auto;
+        .r-intro-form {
+          @include flex-center;
+          width: 100%;
+          margin-top: 40px;
+          text-align: center;
+          position: relative;
+          .r-intro-searchModel {
+            width: 100%;
+            height: 54px;
+            border: 1px solid #e8e8e8;
+            border-radius: 4px;
+            background-color: #fff;
+            font-size: 1.4rem;
+            padding-left: 8px;
+            padding-right: 66px;
+            -webkit-appearance: textfield;
+            appearance: textfield;
+          }
+          > .fas {
+            font-size: 30px;
+            right: 18px;
+            color: $theme-color;
+            position: absolute;
+          }
+          .r-intro-searchButton {
+            display: none;
+            padding: 0;
+            cursor: pointer;
+            border-style: none;
+            background-color: #fff;
+          }
+        }
+      }
+      .r-intro-description {
+        font-size: 14px;
+        text-align: center;
+        margin-top: 24px;
+      }
+    }
+  }
+
+  .r-concept {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 96px 24px 64px;
+    .r-heading {
+      color: #3e3e3e;
+      font-weight: bold;
+      text-align: center;
+      .r-heading-label {
+        color: $theme-color;
+        font-size: 20px;
+        margin-bottom: 4px;
+      }
+      .r-heading-text {
+        font-size: 32px;
+      }
+    }
+    .r-concept-section {
+      margin-top: 48px;
+      .r-concept-heading {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .r-concept-text {
+        font-size: 16px;
+        line-height: 2;
+        margin-top: 1em;
+      }
+    }
+  }
+
+  .r-share {
+    background-color: #f6f6f4;
+    height: 170px;
+    .r-share-content {
+      @include flex-space-between;
+      max-width: 980px;
+      margin: 0 auto;
+      .r-share-button {
+        display: -webkit-box;
+        @include flex-center;
+        position: relative;
+        width: 288px;
+        height: 48px;
+        background-color: #1b95e0;
+      }
+      .r-share-image {
+        background-image: url(image-path("share-effect.png"));
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: bottom;
+        width: 130px;
+        height: 130px;
+        margin: 16px;
+      }
+      .r-share-image--left {
+        align-self: flex-start;
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+      }
+      .r-share-image--right {
+        align-self: flex-end;
+      }
+    }
+  }
+}

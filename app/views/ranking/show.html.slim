@@ -1,0 +1,64 @@
+div.p-rank
+  div.r-content
+    div.r-header-title
+      h1
+        = params[:tag]
+        |ランキング
+    div.r-wrapper-tags
+      = link_to ranking_show_path(tag: "野菜類", comp: "carbohydrate"), class: "r-wrapper-tagButton  px-2"
+        div
+          i.fas.fa-circle.mr-1
+          |野菜類
+      = link_to ranking_show_path(tag: "肉類", comp: "protain"), class: "r-wrapper-tagButton  px-2"
+        div
+          i.fas.fa-circle.mr-1.protain
+          |肉類
+      = link_to ranking_show_path(tag: "魚類", comp: "protain"), class: "r-wrapper-tagButton  px-2"
+        div
+          i.fas.fa-circle.mr-1.protain
+          |魚類
+      = link_to ranking_show_path(tag: "パン類", comp: "carbohydrate"), class: "r-wrapper-tagButton  px-2"
+        div
+          i.fas.fa-circle.mr-1
+          |パン類
+      = link_to ranking_show_path(tag: "めん類", comp: "carbohydrate"), class: "r-wrapper-tagButton  px-2"
+        div
+          i.fas.fa-circle.mr-1
+          |めん類
+      = link_to ranking_show_path(tag: "ごはん類", comp: "carbohydrate"), class: "r-wrapper-tagButton  px-2"
+        div
+          i.fas.fa-circle.mr-1
+          |ごはん類
+      = link_to ranking_show_path(tag: "果物類", comp: "carbohydrate"), class: "r-wrapper-tagButton  px-2"
+        div
+          i.fas.fa-circle.mr-1
+          |果物類
+      = link_to ranking_show_path(tag: "大豆製品", comp: "carbohydrate"), class: "r-wrapper-tagButton  px-2"
+        div
+          i.fas.fa-circle.mr-1
+          |大豆製品
+      = link_to ranking_show_path(tag: "乳製品", comp: "carbohydrate"), class: "r-wrapper-tagButton  px-2"
+        div
+          i.fas.fa-circle.mr-1
+          |乳製品
+
+    - @foods.each_with_index do |f, i|
+      = link_to chart_show_path(id: f.id, search: f.name), class: "r-widget-wrap"
+        div.r-widget-content
+          - if params[:page].to_i > 1
+            - i = i + 25*(params[:page].to_i-1)
+          span.index = i+1  
+          div.details
+            = f.name
+          div.progress-value
+            - if params[:comp] == "carbohydrate"
+              = progress_info = f.carbohydrate
+              - progress_color = "#3366cc"
+            - else
+              = progress_info = f.protain
+              - progress_color = "#dc3912"
+            |g
+          div.progress-bar-content
+            div.progress-bar style="width: #{progress_info}px; background-color: #{progress_color}"
+    div.chart-paginate-content
+      = paginate @foods

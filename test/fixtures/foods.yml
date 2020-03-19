@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: MyString
+  food_id: 1
+  food_name: MyString
+  calorie: 1.5
+  water: 1.5
+  protain: 1.5
+  lipid: 1.5
+  carbohydrate: 1.5
+  fibtg: 1.5
+
+two:
+  category: MyString
+  food_id: 1
+  food_name: MyString
+  calorie: 1.5
+  water: 1.5
+  protain: 1.5
+  lipid: 1.5
+  carbohydrate: 1.5
+  fibtg: 1.5

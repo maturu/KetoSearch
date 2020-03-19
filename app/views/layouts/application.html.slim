@@ -1,0 +1,52 @@
+doctype html
+html
+  head
+    title ケトサーチ - KetoSearch
+    = favicon_link_tag('favicon.png')
+    = csrf_meta_tags
+    = csp_meta_tag
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = include_gon
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag "https://platform.twitter.com/widgets.js", charset: "utf-8", async: "async"
+
+  body
+    div
+      div.st-header
+        div.st-header-container
+          div.st-header-start
+            a href=root_path
+              = image_tag "logo.svg", alt: "", class: "st-header-logo"
+            - unless current_page?(root_path)
+              div.st-header-search
+                = form_tag chart_show_path, method: :get, enforce_utf8: false, class: "st-search-form" do
+                  span.fas.fa-search
+                  = text_field_tag :search, '', class: "st-form-searchModel", placeholder: "キーワードを入力", autocomplete: "off"
+                  = button_tag "", type: 'submit', style: "display: none;"
+                div.incremental-search
+                  div.incremental-wrapper
+                    ul.incremental-content
+          div.st-header-end
+            = link_to ranking_show_path(tag: "野菜類", comp: "carbohydrate"), class: "st-header-rankButton mr-2 px-2"
+              i.fas.fa-crown
+              span.rank-text ランキング
+            div.mr-2
+              = render "search/share"
+    = yield
+    footer#grobal-footer.st-footer
+      div.st-footer-container
+        div.st-footer-start
+          = image_tag "logo.svg", alt: "", class: "st-footer-logo"
+          div.st-footer-entitle - KetoSearch -
+          div.st-footer-socials
+            a.fab.fa-twitter href="https://twitter.com/ketosearch" target="_blank"
+        div.st-footer-end
+          div.st-footer-ketosearch
+            div.st-footer-label KetoSearch
+            div.st-footer-list
+              div.st-footer-column
+                = link_to "プライバシーポリシー", search_privacy_policy_path
+                = link_to "フィードバック", "https://twitter.com/ketosearch", target: "_blank"
+      div.st-footer-copyright Copyright © 2020 KetoSearch.

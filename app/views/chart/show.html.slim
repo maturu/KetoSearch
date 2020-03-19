@@ -1,0 +1,72 @@
+div.p-show
+  div.s-chart
+    div.s-chart-content
+      div.s-chart-wrap
+        div.s-chart-widget-container
+          div.chart-header-title
+            i.fas.fa-receipt.mr-1
+            |「
+            = @food.name
+            |」の主要成分
+            span.chart-unit-text
+              |/ 100g あたりの値
+          div.chart-table
+            table
+              thead
+                tr
+                  th カロリー
+                  th 糖質
+                  th タンパク質
+                  th 脂質
+              tbody
+                tr
+                  td
+                    = @food.calorie
+                    | kcal
+                  td
+                    = @food.carbohydrate
+                    | g
+                  td
+                    = @food.protain
+                    | g
+                  td
+                    = @food.lipid
+                    | g
+
+        - unless @price.blank?
+          div.s-chart-widget-container
+            div.chart-header-title
+              i.fas.fa-chart-line.mr-1
+              |「
+              = @price.name
+              |」の物価動向
+            div.line-chart
+              = line_chart @p_info
+
+        div.s-chart-widget-container
+          div.chart-header-title
+            i.fas.fa-chart-pie.mr-1
+            |「
+            = @food.name
+            |」の成分割合
+            span.chart-unit-text
+              |/ 100g あたりの値
+          div.chart-widget-wrapper
+            div.widget-wrapper-content
+              div.pie-chart
+                = pie_chart @f_info
+            div.widget-wrapper-content
+              div.relation-content
+                - @relations.each_with_index do |r, i|
+                  = link_to chart_show_path(id: r.id, search: r.name), class: "relation-content-item"
+                    div.relation-item-name
+                      span.label-line-number.mr-2 = i+1
+                      = r.name
+                    div.progress-value
+                      = r.carbohydrate
+                      |g
+                    div.progress-bar-content
+                      div.progress-bar style="width: #{r.carbohydrate}px;"
+          div.chart-paginate-content
+            div.paginate-empty
+            = paginate @relations

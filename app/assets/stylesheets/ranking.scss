@@ -1,0 +1,70 @@
+@import 'common.scss';
+
+.p-rank {
+  padding: 0 64px;
+  .r-content {
+    margin: 0 auto;
+    max-width: 1152px;
+    .r-header-title {
+      margin: 32px 0;
+    }
+    .r-wrapper-tags {
+      @include flex-center;
+      flex-wrap: wrap;
+      .r-wrapper-tagButton {
+        @include flex-center;
+        max-width: 110px;
+        height: 32px;
+        color: #757575;
+        background-color: #fff;
+        border-radius: 4px;
+        box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2);
+        font-size: 1.2rem;
+        user-select: none;
+        padding: 0 16px 0 12px;
+        margin-right: 16px;
+        margin-bottom: 32px;
+        &:hover {
+          background-color: $hover-color;
+        }
+        div {
+          @include flex-center;
+          .fas {
+            color: #3366cc;
+            font-size: 8px;
+          }
+          .protain {
+            color: #dc3912;
+          }
+        }
+      }
+    }
+    .r-widget-wrap {
+      margin: 1px auto;
+      color: #000;
+      .r-widget-content {
+        height: 110px;
+        margin-bottom: 16px;
+        padding: 16px 24px;
+        font-size: 16px;
+        background-color: #fff;
+        box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2);
+        border-radius: 2px;
+        @include flex-center;
+        &:hover {
+          background-color: $hover-color;
+        }
+        .index {
+          color: #757575;
+          margin-right: 24px;
+          font-size: 23px;
+        }
+        .details {
+          width: 75%;
+          line-height: 30px;
+          font-size: 23px;
+        }
+      }
+    }
+  }
+}
