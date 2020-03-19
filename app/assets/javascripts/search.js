@@ -1,22 +1,18 @@
 $(document).on('turbolinks:load', function() {
-  var input = "";
   setInterval(function(){
-    input = $.trim($('#search').val());
-    destroy(input);
+    destroy($.trim($('#search').val()));
   }, 500);
 
   $(document).on('input', '#search', function(e){
     e.preventDefault();
-    input = $.trim($(this).val());
-    update(input);
+    update($.trim($(this).val()));
   });
 
   $(document).click(function(event) {
-    input = $.trim($(this).val());
     if(!$(event.target).closest('#search').length) {
-      destroy(input);
+      destroy($.trim($(this).val()));
     }else{
-      update(input);
+      update($.trim($(this).val()));
     }
   });
 
@@ -48,10 +44,10 @@ $(document).on('turbolinks:load', function() {
     })
   }
 
-  function destroy(keywords){
-    key = keywords.split(/\s/);
+  function destroy(input){
+    input = input.split(/\s/);
     $('.incremental-content').find('a').each(function(i, e){
-      key.forEach(function(value){
+      input.forEach(function(value){
         if(e.textContent.indexOf(value) == -1 || input == ""){
           $('.incremental-search').css('display', 'none');
           $('.incremental-content').find('a').remove();
