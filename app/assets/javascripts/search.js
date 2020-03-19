@@ -1,5 +1,5 @@
-$(document).on('turbolinks:load', () => {
-  setInterval(() => {
+$(document).on('turbolinks:load', function() {
+  setInterval(function(){
     let input = $.trim($('#search').val());
     destroy(input);
   }, 500);
