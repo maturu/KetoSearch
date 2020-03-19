@@ -4,6 +4,7 @@ csv_text = File.read(Rails.root.join('lib', 'seeds', 'price.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
   price = Price.create!(
+    price_id: row['PRICE_ID'],
     name: row['NAME'],
     twenty_nineteen_feb: row['2019-02'],
     twenty_nineteen_mar: row['2019-03'],

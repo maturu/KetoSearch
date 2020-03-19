@@ -10,7 +10,7 @@ class ChartController < ApplicationController
 
     unless @foods.blank?
       @food = params[:id].blank? ? @foods.first : Food.find(params[:id])
-      @price = @food.price_id.blank? ? nil : Price.find(@food.price_id)
+      @price = @food.price_id.blank? ? nil : Price.where("price_id = #{@food.price_id}").first
       @p_info = {
         "2019-02" => @price.twenty_nineteen_feb,
         "2019-03" => @price.twenty_nineteen_mar,

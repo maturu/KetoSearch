@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2020_03_15_141705) do
   end
 
   create_table "prices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "price_id"
     t.string "name"
     t.integer "twenty_nineteen_feb"
     t.integer "twenty_nineteen_mar"

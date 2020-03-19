@@ -1,6 +1,7 @@
 class CreatePrices < ActiveRecord::Migration[5.2]
   def change
     create_table :prices do |t|
+      t.integer :price_id
       t.string :name
       t.integer :twenty_nineteen_feb
       t.integer :twenty_nineteen_mar
