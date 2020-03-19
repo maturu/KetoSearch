@@ -48,10 +48,10 @@ $(document).on('turbolinks:load', function() {
     })
   }
 
-  function destroy(input){
-    input = input.split(/\s/);
-    $('.incremental-content').find('a').each((i, e) => {
-      input.forEach((value) => {
+  function destroy(keywords){
+    key = keywords.split(/\s/);
+    $('.incremental-content').find('a').each(function(i, e){
+      key.forEach(function(value){
         if(e.textContent.indexOf(value) == -1 || input == ""){
           $('.incremental-search').css('display', 'none');
           $('.incremental-content').find('a').remove();
