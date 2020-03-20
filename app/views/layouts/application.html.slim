@@ -11,6 +11,7 @@ html
     = include_gon
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_include_tag "https://platform.twitter.com/widgets.js", charset: "utf-8", async: "async"
+    = analytics_init if Rails.env.production?
 
   body
     div
