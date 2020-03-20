@@ -6,7 +6,7 @@
     .s-chart-content {
       display: block;
       padding: 0 32px;
-      @media screen and (max-width:375px){padding: 0;}
+      @media screen and (max-width:414px){padding: 0;}
       .s-chart-wrap {
         padding: 0 12px;
         margin: 0 auto;
@@ -54,12 +54,12 @@
             flex-wrap: wrap;
             .widget-wrapper-content {
               width: 50%;
-              @media screen and (max-width:375px){width: 100vw;}
+              @media screen and (max-width:414px){width: 100vw;}
               .pie-chart {
                 padding: 16px 0;
               }
               .relation-content {
-                @media screen and (max-width:375px){padding: 0 12px;}
+                @media screen and (max-width:414px){padding: 0 12px;}
                 .relation-content-item {
                   @include flex-start;
                   font-size: 16px;
