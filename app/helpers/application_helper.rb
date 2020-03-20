@@ -15,7 +15,7 @@ module ApplicationHelper
       og: {
         url: request.original_url,
         title: '糖質検索サービス「ケトサーチ-KetoSearch-」',
-        description: 'description',
+        description: :description,
         image: image_url('twitter-card.png'),
         locale: 'ja_JP',
       },
