@@ -1,11 +1,8 @@
 $(document).on('turbolinks:load', function() {
-  setInterval(function(){
-    destroy($.trim($('#search').val()));
-  }, 500);
-
-  $(document).on('input', '#search', function(e){
+  $(document).on('keyup', '#search', function(e){
     e.preventDefault();
     update($.trim($(this).val()));
+    destroy($.trim($('#search').val()));
   });
 
   $(document).click(function(event) {
