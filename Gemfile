@@ -16,6 +16,8 @@ gem 'gon'
 gem 'kaminari'
 # Use jQuery
 gem 'jquery-rails'
+# Use Meta-Tags for Google SEO
+gem 'meta-tags'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
