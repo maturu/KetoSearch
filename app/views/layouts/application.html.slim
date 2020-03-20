@@ -8,10 +8,10 @@ html
     meta name="google-site-verification" content="T_gDC6MPZ4HBjx47WVxnulMMrIB8YmklFfQw89WjMVk"
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = include_gon
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_include_tag "https://platform.twitter.com/widgets.js", charset: "utf-8", async: "async"
     = analytics_init if Rails.env.production?
+    script src="https://kit.fontawesome.com/2c60105a2c.js" crossorigin="anonymous" rel="preload"
 
   body
     div
