@@ -1,15 +1,15 @@
 $(document).on('turbolinks:load', function() {
   $(document).on('keyup', '#search', function(e){
     e.preventDefault();
-    update($.trim($(this).val()));
+    update($.trim($('#search').val()));
     destroy($.trim($('#search').val()));
   });
 
   $(document).click(function(event) {
     if(!$(event.target).closest('#search').length) {
-      destroy($.trim($(this).val()));
+      destroy($.trim($('#search').val()));
     }else{
-      update($.trim($(this).val()));
+      update($.trim($('#search').val()));
     }
   });
 
