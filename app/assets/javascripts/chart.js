@@ -4,7 +4,7 @@ $(document).on('click', '.chart-menu', function(e){
 
 $(document).on('keyup', '.remarks', function(e){
   if($(this).val()){
-    let count = $(this).val().length;
+    var count = $(this).val().length;
     $('.text-count').text(count+" / 65535");
     if(count > 0) {
       $('.markdown-help').css('display', 'none');
@@ -19,7 +19,7 @@ $(document).on('click', '#food_tag', function(e){
 });
 
 $(document).on('click', '.tags-item', function(e){
-  let tag = $(this).text();
+  var tag = $(this).text();
   $('#food_tag').val(tag);
 });
 
