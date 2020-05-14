@@ -91,7 +91,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
   # Google Analytics Setting
   GA.tracker = ENV['G_ANALYTICS_KEY']
   # Devise mailer setting
@@ -103,7 +102,7 @@ Rails.application.configure do
     :port => 587,
     :user_name => "keto.search@gmail.com",
     :password => ENV['MAILER_PASSWORD'],
-    :authentication => :plan,
+    :authentication => :plain,
     :enable_starttls_auto => true
   }
 end
