@@ -14,12 +14,24 @@ gem 'chartkick'
 gem 'gon'
 # Use kaminari for Pagenation
 gem 'kaminari'
+# Use Bootstrap4
+gem 'bootstrap', '~> 4.1.1'
 # Use jQuery
 gem 'jquery-rails'
 # Use Meta-Tags for Google SEO
 gem 'meta-tags'
 # Use Google Analytics Setting
 gem 'google-analytics-rails'
+# Use Devise for user login/logout feature
+gem 'devise'
+gem 'omniauth-twitter'
+gem 'rails-i18n'
+gem 'rails_admin'
+# Use for Markdown editor
+gem 'redcarpet'
+gem 'coderay'
+# Use for cal-heatmap in Rails
+gem 'd3_rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
@@ -66,6 +78,8 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'letter_opener'
+  gem 'letter_opener_web'
 end
 
 group :test do

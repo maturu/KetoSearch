@@ -1,3 +1,7 @@
+$(document).on('click', '.st-header-user', function(e){
+  $('.user-dropdown').toggle();
+});
+
 $(document).on('turbolinks:load', function() {
   $(document).on('keyup', '#search', function(e){
     e.preventDefault();
@@ -23,14 +27,18 @@ $(document).on('turbolinks:load', function() {
       dataType: 'json'
     })
     .done(function(data){
-      $('.incremental-content').find('a').remove();
+      $('.incremental-search .incremental-content').find('a').remove();
       $('.incremental-search').css('display', 'inline');
       $('.r-intro-searchModel').css({
         'border-bottom-left-radius': '0',
         'border-bottom-right-radius': '0'
       });
+      $('.st-form-searchModel').css({
+        'border-bottom-left-radius': '0',
+        'border-bottom-right-radius': '0'
+      });
       $(data).each(function(i, food){
-        $('.incremental-content').append(
+        $('.incremental-search .incremental-content').append(
           '<a href="/chart/show?id='+food.id+'&search='+food.name+'">'+ 
             '<div>'+
               food.name+
@@ -43,12 +51,15 @@ $(document).on('turbolinks:load', function() {
 
   function destroy(input){
     input = input.split(/\s/);
-    $('.incremental-content').find('a').each(function(i, e){
+    $('.incremental-search .incremental-content').find('a').each(function(i, e){
       input.forEach(function(value){
         if(e.textContent.indexOf(value) == -1 || input == ""){
           $('.incremental-search').css('display', 'none');
-          $('.incremental-content').find('a').remove();
+          $('.incremental-search .incremental-content').find('a').remove();
           $('.r-intro-searchModel').css({
+            'border-radius': '4px'
+          });
+          $('.st-form-searchModel').css({
             'border-radius': '4px'
           });
           return

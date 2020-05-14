@@ -8,6 +8,7 @@ html
     meta name="google-site-verification" content="T_gDC6MPZ4HBjx47WVxnulMMrIB8YmklFfQw89WjMVk"
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload', async: "async"
+    = include_gon
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_include_tag "https://platform.twitter.com/widgets.js", charset: "utf-8", async: "async"
     = analytics_init if Rails.env.production?
@@ -30,12 +31,46 @@ html
                   div.incremental-wrapper
                     ul.incremental-content
           div.st-header-end
-            = link_to ranking_show_path(tag: "野菜類", comp: "carbohydrate"), class: "st-header-rankButton mr-2 px-2"
-              i.fas.fa-crown
-              span.rank-text ランキング
-            div.mr-2
-              = render "search/share"
+            - if user_signed_in?
+              = link_to ranking_show_path, class: "st-header-rank mr-2"
+                i.fas.fa-list.mr-1
+                span.rank-text 食品一覧
+              = link_to chart_new_path, class: "st-header-postButton mr-2 px-2"
+                i.fas.fa-pen-square
+                span.post-text 投稿する
+              div.st-header-user
+                - if current_user.approve < 10
+                  - rank_color = "#3366cc"
+                - elsif current_user.approve < 500
+                  - rank_color = "#ff9900"
+                - else
+                  - rank_color = "#dc3912"
+                i.fas.fa-user style="color: #{rank_color}"
+                div.user-dropdown
+                  div.user-dropdown-header
+                    div
+                      = current_user.username
+                    div.user-rank
+                      - if current_user.approve < 10
+                        - progress_info = current_user.approve * 10
+                        - progress_color = "#3366cc"
+                      - elsif current_user.approve < 500
+                        - progress_info = current_user.approve * 0.2
+                        - progress_color = "#ff9900"
+                      - else
+                        - progress_info = current_user.approve
+                        - progress_color = "#dc3912"
+                      div.progress-bar style="width: #{progress_info}px; background-color: #{progress_color}"
+
+                  = link_to 'マイページ', users_show_path(username: current_user.username), class: "user-dropdown-item"
+                  = link_to '設定', edit_user_registration_path, class: "user-dropdown-item"
+                  = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "user-dropdown-item"
+            - else
+              = link_to 'ユーザー登録', new_user_registration_path, class: "st-header-signupButton mr-2"
+              = link_to 'ログイン', new_user_session_path, class: "st-header-loginLink"
+
     = yield
+
     footer#grobal-footer.st-footer
       div.st-footer-container
         div.st-footer-start
@@ -48,6 +83,7 @@ html
             div.st-footer-label KetoSearch
             div.st-footer-list
               div.st-footer-column
+                = link_to "利用規約", search_terms_path
                 = link_to "プライバシーポリシー", search_privacy_policy_path
                 = link_to "フィードバック", "https://twitter.com/ketosearch", target: "_blank"
       div.st-footer-copyright Copyright © 2020 KetoSearch.

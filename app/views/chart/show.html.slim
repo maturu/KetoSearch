@@ -1,16 +1,21 @@
 - set_meta_tags title: "#{@food.name}の情報", description: "#{@food.name}の糖質・タンパク質・脂質などの情報について", keywords: "糖質検索, ケトジェニック, ダイエット, 野菜 糖質, 糖質 一覧 100g, 糖質制限, ケトサーチ, ketosearch, ketogenic, diet, ローカーボ, ロカボ, #{@food.name} 糖質"
+
 div.p-show
   div.s-chart
     div.s-chart-content
       div.s-chart-wrap
         div.s-chart-widget-container
           div.chart-header-title
-            i.fas.fa-receipt.mr-1
-            |「
-            = @food.name
-            |」の主要成分
-            span.chart-unit-text
-              |/ 100g あたり
+            div.title-content
+              i.fas.fa-receipt.mr-1
+              |「
+              = @food.name
+              |」の主要成分
+              span.chart-unit-text
+                |/ 
+                = @food.gram
+                |g あたり
+            = render 'chart/menu', food: @food
           div.chart-table
             table
               thead
@@ -19,6 +24,8 @@ div.p-show
                   th 糖質
                   th タンパク質
                   th 脂質
+                  th 水分
+                  th 食物繊維
               tbody
                 tr
                   td
@@ -33,25 +40,39 @@ div.p-show
                   td
                     = @food.lipid
                     | g
-
-        - unless @price.blank?
-          div.s-chart-widget-container
-            div.chart-header-title
-              i.fas.fa-chart-line.mr-1
-              |「
-              = @price.name
-              |」の物価動向
-            div.line-chart
-              = line_chart @p_info
+                  td
+                    = @food.water
+                    | g
+                  td
+                    = @food.fibtg
+                    | g
+          div.chart-info
+            - if @user.approve < 10
+              - rank_color = "#3366cc"
+            - elsif @user.approve < 500
+              - rank_color = "#ff9900"
+            - else
+              - rank_color = "#dc3912"
+            i.fas.fa-user.mr-1 style="color: #{rank_color}"
+            span.mr-2 
+              = link_to @user.username, users_show_path(username: @user.username)
+              |の投稿
+            i.fas.fa-link.mr-1
+            span 参考文献: 
+            = link_to @food.reference, @food.url, class: "mr-2", target: "_blank", rel: "noopener noreferrer"
 
         div.s-chart-widget-container
           div.chart-header-title
-            i.fas.fa-chart-pie.mr-1
-            |「
-            = @food.name
-            |」の成分割合
-            span.chart-unit-text
-              |/ 100g あたり
+            div.title-content
+              i.fas.fa-chart-pie.mr-1
+              |「
+              = @food.name
+              |」の成分割合
+              span.chart-unit-text
+                |/ 
+                = @food.gram
+                |g あたり
+            = render 'chart/menu', food: @food
           div.chart-widget-wrapper
             div.widget-wrapper-content
               div.pie-chart
@@ -71,3 +92,17 @@ div.p-show
           div.chart-paginate-content
             div.paginate-empty
             = paginate @relations
+
+        - if @food.content?
+          div.s-chart-widget-container
+            div.chart-header-title
+              div.title-content
+                i.fas.fa-file-alt.mr-2
+                |詳細
+              = render 'chart/menu', food: @food
+            div.markdown-preview
+              - @food.content.split("\n").each do |text|
+                - if text == "\r"
+                  br
+                - else
+                  = markdown(text).html_safe

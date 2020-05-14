@@ -1,0 +1,24 @@
+div.p-devise
+  div.d-content
+    div.d-header-title
+      h1 KetoSearchにログイン
+    hr
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = render "layouts/error_messages", model: f.object
+
+      div.field
+        = f.label :email
+        = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス"
+
+      div.field
+        = f.label :password
+        = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード"
+
+      = link_to "パスワードを忘れた場合", new_password_path(resource_name)
+      br
+      = link_to "確認用メールが届かない場合", new_confirmation_path(resource_name)
+      br
+      = link_to "アカウントロックの解除", new_unlock_path(resource_name)
+
+      div.actions
+        = f.submit "ログイン"

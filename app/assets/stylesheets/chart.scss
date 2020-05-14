@@ -16,6 +16,7 @@
           margin: 0 0 24px;
           box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2);
           .chart-header-title {
+            @include flex-space-between;
             font-family: 'Roboto','Heebo',Arial,sans-serif;
             font-weight: 400;
             font-size: 16px;
@@ -24,23 +25,58 @@
             padding-left: 24px;
             padding-right: 18px;
             border-bottom: 1px solid $widget-border-color;
+            .title-content {
+              white-space: nowrap;
+              overflow: hidden;
+              margin-right: 16px;
+            }
+            .chart-menu {
+              position: relative;
+              cursor: pointer;
+              .chart-menu-dropdown {
+                display: none;
+                position: absolute;
+                width: 100px;
+                right: 0;
+                z-index: 1;
+                background-color: #fff;
+                padding: 4px 0;
+                border: 1px solid #ddd;
+                border-radius: 3px;
+                box-shadow: 0 0 8px 0 rgba(0,0,0,0.15);
+                .menu-item {
+                  display: block;
+                  font-size: 14px;
+                  font-weight: normal;
+                  line-height: normal;
+                  padding: 8px 16px;
+                  color: #555;
+                  &:hover {
+                    background-color: #eee;
+                  }
+                }
+              }
+            }
             .chart-unit-text {
               color: #b3b3b3;
               font-size: 16px;
               margin-left: 16px;
             }
           }
+          .chart-info {
+            text-align: center;
+            padding: 10px 32px;
+          }
           .chart-table {
-            padding: 16px 32px;
+            padding: 16px 5px;
+            border-bottom: 1px solid #e0e0e0;
+            overflow: scroll;
             table {
               width: 100%;
               text-align: center;
-              font-size: 16px;
-              thead tr th {
-                max-width: 25%;
-              }
-              tbody tr td {
-                max-width: 25%;
+              font-size: 1.1em;
+              thead tr th, tbody tr td {
+                white-space: nowrap;
               }
             }
           }
@@ -73,7 +109,7 @@
                     border: none;
                   }
                   &:hover {
-                    background-color: $hover-color;
+                    background-color: #ddd;
                   }
                   .relation-item-name {
                     width: 100%;
@@ -84,6 +120,145 @@
               }
             }
           }
+        }
+      }
+    }
+  }
+}
+
+.p-edit-chart {
+  padding-top: 24px;
+  padding-bottom: 40px;
+  .e-content {
+    max-width: 820px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 32px;
+    .e-header-title {
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+    hr {
+      margin: 20px 0;
+      border: 0;
+      border-top: 1px solid #eee;
+    }
+    .form_fields{
+      @include flex-space-between;
+      flex-wrap: wrap;
+      .field {
+        @media screen and (max-width: 414px){ width: 100%; }
+      }
+    }
+    .field {
+      margin-bottom: 15px;
+      .incremental-tags {
+        display: none;
+        .tags-wrapper {
+          margin: 0 auto;
+          width: 100%;
+          position: relative;
+          .tags-content {
+            position: absolute;
+            padding: 0;
+            padding-bottom: 16px;
+            margin: 0;
+            width: 100%;
+            height: 230px;
+            overflow: scroll;
+            background-color: #fff;
+            border-radius: 0 0 4px 4px;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+            border: 1px solid #e0e0e0;
+            border-top: 0;
+            z-index: 20;
+            div {
+              padding: 8px 16px;
+              cursor: pointer;
+              &:hover {
+                background-color: #eee;
+              }
+            }
+          }
+        }
+      }
+      input {
+        display: block;
+        width: 100%;
+        height: 34px;
+        padding: 6px 12px;
+        margin-top: 5px;
+        font-size: 14px;
+        color: #555;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+      }
+      textarea {
+        max-width: 100%;
+        min-width: 100%;
+        min-height: 400px;
+        margin-top: 5px;
+        padding: 6px 12px;
+        font-size: 14px;
+        color: #555;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+      }
+      .markdown-help {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 300px;
+        padding: 10px 20px;
+        .markdown-help-block {
+          float: left;
+          width: 47%;
+          margin-right: 3%;
+          .markdown-help-item {
+            margin-bottom: 12px;
+            .markdown-help-header {
+              margin-bottom: 4px;
+              font-size: 14px;
+              font-weight: 700;
+              color: #bbb;
+            }
+            .markdown-help-content {
+              font-family: Consolas,Liberation Mono,Menlo,Courier,monospace;
+              background-color: #f6f6f6;
+              padding: 8px;
+              border-radius: 4px;
+              color: #bbb;
+              overflow: auto;
+            }
+          }
+        }
+      }
+      .text-count {
+        text-align: right;
+        color: #999;
+      }
+    }
+    .actions {
+      input {
+        display: block;
+        width: 100%;
+        padding: 10px 12px;
+        margin-top: 20px;
+        font-size: 14px;
+        color: #fff;
+        background-color: $theme-color;
+        border-color: $dark-theme-color;
+        border-radius: 3px;
+        cursor: pointer;
+        &:hover {
+          background-color: $dark-theme-color;
         }
       }
     }

@@ -2,6 +2,9 @@
 
 .p-rank {
   padding: 0 64px;
+  @media screen and (max-width:414px){
+    padding: 0;
+  }
   .r-content {
     margin: 0 auto;
     max-width: 1152px;

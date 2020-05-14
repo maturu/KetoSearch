@@ -93,5 +93,17 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Google Analytics Setting
-  GA.tracker = "UA-161458847-1"
+  GA.tracker = ENV['G_ANALYTICS_KEY']"UA-161458847-1"
+  # Devise mailer setting
+  config.action_mailer.default_url_options = { host: ENV['WEB_URL'] }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :user_name => "keto.search@gmail.com",
+    :password => ENV['MAILER_PASSWORD'],
+    :authentication => :plan,
+    :enable_starttls_auto => true
+  }
 end

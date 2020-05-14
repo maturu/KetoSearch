@@ -9,6 +9,7 @@
     background-size: 88px;
     color: #fff;
     .r-intro-content {
+      position: relative;
       max-width: 720px;
       margin: 0 auto;
       padding: 64px 24px;
@@ -58,6 +59,37 @@
           }
         }
       }
+      .balloon {
+        @include flex-center;
+        position: absolute;
+        right: 7vw;
+        top: 0;
+        max-width: 100%;
+        padding: 0 5px;
+        width: 85px;
+        height: 85px;
+        letter-spacing: 1px;
+        text-align: center;
+        color: $theme-color;
+        font-size: 1.5em;
+        font-weight: bold;
+        background-color: #fff;
+        border-radius: 50%;
+        box-sizing: border-box;
+        &:before {
+          content: "";
+          position: absolute;
+          bottom: -10px;
+          left: -10px;
+          margin-top: -15px;
+          border: 15px solid transparent;
+          border-top: 15px solid #fff;
+          transform: rotate(45deg);
+        }
+        span {
+          font-size: 11px;
+        }
+      }
       .r-intro-description {
         font-size: 14px;
         text-align: center;
@@ -97,23 +129,26 @@
     }
   }
 
-  .r-share {
+  .r-signup {
     background-color: #f6f6f4;
     height: 170px;
-    .r-share-content {
+    .r-signup-content {
       @include flex-space-between;
       max-width: 980px;
       margin: 0 auto;
-      .r-share-button {
+      .r-signup-button {
         display: -webkit-box;
         @include flex-center;
         position: relative;
         width: 288px;
         height: 48px;
+        color: #fff;
         background-color: #1b95e0;
+        font-size: 14px;
+        font-weight: bold;
       }
-      .r-share-image {
-        background-image: url(image-path("share-effect.png"));
+      .r-signup-image {
+        background-image: url(image-path("signup-effect.png"));
         background-size: 100%;
         background-repeat: no-repeat;
         background-position: bottom;
@@ -121,12 +156,12 @@
         height: 130px;
         margin: 16px;
       }
-      .r-share-image--left {
+      .r-signup-image--left {
         align-self: flex-start;
         -webkit-transform: rotate(180deg);
         transform: rotate(180deg);
       }
-      .r-share-image--right {
+      .r-signup-image--right {
         align-self: flex-end;
       }
     }

@@ -1,0 +1,7 @@
+- if user_signed_in? and current_user.approve >= 10
+  - if not food.protect or current_user.approve >= 500
+    div.chart-menu
+      i.fas.fa-ellipsis-v
+      div.chart-menu-dropdown
+        = link_to "編集", chart_edit_path(id: food.id), class: "menu-item"
+        = link_to "削除依頼", "https://twitter.com/ketosearch", target: "_blank", rel: "noopener noreferrer", class: "menu-item"

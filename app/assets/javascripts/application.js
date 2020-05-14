@@ -17,3 +17,7 @@
 //= require_tree .
 //= require chartkick
 //= require Chart.bundle
+//= require popper
+//= require bootstrap-sprockets
+//= require d3
+//= require cal-heatmap

@@ -1,4 +1,20 @@
 class Food < ApplicationRecord
+  validates :tag, presence: true
+  validates :name, presence: true, uniqueness: true
+  validates :gram, presence: true, numericality: true
+  validates :calorie, presence: true, numericality: true
+  validates :water, presence: true, numericality: true
+  validates :protain, presence: true, numericality: true
+  validates :lipid, presence: true, numericality: true
+  validates :carbohydrate, presence: true, numericality: true
+  validates :fibtg, presence: true, numericality: true
+  validates :reference, presence: true
+  validates :url, presence: true
+  validates :content, length: { maximum: 65535 }
+
+  belongs_to :user
+  has_many :histories
+
   def self.search(keyword)
     split_search = keyword.split(/[[:blank:]]+/)
     results = self
@@ -11,8 +27,8 @@ class Food < ApplicationRecord
 
   def self.related_search(food, keyword)
     results = Food.where(
-      "(category = ? or name LIKE ?) and name != ?",
-      food.category,
+      "(tag = ? or name LIKE ?) and name != ?",
+      food.tag,
       "%#{keyword}%",
       "#{food.name}"
     )

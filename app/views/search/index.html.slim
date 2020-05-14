@@ -1,6 +1,11 @@
 div.p-root
   div.r-intro
     div.r-intro-content
+      div.balloon
+        div.ballon-content
+          span データ件数
+          div
+            = @count
       div.r-intro-symbol
       div.r-intro-form-content
         = form_tag chart_show_path, method: :get, enforce_utf8: false, class: "r-intro-form" do
@@ -44,9 +49,8 @@ div.p-root
         |制限の知識を身につけ、あなたがダイエッターとして自立することを支援します。ケトサーチを
         |利用すればするほど、食材の成分情報を覚えることができ、ダイエット中に食べることができる
         |食材を判断する能力が身につきます。
-  section.r-share
-    div.r-share-content
-      div.r-share-image.r-share-image--left
-      div.r-share-button
-        = render 'search/follow'
-      div.r-share-image.r-share-image--right
+  section.r-signup
+    div.r-signup-content
+      div.r-signup-image.r-signup-image--left
+      = link_to 'ユーザー登録する', new_user_registration_path, class: "r-signup-button"
+      div.r-signup-image.r-signup-image--right

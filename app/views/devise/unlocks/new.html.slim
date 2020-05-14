@@ -1,0 +1,14 @@
+div.p-devise
+  div.d-content
+    div.d-header-title
+      h1 ロック解除用メールの送信
+    hr
+    = form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
+      = render "layouts/error_messages", model: f.object
+
+      div.field
+        = f.label :email
+        = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス"
+
+      div.actions
+        = f.submit "送信"

@@ -1,0 +1,30 @@
+div.p-devise
+  div.d-content
+    div.d-header-title
+      h1 KetoSearchへようこそ！
+    hr
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = render "layouts/error_messages", model: f.object
+
+      div.field
+        = f.label :username
+        = f.text_field :username, placeholder: "ユーザー名"
+
+      div.field
+        = f.label :email
+        = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス"
+
+      div.field
+        = f.label :password
+        = f.password_field :password, autocomplete: "new-password", placeholder: "パスワード"
+
+      div.field
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "確認用パスワード"
+
+      div
+        = link_to "利用規約", search_terms_path
+        |に同意のうえ、「利用規約に同意して登録」ボタンを押してください。
+
+      div.actions
+        = f.submit "利用規約に同意して登録"

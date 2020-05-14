@@ -1,0 +1,36 @@
+div.p-devise.position-relative
+  div.d-content.position-relative
+    div.d-header-title
+      h1
+        i.fas.fa-user.mr-2
+        = @user.username
+    hr
+    div.d-yearly-contribution
+      h3
+        = @histories.count
+        |  contributions in the last year
+      div#heatmap
+
+    div.d-contribution-activity
+      h3 Contribution activity
+      - unless @dates.include?(Time.zone.now.to_date)
+        div.contribution-activity-listing
+          div.timeline
+            h4.timeline-month-header = Time.zone.now.in_time_zone('Asia/Tokyo').to_date
+            div.no-profile-data
+              = @user.username
+              |  had no activity during this period.
+      - @dates.each do |date|
+        - @commits = @histories.where(created_at: date.beginning_of_day..date.end_of_day)
+        div.contribution-activity-listing
+          div.timeline
+            h4.timeline-month-header = date.in_time_zone('Asia/Tokyo').to_date
+            div.profile-wrapper
+              i.fas.fa-book
+              div.profile-title
+                |Created #{@commits.count} commits in foods
+              ul
+                - @commits.page(1).per(5).each do |c|
+                  li
+                    a href=chart_show_path(id: c.food_id, search: c.name)
+                      = c.name
