@@ -3,12 +3,14 @@ $(document).on('click', '.chart-menu', function(e){
 });
 
 $(document).on('keyup', '.remarks', function(e){
-  let count = $(this).val().length;
-  $('.text-count').text(count+" / 65535");
-  if(count > 0) {
-    $('.markdown-help').css('display', 'none');
-  }else{
-    $('.markdown-help').css('display', 'inline');
+  if($(this).val()){
+    let count = $(this).val().length;
+    $('.text-count').text(count+" / 65535");
+    if(count > 0) {
+      $('.markdown-help').css('display', 'none');
+    }else{
+      $('.markdown-help').css('display', 'inline');
+    }
   }
 });
 
