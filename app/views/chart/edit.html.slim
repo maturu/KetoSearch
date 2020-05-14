@@ -45,7 +45,7 @@ div.p-edit-chart
       div.field
         = f.label :url
         = f.text_field :url, placeholder: "例: https://www.example.com", value: @food.url, autocomplete: "off"
-      div.field style="position: relative;"
+      div.field.detail style="position: relative;"
         = f.label "詳細 (任意)"
         = f.text_area :content, maxlength: 65535, placeholder: \
           "食材の知識をMarkdown記法で書いて共有しよう。\nただし、必ず利用規約およびガイドラインに従って記述を行ってください。", \

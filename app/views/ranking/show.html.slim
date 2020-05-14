@@ -1,10 +1,6 @@
 - set_meta_tags title: "食材100gあたりの糖質・タンパク質順一覧", description: "ケトサーチ糖質量ランキングは、1000種類以上の食品に含まれる100gあたりの糖質量を元に一覧表示させたものです。糖質制限やケトジェニックダイエットでどんな食材が食べられるのかわからない方、新しい食品を見つけたい方におすすめです！"
 div.p-rank
   div.r-content
-    div.r-header-title
-      h1
-        |食品一覧
-
     - @foods.each_with_index do |f, i|
       = link_to chart_show_path(id: f.id, search: f.name), class: "r-widget-wrap"
         div.r-widget-content
@@ -13,11 +9,5 @@ div.p-rank
           span.index = i+1  
           div.details
             = f.name
-          div.progress-value
-            = progress_info = f.carbohydrate
-            - progress_color = "#3366cc"
-            |g
-          div.progress-bar-content
-            div.progress-bar style="width: #{progress_info}px; background-color: #{progress_color}"
     div.chart-paginate-content
       = paginate @foods

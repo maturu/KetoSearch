@@ -17,35 +17,26 @@ div.p-show
                 |g あたり
             = render 'chart/menu', food: @food
           div.chart-table
-            table
-              thead
-                tr
-                  th カロリー
-                  th 糖質
-                  th タンパク質
-                  th 脂質
-                  th 水分
-                  th 食物繊維
-              tbody
-                tr
-                  td
-                    = @food.calorie
-                    | kcal
-                  td
-                    = @food.carbohydrate
-                    | g
-                  td
-                    = @food.protain
-                    | g
-                  td
-                    = @food.lipid
-                    | g
-                  td
-                    = @food.water
-                    | g
-                  td
-                    = @food.fibtg
-                    | g
+            div.table-content
+              div.table-item
+                div.th カロリー
+                div #{@food.calorie} kcal
+              div.table-item
+                div.th 糖質
+                div #{@food.carbohydrate} g
+              div.table-item
+                div.th タンパク質
+                div #{@food.protain} g
+              div.table-item
+                div.th 脂質
+                div #{@food.lipid} g
+              div.table-item
+                div.th 水分
+                div #{@food.water} g
+              div.table-item
+                div.th 食物繊維
+                div #{@food.fibtg} g
+
           div.chart-info
             - if @user.approve < 10
               - rank_color = "#3366cc"

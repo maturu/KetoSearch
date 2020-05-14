@@ -88,6 +88,10 @@ a {
   user-select: none;
 }
 
+input {
+  -webkit-appearance: none;
+}
+
 .mr-1 {
   margin-right: 8px;
 }
