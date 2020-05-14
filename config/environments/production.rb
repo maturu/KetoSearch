@@ -93,7 +93,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Google Analytics Setting
-  GA.tracker = ENV['G_ANALYTICS_KEY']"UA-161458847-1"
+  GA.tracker = ENV['G_ANALYTICS_KEY']
   # Devise mailer setting
   config.action_mailer.default_url_options = { host: ENV['WEB_URL'] }
   config.action_mailer.raise_delivery_errors = true
