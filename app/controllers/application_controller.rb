@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   def set_variables
     gon.data = {}.to_json
+    flash['alert']=nil
   end
 
   def after_sign_in_path_for(resource)
