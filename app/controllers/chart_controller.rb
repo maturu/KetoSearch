@@ -1,6 +1,7 @@
 class ChartController < ApplicationController
   before_action :sign_in_required, only: [:new, :edit, :create, :update]
   before_action :approve_rank_required, only: [:edit, :update]
+  before_action :set_variables
 
   def show
     redirect_to root_path if params[:search] == ""

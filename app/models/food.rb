@@ -13,7 +13,7 @@ class Food < ApplicationRecord
   validates :content, length: { maximum: 65535 }
 
   belongs_to :user
-  has_many :histories
+  has_many :histories, dependent: :destroy
 
   def self.search(keyword)
     split_search = keyword.split(/[[:blank:]]+/)

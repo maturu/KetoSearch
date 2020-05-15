@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :sign_in_required, only: [:show]
+  before_action :set_variables
+
   def show
     @user = User.find_by(username: params[:username])
     @histories = @user.histories.all.order(created_at: "DESC")
