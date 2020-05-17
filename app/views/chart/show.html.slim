@@ -31,14 +31,14 @@ div.p-show
                 div.th 脂質
                 div #{@food.lipid or "- -"} g
               div.table-item
-                div.th 水分
-                div #{@food.water or "- -"} g
-              div.table-item
                 div.th 食物繊維
                 div #{@food.fibtg or "- -"} g
               div.table-item
                 div.th 食塩相当量
-                div #{@food.na or "- -"} g
+                div #{@food.na or "- -"} mg
+              div.table-item
+                div.th 水分
+                div #{@food.water or "- -"} g
 
           div.chart-info
             - if @user.approve < 10

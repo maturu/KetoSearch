@@ -72,13 +72,13 @@ ja:
         tag: タグ
         name: 名前
         gram: グラムあたり
-        calorie: カロリー
-        water: 水分
-        protain: タンパク質
-        lipid: 脂質
-        carbohydrate: 糖質
-        fibtg: 食物繊維
-        na: 食塩相当量
+        calorie: カロリー ( g )
+        water: 水分 ( g )
+        protain: タンパク質 ( g )
+        lipid: 脂質 ( g )
+        carbohydrate: 糖質 ( g )
+        fibtg: 食物繊維 ( g )
+        na: 食塩相当量 ( mg )
         reference: 参考文献
         url: 文献リンク
   views:
