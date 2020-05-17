@@ -38,6 +38,9 @@ div.p-edit-chart
         div.field
           = f.label :fibtg
           = f.text_field :fibtg, placeholder: "数値を入力", value: @food.fibtg, autocomplete: "off"
+        div.field
+          = f.label :na
+          = f.text_field :na, placeholder: "数値を入力", value: @food.na, autocomplete: "off"
 
       div.field
         = f.label :reference

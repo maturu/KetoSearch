@@ -15,19 +15,13 @@ class ChartController < ApplicationController
     unless @foods.blank?
       @food = params[:id].blank? ? @foods.first : Food.find(params[:id])
       @user = User.find(@food.user_id)
-      if @food.carbohydrate < 10
-        @alert = "success"
-      elsif @food.carbohydrate < 20
-        @alert = "warning"
-      else
-        @alert = "danger"
-      end
       @f_info = {
         "糖質" => @food.carbohydrate,
         "タンパク質" => @food.protain,
         "脂質" => @food.lipid,
         "水分" => @food.water,
-        "食物繊維" => @food.fibtg
+        "食物繊維" => @food.fibtg,
+        "食塩相当量" => @food.na
       }
       @relations = Food.related_search(@food, params[:search]).order("carbohydrate DESC").page(params[:page]).per(6)
     else

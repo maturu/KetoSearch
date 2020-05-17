@@ -20,22 +20,25 @@ div.p-show
             div.table-content
               div.table-item
                 div.th カロリー
-                div #{@food.calorie} kcal
+                div #{@food.calorie or "- -"} kcal
               div.table-item
                 div.th 糖質
-                div #{@food.carbohydrate} g
+                div #{@food.carbohydrate or "- -"} g
               div.table-item
                 div.th タンパク質
-                div #{@food.protain} g
+                div #{@food.protain or "- -"} g
               div.table-item
                 div.th 脂質
-                div #{@food.lipid} g
+                div #{@food.lipid or "- -"} g
               div.table-item
                 div.th 水分
-                div #{@food.water} g
+                div #{@food.water or "- -"} g
               div.table-item
                 div.th 食物繊維
-                div #{@food.fibtg} g
+                div #{@food.fibtg or "- -"} g
+              div.table-item
+                div.th 食塩相当量
+                div #{@food.na or "- -"} g
 
           div.chart-info
             - if @user.approve < 10
