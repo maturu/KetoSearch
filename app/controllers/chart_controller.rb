@@ -20,7 +20,7 @@ class ChartController < ApplicationController
         "タンパク質" => @food.protain,
         "脂質" => @food.lipid,
         "食物繊維" => @food.fibtg,
-        "食塩相当量" => @food.na,
+        "食塩相当量" => @food.na / 1000,
         "水分" => @food.water
       }
       @relations = Food.related_search(@food, params[:search]).order("carbohydrate DESC").page(params[:page]).per(6)
