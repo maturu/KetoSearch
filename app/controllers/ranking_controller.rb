@@ -3,6 +3,7 @@ class RankingController < ApplicationController
   before_action :set_variables
 
   def show
-    @foods = Food.all.page(params[:page])
+    @foods = params[:tag].nil? ? Food.all.page(params[:page]) : Food.where("tag LIKE ?", "%#{params[:tag]}%").page(params[:page])
+    @items = @foods.pluck(:id, :name)
   end
 end

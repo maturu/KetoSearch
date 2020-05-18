@@ -9,7 +9,7 @@ class ChartController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json {render 'index', json: @foods} unless @foods.blank? or params[:search] == ""
+      format.json {render 'index', json: @foods.pluck(:id, :name)} unless @foods.blank? or params[:search] == ""
     end
 
     unless @foods.blank?

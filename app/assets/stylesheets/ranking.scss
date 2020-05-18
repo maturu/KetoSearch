@@ -8,6 +8,21 @@
   .r-content {
     margin: 0 auto;
     max-width: 1152px;
+    form {
+      margin: 32px 8px;
+      input {
+        display: block;
+        width: 100%;
+        height: 44px;
+        padding: 6px 12px;
+        font-size: 16px;
+        color: #555;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+      }
+    }
     .r-header-title {
       margin: 32px 0;
     }

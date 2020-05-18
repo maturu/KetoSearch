@@ -39,9 +39,9 @@ $(document).on('turbolinks:load', function() {
       });
       $(data).each(function(i, food){
         $('.incremental-search .incremental-content').append(
-          '<a href="/chart/show?id='+food.id+'&search='+food.name+'">'+ 
+          '<a href="/chart/show?id='+food[0]+'&search='+food[1]+'">'+ 
             '<div>'+
-              food.name+
+              food[1]+
             '</div>'+
           '</a>'
         );
