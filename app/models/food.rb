@@ -17,6 +17,7 @@ class Food < ApplicationRecord
   has_many :histories, dependent: :destroy
 
   def self.search(keyword)
+    return nil if keyword.blank?
     split_search = keyword.split(/[[:blank:]]+/)
     results = self
     split_search.each do |ss|

@@ -4,16 +4,16 @@ class ChartController < ApplicationController
   before_action :set_variables
 
   def show
-    redirect_to root_path if params[:search] == ""
-    @foods = Food.search(params[:search]).page(1).per(9)
-
+    @foods = Food.search(params[:search])
     respond_to do |format|
       format.html
-      format.json {render 'index', json: @foods.pluck(:id, :name)} unless @foods.blank? or params[:search] == ""
+      format.json {render 'index', json: @foods.limit(9).pluck(:id, :name)} unless @foods.blank?
     end
 
-    unless @foods.blank?
-      @food = params[:id].blank? ? @foods.first : Food.find(params[:id])
+    @food = Food.find(params[:id]) if params[:id].present?
+    @food = @foods.first unless @foods.blank?
+
+    if @food.present?
       @user = User.find(@food.user_id)
       @f_info = {
         "糖質" => @food.carbohydrate,
@@ -23,7 +23,8 @@ class ChartController < ApplicationController
         "食塩相当量" => @food.na / 1000,
         "水分" => @food.water
       }
-      @relations = Food.related_search(@food, params[:search]).order("carbohydrate DESC").page(params[:page]).per(6)
+      @relations = Food.related_search(@food, @food.name).order("carbohydrate DESC").page(params[:page]).per(6)
+      @items = @relations.pluck(:id, :name, :carbohydrate)
     else
       redirect_to root_path
     end
@@ -32,19 +33,11 @@ class ChartController < ApplicationController
   def new
     @food = Food.new
     @tags = Food.pluck('tag').uniq
-    @selects = []
-    @tags.each_with_index do |t, i|
-      @selects.push([t, i])
-    end
   end
 
   def edit
     @food = Food.find(params[:id])
     @tags = Food.pluck('tag').uniq
-    @selects = []
-    @tags.each_with_index do |t, i|
-      @selects.push([t, i])
-    end
     if @food.protect and current_user.approve < 500
       redirect_to root_path
     end
@@ -57,11 +50,6 @@ class ChartController < ApplicationController
     end
 
     @tags = Food.pluck('tag').uniq
-    @selects = []
-    @tags.each_with_index do |t, i|
-      @selects.push([t, i])
-    end
-
     @user = User.find(current_user.id)
     count = @user.approve + 1
     if @food.save
@@ -71,7 +59,7 @@ class ChartController < ApplicationController
         name: @food.name
       )
       @user.update(approve: count)
-      redirect_to chart_show_path(id: @food.id, search: @food.name)
+      redirect_to chart_show_path(id: @food.id)
     else
       render chart_new_path
     end
@@ -95,7 +83,7 @@ class ChartController < ApplicationController
         name: @food.name
       )
       @user.update(approve: count)
-      redirect_to chart_show_path(id: @food.id, search: @food.name)
+      redirect_to chart_show_path(id: @food.id)
     else
       render chart_edit_path
     end

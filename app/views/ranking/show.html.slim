@@ -5,7 +5,7 @@ div.p-rank
       = text_field_tag :tag, '', placeholder: "タグ検索", autocomplete: "off"
 
     - @items.each_with_index do |item, index|
-      = link_to chart_show_path(id: item[0], search: item[1]), class: "r-widget-wrap"
+      = link_to chart_show_path(id: item[0]), class: "r-widget-wrap"
         div.r-widget-content
           - if params[:page].to_i > 1
             - index = index + 25*(params[:page].to_i-1)

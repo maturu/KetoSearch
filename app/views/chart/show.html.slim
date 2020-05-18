@@ -73,16 +73,16 @@ div.p-show
                 = pie_chart @f_info
             div.widget-wrapper-content
               div.relation-content
-                - @relations.each_with_index do |r, i|
-                  = link_to chart_show_path(id: r.id, search: r.name), class: "relation-content-item"
+                - @items.each_with_index do |item, index|
+                  = link_to chart_show_path(id: item[0]), class: "relation-content-item"
                     div.relation-item-name
-                      span.label-line-number.mr-2 = i+1
-                      = r.name
+                      span.label-line-number.mr-2 = index+1
+                      = item[1]
                     div.progress-value
-                      = r.carbohydrate
+                      = item[2]
                       |g
                     div.progress-bar-content
-                      div.progress-bar style="width: #{r.carbohydrate}px;"
+                      div.progress-bar style="width: #{item[2]}px;"
           div.chart-paginate-content
             div.paginate-empty
             = paginate @relations

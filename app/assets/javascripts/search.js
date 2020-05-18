@@ -21,7 +21,7 @@ $(document).on('turbolinks:load', function() {
     $.ajax({
       url: '/chart/show',
       type: 'GET',
-      data: ('id=&search=' + input),
+      data: ('search=' + input),
       processData: false,
       contetType: false,
       dataType: 'json'
@@ -39,7 +39,7 @@ $(document).on('turbolinks:load', function() {
       });
       $(data).each(function(i, food){
         $('.incremental-search .incremental-content').append(
-          '<a href="/chart/show?id='+food[0]+'&search='+food[1]+'">'+ 
+          '<a href="/chart/show?id='+food[0]+'">'+ 
             '<div>'+
               food[1]+
             '</div>'+
