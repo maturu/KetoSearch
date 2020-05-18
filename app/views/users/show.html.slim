@@ -32,5 +32,5 @@ div.p-devise.position-relative
               ul
                 - @commits.page(1).per(5).each do |c|
                   li
-                    a href=chart_show_path(id: c.food_id, search: c.name)
+                    a href=chart_show_path(id: c.food_id)
                       = c.name
