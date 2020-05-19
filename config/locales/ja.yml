@@ -78,7 +78,7 @@ ja:
         lipid: 脂質 (必須)
         carbohydrate: 糖質 (必須)
         fibtg: 食物繊維 (任意)
-        na: 食塩相当量 (任意)
+        na: ナトリウム (任意)
         reference: 参考文献
         url: 文献リンク
   views:
