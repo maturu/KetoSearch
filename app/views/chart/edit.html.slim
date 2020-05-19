@@ -20,28 +20,49 @@ div.p-edit-chart
         div.field
           = f.label :gram
           = f.text_field :gram, placeholder: "グラムあたりの数値", value: @food.gram, autocomplete: "off"
-        div.field
-          = f.label :calorie
-          = f.text_field :calorie, placeholder: "数値を入力", value: @food.calorie, autocomplete: "off"
-        div.field
-          = f.label :protain
-          = f.text_field :protain, placeholder: "数値を入力", value: @food.protain, autocomplete: "off"
-        div.field
-          = f.label :lipid
-          = f.text_field :lipid, placeholder: "数値を入力", value: @food.lipid, autocomplete: "off"
-        div.field
-          = f.label :carbohydrate
-          = f.text_field :carbohydrate, placeholder: "数値を入力", value: @food.carbohydrate, autocomplete: "off"
-        div.field
-          = f.label :water
-          = f.text_field :water, placeholder: "数値を入力", value: @food.water, autocomplete: "off"
-        div.field
-          = f.label :fibtg
-          = f.text_field :fibtg, placeholder: "数値を入力", value: @food.fibtg, autocomplete: "off"
-        div.field
-          = f.label :na
-          = f.text_field :na, placeholder: "数値を入力", value: @food.na, autocomplete: "off"
 
+      div.form_tables
+        table
+          tbody
+            tr
+              td = f.label :calorie
+              td.field
+                = f.text_field :calorie, placeholder: "数値の入力", value: @food.calorie, autocomplete: "off", class: "calorie-form"
+                span kcal
+            tr
+              td = f.label :protain
+              td.field
+                = f.text_field :protain, placeholder: "数値の入力", value: @food.protain, autocomplete: "off", class: "protain-form"
+                span g
+            tr
+              td = f.label :lipid
+              td.field
+                = f.text_field :lipid, placeholder: "数値の入力", value: @food.lipid, autocomplete: "off", class: "lipid-form"
+                span g
+            tr
+              td
+                = f.label :carbohydrate
+                i.fas.fa-calculator.caluculate
+              td.field
+                = f.text_field :carbohydrate, placeholder: "数値の入力", value: @food.carbohydrate, autocomplete: "off", class: "carbohydrate-form"
+                span g
+        table
+          tbody
+            tr
+              td = f.label :water
+              td.field
+                = f.text_field :water, placeholder: "数値の入力", value: @food.water, autocomplete: "off"
+                span g
+            tr
+              td = f.label :fibtg
+              td.field
+                = f.text_field :fibtg, placeholder: "数値を入力", value: @food.fibtg, autocomplete: "off"
+                span g
+            tr
+              td = f.label :na
+              td.field
+                = f.text_field :na, placeholder: "数値を入力", value: @food.na, autocomplete: "off"
+                span mg
       div.field
         = f.label :reference
         = f.text_field :reference, placeholder: "参照先の名称", value: @food.reference, autocomplete: "off"

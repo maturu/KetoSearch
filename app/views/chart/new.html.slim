@@ -20,27 +20,49 @@ div.p-edit-chart
         div.field
           = f.label :gram
           = f.text_field :gram, placeholder: "グラムあたりの数値", autocomplete: "off"
-        div.field
-          = f.label :calorie
-          = f.text_field :calorie, placeholder: "数値の入力", autocomplete: "off"
-        div.field
-          = f.label :protain
-          = f.text_field :protain, placeholder: "数値の入力", autocomplete: "off"
-        div.field
-          = f.label :lipid
-          = f.text_field :lipid, placeholder: "数値の入力", autocomplete: "off"
-        div.field
-          = f.label :carbohydrate
-          = f.text_field :carbohydrate, placeholder: "数値の入力", autocomplete: "off"
-        div.field
-          = f.label :water
-          = f.text_field :water, placeholder: "数値の入力", autocomplete: "off"
-        div.field
-          = f.label :fibtg
-          = f.text_field :fibtg, placeholder: "数値を入力", autocomplete: "off"
-        div.field
-          = f.label :na
-          = f.text_field :na, placeholder: "数値を入力", autocomplete: "off"
+
+      div.form_tables
+        table
+          tbody
+            tr
+              td = f.label :calorie
+              td.field
+                = f.text_field :calorie, placeholder: "数値の入力", autocomplete: "off", class: "calorie-form"
+                span kcal
+            tr
+              td = f.label :protain
+              td.field
+                = f.text_field :protain, placeholder: "数値の入力", autocomplete: "off", class: "protain-form"
+                span g
+            tr
+              td = f.label :lipid
+              td.field
+                = f.text_field :lipid, placeholder: "数値の入力", autocomplete: "off", class: "lipid-form"
+                span g
+            tr
+              td
+                = f.label :carbohydrate
+                i.fas.fa-calculator.caluculate
+              td.field
+                = f.text_field :carbohydrate, placeholder: "数値の入力", autocomplete: "off", class: "carbohydrate-form"
+                span g
+        table
+          tbody
+            tr
+              td = f.label :water
+              td.field
+                = f.text_field :water, placeholder: "数値の入力", autocomplete: "off"
+                span g
+            tr
+              td = f.label :fibtg
+              td.field
+                = f.text_field :fibtg, placeholder: "数値を入力", autocomplete: "off"
+                span g
+            tr
+              td = f.label :na
+              td.field
+                = f.text_field :na, placeholder: "数値を入力", autocomplete: "off"
+                span mg
 
       div.field
         = f.label :reference

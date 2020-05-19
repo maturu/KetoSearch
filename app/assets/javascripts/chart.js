@@ -29,6 +29,13 @@ $(document).click(function(event) {
   }
 });
 
+$(document).on('click', '.caluculate', function(e){
+  var cal = $('.calorie-form').val();
+  var pro = $('.protain-form').val();
+  var lip = $('.lipid-form').val();
+  $('.carbohydrate-form').val((cal - pro*4 - lip*9)/4);
+});
+
 $(document).on('turbolinks:load', function() {
   if($('.remarks').val()){
     if($('.remarks').val().length > 0){

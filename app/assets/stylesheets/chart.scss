@@ -156,6 +156,33 @@
         @media screen and (max-width: 414px){ width: 100%; }
       }
     }
+    .form_tables {
+      @include flex-space-around;
+      flex-wrap: wrap;
+      margin: 16px 0;
+      table {
+        border-collapse: collapse;
+        margin: 8px 0;
+        td {
+          padding: 5px;
+          font-size: 14px;
+          border: 1px solid $widget-border-color;
+          .caluculate {
+            margin: 0 8px;
+            cursor: pointer;
+          }
+        }
+        .field {
+          input {
+            display: inline-block;
+            width: 75%;
+          }
+          span {
+            margin: 0 8px;
+          }
+        }
+      }
+    }
     .detail {
       @media screen and (max-width: 414px){ display: none; }
     }
