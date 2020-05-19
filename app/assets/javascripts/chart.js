@@ -33,7 +33,8 @@ $(document).on('click', '.caluculate', function(e){
   var cal = $('.calorie-form').val();
   var pro = $('.protain-form').val();
   var lip = $('.lipid-form').val();
-  $('.carbohydrate-form').val((cal - pro*4 - lip*9)/4);
+  var tmp = Math.round((cal - pro*4 - lip*9)/4 * 10) / 10
+  $('.carbohydrate-form').val(tmp);
 });
 
 $(document).on('turbolinks:load', function() {
