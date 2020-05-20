@@ -1,4 +1,5 @@
 div.p-edit-chart
   div.e-content
     div.e-header-title
-    = render 'chart/forms', food: @food, tags: @tags
+    = form_for @food, url: chart_create_path, method: :post  do |f|
+      = render 'chart/forms', food: @food, tags: @tags, f: f

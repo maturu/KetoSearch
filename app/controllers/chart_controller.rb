@@ -1,5 +1,5 @@
 class ChartController < ApplicationController
-  before_action :sign_in_required, only: [:new, :edit, :more, :create, :update, :qrcode]
+  before_action :sign_in_required, only: [:new, :edit, :more, :create, :update]
   before_action :approve_rank_required, only: [:edit, :update]
   before_action :set_variables
 

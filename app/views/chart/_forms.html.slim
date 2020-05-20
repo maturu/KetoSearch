@@ -1,61 +1,60 @@
-= form_for food, url: chart_create_path, method: :post  do |f|
-  = render 'layouts/error_messages', model: f.object
-  fieldset.form_fields
-    legend 食品情報を入力してください
-    div.field
-      = f.label :tag
-      = f.text_field :tag, placeholder: "店名、ブランド名、食品ジャンルなど", autocomplete: "off", value: food.tag or ""
-      div.incremental-tags
-        div.tags-wrapper
-          ul.tags-content
-            - tags.each do |t|
-              div.tags-item = t
-    div.field
-      = f.label :name
-      = f.text_field :name, placeholder: "濃厚！どっきりびっきりハンバーグ", autocomplete: "off", value: food.name or ""
+= render 'layouts/error_messages', model: f.object
+fieldset.form_fields
+  legend 食品情報を入力してください
+  div.field
+    = f.label :tag
+    = f.text_field :tag, placeholder: "店名、ブランド名、食品ジャンルなど", autocomplete: "off", value: food.tag or ""
+    div.incremental-tags
+      div.tags-wrapper
+        ul.tags-content
+          - tags.each do |t|
+            div.tags-item = t
+  div.field
+    = f.label :name
+    = f.text_field :name, placeholder: "濃厚！どっきりびっきりハンバーグ", autocomplete: "off", value: food.name or ""
 
-  fieldset.form_fields
-    legend 栄養成分を入力してください (必須)
-    div.field
-      = f.label :gram
-      = f.text_field :gram, placeholder: "数値の入力", autocomplete: "off", value: food.gram or ""
-    div.field
-      = f.label :calorie
-      = f.text_field :calorie, placeholder: "数値の入力", autocomplete: "off", class: "calorie-form", value: food.calorie or ""
-    div.field
-      = f.label :protain
-      = f.text_field :protain, placeholder: "数値の入力", autocomplete: "off", class: "protain-form", value: food.protain or ""
-    div.field
-      = f.label :lipid
-      = f.text_field :lipid, placeholder: "数値の入力", autocomplete: "off", class: "lipid-form", value: food.lipid or ""
-    div.field
-      = f.label :carbohydrate
-      i.fas.fa-calculator.calculate
-      = f.text_field :carbohydrate, placeholder: "数値の入力", autocomplete: "off", class: "carbohydrate-form",\
-      value: food.carbohydrate or ""
+fieldset.form_fields
+  legend 栄養成分を入力してください (必須)
+  div.field
+    = f.label :gram
+    = f.text_field :gram, placeholder: "数値の入力", autocomplete: "off", value: food.gram or ""
+  div.field
+    = f.label :calorie
+    = f.text_field :calorie, placeholder: "数値の入力", autocomplete: "off", class: "calorie-form", value: food.calorie or ""
+  div.field
+    = f.label :protain
+    = f.text_field :protain, placeholder: "数値の入力", autocomplete: "off", class: "protain-form", value: food.protain or ""
+  div.field
+    = f.label :lipid
+    = f.text_field :lipid, placeholder: "数値の入力", autocomplete: "off", class: "lipid-form", value: food.lipid or ""
+  div.field
+    = f.label :carbohydrate
+    i.fas.fa-calculator.calculate
+    = f.text_field :carbohydrate, placeholder: "数値の入力", autocomplete: "off", class: "carbohydrate-form",\
+    value: food.carbohydrate or ""
 
-  fieldset.form_fields
-    legend 栄養成分を入力してください (任意)
-    div.field
-      = f.label :water
-      = f.text_field :water, placeholder: "数値の入力", autocomplete: "off", value: food.water or ""
-    div.field
-      = f.label :fibtg
-      = f.text_field :fibtg, placeholder: "数値を入力", autocomplete: "off", value: food.fibtg or ""
-    div.field
-      = f.label :na
-      = f.text_field :na, placeholder: "数値を入力", autocomplete: "off", value: food.na or ""
+fieldset.form_fields
+  legend 栄養成分を入力してください (任意)
+  div.field
+    = f.label :water
+    = f.text_field :water, placeholder: "数値の入力", autocomplete: "off", value: food.water or ""
+  div.field
+    = f.label :fibtg
+    = f.text_field :fibtg, placeholder: "数値を入力", autocomplete: "off", value: food.fibtg or ""
+  div.field
+    = f.label :na
+    = f.text_field :na, placeholder: "数値を入力", autocomplete: "off", value: food.na or ""
 
-  fieldset.form_fields
-    legend 備考 (参考にしたサイトがある場合)
-    div.field
-      = f.label :reference
-      = f.text_field :reference, placeholder: "参照先のタイトル", autocomplete: "off", value: food.reference or ""
-    div.field
-      = f.label :url
-      = f.text_field :url, placeholder: "https://www.example.com", autocomplete: "off", value: food.url or ""
-  div.actions
-    - if food.id.present?
-      = f.submit "編集する"
-    - else
-      = f.submit "投稿する"
+fieldset.form_fields
+  legend 備考 (参考にしたサイトがある場合)
+  div.field
+    = f.label :reference
+    = f.text_field :reference, placeholder: "参照先のタイトル", autocomplete: "off", value: food.reference or ""
+  div.field
+    = f.label :url
+    = f.text_field :url, placeholder: "https://www.example.com", autocomplete: "off", value: food.url or ""
+div.actions
+  - if food.id.present?
+    = f.submit "編集する"
+  - else
+    = f.submit "投稿する"

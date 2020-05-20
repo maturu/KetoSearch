@@ -1,5 +1,5 @@
+= link_to "", chart_qrcode_path(id: @food.id), class: "fas fa-qrcode qr-icon"
 - if user_signed_in? and current_user.approve >= 10
-  = link_to "", chart_qrcode_path(id: @food.id), class: "fas fa-qrcode qr-icon"
   - if not food.protect or current_user.approve >= 500
     div.chart-menu
       i.fas.fa-ellipsis-v
