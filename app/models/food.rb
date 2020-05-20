@@ -2,15 +2,15 @@ class Food < ApplicationRecord
   validates :tag, presence: true
   validates :name, presence: true, uniqueness: true
   validates :gram, presence: true, numericality: true
-  #validates :calorie, numericality: true
+  validates :calorie, numericality: true
+  validates :protain, numericality: true
+  validates :lipid, numericality: true
+  validates :carbohydrate, numericality: true
   #validates :water, numericality: true
-  #validates :protain, numericality: true
-  #validates :lipid, numericality: true
-  #validates :carbohydrate, numericality: true
   #validates :fibtg, numericality: true
   #validates :na, numericality: true
-  validates :reference, presence: true
-  validates :url, presence: true
+  #validates :reference, presence: true
+  #validates :url, presence: true
   validates :content, length: { maximum: 65535 }
 
   belongs_to :user

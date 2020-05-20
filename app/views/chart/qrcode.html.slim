@@ -9,4 +9,4 @@ div.p-edit-chart
           = image_tag qrcode_tag chart_show_url(id: @food.id)
 
     div.actions
-      = link_to "ダウンロード", qrcode_tag(chart_show_url(id: @food.id)), download: @food.name
+      = link_to "ダウンロード", qrcode_tag(chart_show_url(id: @food.id)), download: "#{@food.name}.png"
