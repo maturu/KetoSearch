@@ -1,0 +1,12 @@
+div.p-edit-chart
+  div.e-content
+    div.e-header-title
+
+    div.qrcode
+      div.qr-content
+        h1 = link_to @food.name, chart_show_path(id: @food.id)
+        = link_to chart_show_path(id: @food.id)
+          = image_tag qrcode_tag chart_show_url(id: @food.id)
+
+    div.actions
+      = link_to "ダウンロード", qrcode_tag(chart_show_url(id: @food.id)), download: @food.name

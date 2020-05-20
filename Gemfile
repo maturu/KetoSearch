@@ -32,6 +32,9 @@ gem 'redcarpet'
 gem 'coderay'
 # Use for cal-heatmap in Rails
 gem 'd3_rails'
+# Use for generating QR code
+gem 'rqrcode'
+gem 'chunky_png'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'

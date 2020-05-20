@@ -1,5 +1,5 @@
 class ChartController < ApplicationController
-  before_action :sign_in_required, only: [:new, :edit, :create, :update]
+  before_action :sign_in_required, only: [:new, :edit, :more, :create, :update, :qrcode]
   before_action :approve_rank_required, only: [:edit, :update]
   before_action :set_variables
 
@@ -48,6 +48,10 @@ class ChartController < ApplicationController
     @food = Food.find(params[:id])
   end
 
+  def qrcode
+    @food = Food.find(params[:id])
+  end
+
   def create
     @food = current_user.foods.new(food_params)
     if current_user.approve >= 500
@@ -64,7 +68,7 @@ class ChartController < ApplicationController
         name: @food.name
       )
       @user.update(approve: count)
-      redirect_to chart_show_path(id: @food.id)
+      redirect_to chart_qrcode_path(id: @food.id)
     else
       render chart_new_path
     end
