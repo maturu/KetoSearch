@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'ranking/show'
   get 'chart/show' => 'chart#show'
   get 'chart/edit' => 'chart#edit'
+  get 'chart/more' => 'chart#more'
   get 'chart/new' => 'chart#new'
   post 'chart/create' => "chart#create"
   post 'chart/update' => "chart#update"

@@ -69,16 +69,16 @@ ja:
         password_confirmation: 確認用パスワード
         current_password: 現在のパスワード
       food:
-        tag: タグ
-        name: 名前
+        tag: 食品タグ
+        name: 食品名、商品名、メニュー名
         gram: グラムあたり
-        calorie: カロリー (必須)
-        water: 水分 (任意)
-        protain: タンパク質 (必須)
-        lipid: 脂質 (必須)
-        carbohydrate: 糖質 (必須)
-        fibtg: 食物繊維 (任意)
-        na: ナトリウム (任意)
+        calorie: カロリー (kcal)
+        water: 水分 (g)
+        protain: タンパク質 (g)
+        lipid: 脂質 (g)
+        carbohydrate: 糖質 (g)
+        fibtg: 食物繊維 (g)
+        na: ナトリウム (mg)
         reference: 参考文献
         url: 文献リンク
   views:

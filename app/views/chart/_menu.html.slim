@@ -4,4 +4,6 @@
       i.fas.fa-ellipsis-v
       div.chart-menu-dropdown
         = link_to "編集", chart_edit_path(id: food.id), class: "menu-item"
-        = link_to "削除依頼", "https://twitter.com/ketosearch", target: "_blank", rel: "noopener noreferrer", class: "menu-item"
+        = link_to "もっと編集", chart_more_path(id: food.id), class: "menu-item"
+        = link_to "削除依頼", "https://twitter.com/ketosearch", target: "_blank",\
+        rel: "noopener noreferrer", class: "menu-item"

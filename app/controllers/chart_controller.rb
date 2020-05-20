@@ -44,6 +44,10 @@ class ChartController < ApplicationController
     end
   end
 
+  def more
+    @food = Food.find(params[:id])
+  end
+
   def create
     @food = current_user.foods.new(food_params)
     if current_user.approve >= 500

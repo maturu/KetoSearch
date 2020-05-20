@@ -27,9 +27,12 @@ $(document).click(function(event) {
   if(!$(event.target).closest('#food_tag').length) {
     $('.incremental-tags').css('display', 'none');
   }
+  if(!$(event.target).closest('.chart-menu').length) {
+    $('.chart-menu-dropdown').css('display', 'none');
+  }
 });
 
-$(document).on('click', '.caluculate', function(e){
+$(document).on('click', '.calculate', function(e){
   var cal = $('.calorie-form').val();
   var pro = $('.protain-form').val();
   var lip = $('.lipid-form').val();
