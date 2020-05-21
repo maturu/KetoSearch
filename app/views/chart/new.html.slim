@@ -1,5 +1,11 @@
 div.p-edit-chart
   div.e-content
     div.e-header-title
+    div.e-detail
+      |ケトサーチは食材や調味料の成分情報やケトジェニックに関する知識を共有するためのサービスです。
+      |皆さんの一つ一つの投稿が、健康を気遣う人、病気で食事管理をする人、ダイエットを行う人の助けになります。
+      |『#{link_to "#MyFavFood", "https://twitter.com/search?q=%23MyFavFood&src=typed_query", target: "_blank"}』
+      |では、皆さんのお気に入りの食品についての情報を投稿していただき、SNS等で拡散していただくことで
+      |その輪を全国に拡大させます。
     = form_for @food, url: chart_create_path, method: :post  do |f|
       = render 'chart/forms', food: @food, tags: @tags, f: f

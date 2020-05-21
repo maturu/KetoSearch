@@ -156,6 +156,29 @@
       height: 80px;
       margin: 25px 10px;
     }
+    .e-detail {
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0 10px;
+      color: #555;
+      h2 {
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      a {
+        font-weight: bold;
+      }
+    }
+    .share-sns {
+      @include flex-center;
+      .twitter-button {
+        margin: 8px;
+      }
+      .facebook-button {
+        margin: 8px;
+      }
+    }
     hr {
       margin: 20px 0;
       border: 0;
@@ -280,7 +303,9 @@
       input, a {
         display: block;
         width: 100%;
+        max-width: 550px;
         height: 50px;
+        margin: 0 auto;
         padding: 10px 12px;
         margin-top: 64px;
         font-size: 16px;
@@ -301,7 +326,7 @@
     .qrcode {
       color: #fff;
       text-align: center;
-      margin: 8vh 0;
+      margin: 5vh 0;
       .qr-content {
         display: inline-block;
         padding: 20px;

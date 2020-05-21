@@ -10,7 +10,7 @@ html
     = include_gon
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload', async: "async"
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    //= javascript_include_tag "https://platform.twitter.com/widgets.js", charset: "utf-8", async: "async"
+    = javascript_include_tag "https://platform.twitter.com/widgets.js", charset: "utf-8", async: "async"
     = analytics_init if Rails.env.production?
     script src="https://kit.fontawesome.com/2c60105a2c.js" crossorigin="anonymous" rel="preload" async="async"
     - if Rails.env.production?

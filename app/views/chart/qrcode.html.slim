@@ -1,12 +1,26 @@
 div.p-edit-chart
-  div.e-content
+  div.e-content style="max-width: 600px;"
     div.e-header-title
+    div.e-detail
+      h2 【投稿方法】
+      |まずは、下のQRコードをダウンロードしてください！
+      |続けてTwitterやFacebookにダウンロードしたQRコードとハッシュタグ
+      = link_to "#MyFavFood", "https://twitter.com/search?q=%23MyFavFood&src=typed_query", target: "_blank"
+      |を投稿欄に貼り付けて投稿しましょう！
+    div.share-sns
+      div.twitter-button
+        = render 'layouts/twitter-share'
+      div.facebook-button
+        = render 'layouts/facebook-share'
 
     div.qrcode
       div.qr-content
         h1 = link_to @food.name, chart_show_path(id: @food.id)
         = link_to chart_show_path(id: @food.id)
           = image_tag qrcode_tag chart_show_url(id: @food.id)
+      div.e-detail
+        |＊QRコードをクリックすると食品情報が閲覧できます。
 
     div.actions
       = link_to "ダウンロード", qrcode_tag(chart_show_url(id: @food.id)), download: "#{@food.name}.png"
+
