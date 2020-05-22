@@ -406,8 +406,14 @@ body {
 }
 
 // markdown preview style
+.preview-content::-webkit-scrollbar {
+  display: none;
+}
 .preview-content {
   position: relative;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   .md-text {
     padding: 16px 24px;
     padding-bottom: 40px;
