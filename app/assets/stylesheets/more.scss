@@ -1,0 +1,90 @@
+@import 'common.scss';
+
+.p-more-editor {
+  .editor-content {
+    margin: 5px;
+    .editor-body {
+      @include flex-space-between;
+      height: 85vh;
+      .editor-markdown {
+        width: 100%;
+        height: 100%;
+        .markdown-header {
+          border: 1px solid #d1d5da;
+          border-top-left-radius: 3px;
+          width: 100%;
+          padding: 0 8px;
+          background-color: #f6f8fa;
+          color: #24292e;
+          font-weight: bold;
+          line-height: 36px;
+        }
+        .markdown-wrapper {
+          border: 1px solid #d1d5da;
+          border-top: 0;
+          height: 94%;
+          textarea {
+            box-sizing: border-box;
+            border-radius: 0;
+            width: 100%;
+            height: 100%;
+            outline: 0;
+            display: block;
+            border: 0;
+            line-height: 1.5;
+            resize: none;
+            padding: 12px;
+            font-size: 14px;
+            color: #222;
+            background-color: #fff;
+          }
+        }
+      }
+      .editor-preview {
+        width: 100%;
+        height: 100%;
+        .preview-header {
+          border: 1px solid #d1d5da;
+          border-left: 0;
+          border-top-right-radius: 3px;
+          width: 100%;
+          padding: 0 8px;
+          background-color: #f6f8fa;
+          color: #24292e;
+          font-weight: bold;
+          line-height: 36px;
+        }
+        .preview-content {
+          border: 1px solid #d1d5da;
+          border-top: 0;
+          border-left: 0;
+          height: 94%;
+          background-color: #fff;
+        }
+      }
+    }
+    .editor-footer {
+      @include flex-space-between;
+      width: 100%;
+      height: 50px;
+      padding: 4px 10px;
+      .editor-submit {
+        margin-left: auto;
+        .submit-btn {
+          display: block;
+          width: 110px;
+          padding: 10px 12px;
+          font-size: 14px;
+          color: #fff;
+          background-color: $theme-color;
+          border-color: $dark-theme-color;
+          border-radius: 3px;
+          cursor: pointer;
+          &:hover {
+            background-color: $dark-theme-color;
+          }
+        }
+      }
+    }
+  }
+}

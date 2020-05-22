@@ -1,1 +1,22 @@
-h1 Hello World!
+div.p-more-editor
+  div.editor-content
+    = form_for @food, url: chart_update_path(id: @food.id), method: :post  do |f|
+      div.editor-body
+        div.editor-markdown
+          div.markdown-header 本文
+          div.markdown-wrapper
+            = f.text_area :content, placeholder: "食品やダイエットに関する知識をMarkdown記法で書いて共有しよう",\
+            value: "#{@food.content or ""}", class: "remarks"
+        div.editor-preview
+          div.preview-header プレビュー
+
+          div.preview-content
+            div.md-text
+            = render 'chart/markdown_help'
+
+      div.editor-footer
+        div.editor-submit
+          = button_tag type: "submit", class: "submit-btn"
+            i.fas.fa-upload.mr-1
+            |投稿する
+

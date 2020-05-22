@@ -94,9 +94,7 @@ div.p-show
                 i.fas.fa-file-alt.mr-2
                 |詳細
               = render 'chart/menu', food: @food
-            div.markdown-preview
-              - @food.content.split("\n").each do |text|
-                - if text == "\r"
-                  br
-                - else
+            div.preview-content
+              div.md-text
+                - @food.content.split("\n").each do |text|
                   = markdown(text).html_safe

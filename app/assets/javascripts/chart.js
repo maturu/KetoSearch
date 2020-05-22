@@ -3,14 +3,31 @@ $(document).on('click', '.chart-menu', function(e){
 });
 
 $(document).on('keyup', '.remarks', function(e){
+  marked.setOptions({
+    "baseUrl": null,
+    "breaks": true,
+    "gfm": true,
+    "headerIds": true,
+    "headerPrefix": "",
+    "highlight": null,
+    "langPrefix": "language-",
+    "mangle": true,
+    "pedantic": false,
+    "sanitize": false,
+    "sanitizer": null,
+    "silent": false,
+    "smartLists": false,
+    "smartypants": false,
+    "tokenizer": null,
+    "walkTokens": null,
+    "xhtml": false
+  });
+
+  $('.md-text').html(marked($(this).val()));
   if($(this).val()){
-    var count = $(this).val().length;
-    $('.text-count').text(count+" / 65535");
-    if(count > 0) {
-      $('.markdown-help').css('display', 'none');
-    }else{
-      $('.markdown-help').css('display', 'inline');
-    }
+    $('.markdown-help').css("display", "none");
+  } else {
+    $('.markdown-help').css("display", "inline");
   }
 });
 
@@ -42,10 +59,29 @@ $(document).on('click', '.calculate', function(e){
 
 $(document).on('turbolinks:load', function() {
   if($('.remarks').val()){
-    if($('.remarks').val().length > 0){
-      $('.markdown-help').css('display', 'none');
-    }else{
-      $('.markdown-help').css('display', 'inline');
-    }
+    marked.setOptions({
+      "baseUrl": null,
+      "breaks": true,
+      "gfm": true,
+      "headerIds": true,
+      "headerPrefix": "",
+      "highlight": null,
+      "langPrefix": "language-",
+      "mangle": true,
+      "pedantic": false,
+      "sanitize": false,
+      "sanitizer": null,
+      "silent": false,
+      "smartLists": false,
+      "smartypants": false,
+      "tokenizer": null,
+      "walkTokens": null,
+      "xhtml": false
+    });
+
+    $('.md-text').html(marked($('.remarks').val()));
+    $('.markdown-help').css("display", "none");
+  } else {
+    $('.markdown-help').css("display", "inline");
   }
 });

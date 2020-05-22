@@ -30,6 +30,7 @@ gem 'rails_admin'
 # Use for Markdown editor
 gem 'redcarpet'
 gem 'coderay'
+gem 'marked-rails'
 # Use for cal-heatmap in Rails
 gem 'd3_rails'
 # Use for generating QR code

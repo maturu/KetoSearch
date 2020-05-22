@@ -21,3 +21,4 @@
 //= require bootstrap-sprockets
 //= require d3
 //= require cal-heatmap
+//= require marked
