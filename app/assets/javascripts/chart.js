@@ -58,6 +58,16 @@ $(document).on('click', '.calculate', function(e){
 });
 
 $(document).on('turbolinks:load', function() {
+  $('.remarks').scroll(function() {
+    var h =  Math.round(this.scrollTop / (this.scrollHeight - this.clientHeight)*100) / 100;
+    $('.preview-content').scrollTop(($('.preview-content')[0].scrollHeight - $('.preview-content')[0].clientHeight)*h);
+  });
+
+  $('.preview-content').scroll(function() {
+    var h =  Math.round(this.scrollTop / (this.scrollHeight - this.clientHeight)*100) / 100;
+    $('.remarks').scrollTop(($('.remarks')[0].scrollHeight - $('.remarks')[0].clientHeight)*h);
+  });
+
   if($('.remarks').val()){
     marked.setOptions({
       "baseUrl": null,
