@@ -3,9 +3,11 @@ $(document).on('click', '.st-header-user', function(e){
 });
 
 $(document).on('turbolinks:load', function() {
+  var timer;
   $(document).on('keyup', '#search', function(e){
     e.preventDefault();
-    update($.trim($('#search').val()));
+    clearTimeout(timer);
+    timer = setTimeout(update($.trim($('#search').val())), 500);
     destroy($.trim($('#search').val()));
   });
 
