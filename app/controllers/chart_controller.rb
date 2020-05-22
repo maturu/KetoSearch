@@ -2,6 +2,7 @@ class ChartController < ApplicationController
   before_action :sign_in_required, only: [:new, :edit, :more, :create, :update]
   before_action :approve_rank_required, only: [:edit, :update]
   before_action :set_variables
+  before_action :pc_only, only: [:more]
 
   def show
     @foods = Food.search(params[:search])

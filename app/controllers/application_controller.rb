@@ -24,6 +24,10 @@ class ApplicationController < ActionController::Base
       redirect_to root_path unless current_user.approve >= 10
     end
 
+    def pc_only
+      redirect_to root_path if browser.device.mobile?
+    end
+
   protected
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
