@@ -1,3 +1,5 @@
+- set_meta_tags title: "#{@food.name}の詳細情報の編集"
+
 div.p-more-editor
   div.editor-content
     = form_for @food, url: chart_update_path(id: @food.id), method: :post  do |f|
