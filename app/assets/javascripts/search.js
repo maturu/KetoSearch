@@ -7,7 +7,9 @@ $(document).on('turbolinks:load', function() {
   $(document).on('keyup', '#search', function(e){
     e.preventDefault();
     clearTimeout(timer);
-    timer = setTimeout(update($.trim($('#search').val())), 500);
+    timer = setTimeout(function() {
+      update($.trim($('#search').val()))
+    }, 250);
     destroy($.trim($('#search').val()));
   });
 
