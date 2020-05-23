@@ -80,10 +80,6 @@ class ChartController < ApplicationController
     if @food.protect and current_user.approve < 500
       redirect_to root_path
     end
-    if current_user.approve >= 500
-      @food.protect = true
-    end
-
     @user = User.find(current_user.id)
     count = @user.approve + 1
     if @food.update(food_params)
