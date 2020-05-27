@@ -9,9 +9,9 @@ div.p-more-editor
           div.markdown-wrapper
             = f.text_area :content, placeholder: "食品やダイエットに関する知識をMarkdown記法で書いて共有しよう",\
             value: "#{@food.content or ""}", class: "remarks"
+
         div.editor-preview
           div.preview-header プレビュー
-
           div.preview-content
             div.md-text
             = render 'chart/markdown_help'

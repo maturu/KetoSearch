@@ -1,6 +1,5 @@
 class ChartController < ApplicationController
   before_action :sign_in_required, only: [:new, :edit, :more, :create, :update]
-  before_action :approve_rank_required, only: [:edit, :update]
   before_action :set_variables
   before_action :pc_only, only: [:more]
 
@@ -39,14 +38,13 @@ class ChartController < ApplicationController
 
   def edit
     @food = Food.find(params[:id])
+    redirect_to chart_show_path(id: @food.id) if @food.user_id != current_user.id
     @tags = Food.pluck('tag').uniq
-    if @food.protect and current_user.approve < 500
-      redirect_to root_path
-    end
   end
 
   def more
     @food = Food.find(params[:id])
+    redirect_to chart_show_path(id: @food.id) if @food.user_id != current_user.id
   end
 
   def qrcode
@@ -55,20 +53,10 @@ class ChartController < ApplicationController
 
   def create
     @food = current_user.foods.new(food_params)
-    if current_user.approve >= 500
-      @food.protect = true
-    end
 
     @tags = Food.pluck('tag').uniq
     @user = User.find(current_user.id)
-    count = @user.approve + 1
     if @food.save
-      @food.histories.create(
-        user_id: current_user.id,
-        food_id: @food.id,
-        name: @food.name
-      )
-      @user.update(approve: count)
       redirect_to chart_qrcode_path(id: @food.id)
     else
       render chart_new_path
@@ -77,26 +65,24 @@ class ChartController < ApplicationController
 
   def update
     @food = Food.find(params[:id])
-    if @food.protect and current_user.approve < 500
-      redirect_to root_path
-    end
-    @user = User.find(current_user.id)
-    count = @user.approve + 1
+    redirect_to chart_show_path(id: @food.id) if @food.user_id != current_user.id
+
     if @food.update(food_params)
-      @food.histories.create(
-        user_id: current_user.id,
-        food_id: @food.id,
-        name: @food.name
-      )
-      @user.update(approve: count)
       redirect_to chart_show_path(id: @food.id)
     else
       render chart_edit_path
     end
   end
 
+  def destroy
+    @food = Food.find(params[:id])
+    redirect_to chart_show_path(id: @food.id) if @food.user_id != current_user.id
+    @food.destroy
+    redirect_to root_path
+  end
+
   protected
     def food_params
-      params.require(:food).permit(:tag, :name, :gram, :calorie, :water, :protain, :lipid, :carbohydrate, :content, :fibtg, :reference, :url, :na)
+      params.require(:food).permit(:tag, :name, :gram, :calorie, :water, :protain, :lipid, :carbohydrate, :content, :fibtg, :reference, :url, :na, :address)
     end
 end

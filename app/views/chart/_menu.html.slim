@@ -1,11 +1,10 @@
-= link_to "", chart_qrcode_path(id: @food.id), class: "fas fa-qrcode qr-icon"
-- if user_signed_in? and current_user.approve >= 10
-  - if not food.protect or current_user.approve >= 500
-    div.chart-menu
-      i.fas.fa-ellipsis-v
-      div.chart-menu-dropdown
-        = link_to "編集", chart_edit_path(id: food.id), class: "menu-item"
-        - unless browser.device.mobile?
-          = link_to "もっと編集", chart_more_path(id: food.id), class: "menu-item"
-        = link_to "削除依頼", "https://twitter.com/ketosearch", target: "_blank",\
-        rel: "noopener noreferrer", class: "menu-item"
+= link_to "", chart_qrcode_path(id: food.id), class: "fas fa-qrcode qr-icon"
+- if user_signed_in? and current_user.id == food.user_id
+  div.chart-menu
+    i.fas.fa-ellipsis-v
+    div.chart-menu-dropdown
+      = link_to "編集", chart_edit_path(id: food.id), class: "menu-item"
+      - unless browser.device.mobile?
+        = link_to "もっと編集", chart_more_path(id: food.id), class: "menu-item"
+      = link_to "削除", chart_destroy_path(id: food.id), method: :post, class: "menu-item", \
+        data: { confirm: "食品データ「#{food.name}」を削除しますか?" }

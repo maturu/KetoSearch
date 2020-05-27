@@ -8,6 +8,23 @@ div.p-show
         div.s-chart-widget-container
           div.chart-header-title
             div.title-content
+              i.fas.fa-tags.mr-1
+              = @food.tag
+              = "：#{@food.address}" unless @food.address.blank?
+            = render 'chart/menu', food: @food
+          div.chart-info
+            i.fas.fa-user.mr-1
+            span.mr-2 
+              = link_to @user.username, users_show_path(username: @user.username)
+              |の投稿
+            - unless @food.reference.blank? and @food.url.blank?
+              i.fas.fa-link.mr-1
+              span 参考文献: 
+              = link_to @food.reference, @food.url, class: "mr-2", target: "_blank", rel: "noopener noreferrer"
+
+        div.s-chart-widget-container
+          div.chart-header-title
+            div.title-content
               i.fas.fa-receipt.mr-1
               |「
               = @food.name
@@ -40,21 +57,6 @@ div.p-show
               div.table-item
                 div.th 水分
                 div #{@food.water or "- -"} g
-
-          div.chart-info
-            - if @user.approve < 10
-              - rank_color = "#3366cc"
-            - elsif @user.approve < 500
-              - rank_color = "#ff9900"
-            - else
-              - rank_color = "#dc3912"
-            i.fas.fa-user.mr-1 style="color: #{rank_color}"
-            span.mr-2 
-              = link_to @user.username, users_show_path(username: @user.username)
-              |の投稿
-            i.fas.fa-link.mr-1
-            span 参考文献: 
-            = link_to @food.reference, @food.url, class: "mr-2", target: "_blank", rel: "noopener noreferrer"
 
         div.s-chart-widget-container
           div.chart-header-title
