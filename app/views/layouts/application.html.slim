@@ -41,31 +41,13 @@ html
                 i.fas.fa-pen-square
                 span.post-text 投稿する
               div.st-header-user
-                - if current_user.approve < 10
-                  - rank_color = "#3366cc"
-                - elsif current_user.approve < 500
-                  - rank_color = "#ff9900"
-                - else
-                  - rank_color = "#dc3912"
-                i.fas.fa-user style="color: #{rank_color}"
+                i.fas.fa-user style="color: #3366cc"
                 div.user-dropdown
                   div.user-dropdown-header
                     div
                       = current_user.username
-                    div.user-rank
-                      - if current_user.approve < 10
-                        - progress_info = current_user.approve * 10
-                        - progress_color = "#3366cc"
-                      - elsif current_user.approve < 500
-                        - progress_info = current_user.approve * 0.2
-                        - progress_color = "#ff9900"
-                      - else
-                        - progress_info = current_user.approve
-                        - progress_color = "#dc3912"
-                      div.progress-bar style="width: #{progress_info}px; background-color: #{progress_color}"
-
                   = link_to 'マイページ', users_show_path(username: current_user.username), class: "user-dropdown-item"
-                  = link_to '設定', edit_user_registration_path, class: "user-dropdown-item"
+                  = link_to '一般設定', edit_user_registration_path, class: "user-dropdown-item"
                   = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "user-dropdown-item"
             - else
               = link_to 'ユーザー登録', new_user_registration_path, class: "st-header-signupButton mr-2"

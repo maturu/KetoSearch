@@ -20,10 +20,6 @@ class ApplicationController < ActionController::Base
       redirect_to new_user_session_url unless user_signed_in?
     end
 
-    def approve_rank_required
-      redirect_to root_path unless current_user.approve >= 10
-    end
-
     def pc_only
       redirect_to root_path if browser.device.mobile?
     end

@@ -65,11 +65,16 @@ ja:
       user:
         username: ユーザー名
         email: メールアドレス
+        introduction: 自己紹介
+        store: 店舗名
+        address: 場所
+        website: ウェブサイト
         password: パスワード
         password_confirmation: 確認用パスワード
         current_password: 現在のパスワード
       food:
         tag: 食品タグ
+        address: 店舗 (飲食店の方のみ)
         name: 食品名、商品名、メニュー名
         gram: グラムあたり
         calorie: カロリー (kcal)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_17_071526) do
+ActiveRecord::Schema.define(version: 2020_05_27_132231) do
 
   create_table "foods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "tag"
@@ -27,20 +27,10 @@ ActiveRecord::Schema.define(version: 2020_05_17_071526) do
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "protect", default: false, null: false
     t.bigint "user_id"
     t.float "na"
+    t.string "address"
     t.index ["user_id"], name: "index_foods_on_user_id"
-  end
-
-  create_table "histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "food_id"
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["food_id"], name: "index_histories_on_food_id"
-    t.index ["user_id"], name: "index_histories_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -66,7 +56,10 @@ ActiveRecord::Schema.define(version: 2020_05_17_071526) do
     t.string "provider"
     t.string "uid"
     t.string "username"
-    t.integer "approve", default: 0
+    t.string "introduction"
+    t.string "address"
+    t.string "website"
+    t.string "store"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -74,6 +67,4 @@ ActiveRecord::Schema.define(version: 2020_05_17_071526) do
   end
 
   add_foreign_key "foods", "users"
-  add_foreign_key "histories", "foods"
-  add_foreign_key "histories", "users"
 end

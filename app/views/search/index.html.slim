@@ -9,7 +9,7 @@ div.p-root
       div.r-intro-symbol
       div.r-intro-form-content
         = form_tag chart_show_path, method: :get, enforce_utf8: false, class: "r-intro-form" do
-          = text_field_tag :search, '', class: "r-intro-searchModel", placeholder: "食材名・調味料名を入力", autocomplete: "off"
+          = text_field_tag :search, '', class: "r-intro-searchModel", placeholder: "食材名・調味料名・食品名・メニューを入力", autocomplete: "off"
           span.fas.fa-search
           = button_tag "", type: 'submit', name: nil, class: "r-intro-searchButton"
 
@@ -17,7 +17,7 @@ div.p-root
           div.incremental-wrapper
             ul.incremental-content
       div.r-intro-description
-        |ケトサーチは、食材や調味料の成分情報やケトジェニックに関する知識を共有するためのサービスです。
+        |ケトサーチはあらゆる食品の情報を共有し、人々の健康を守るオンライン栄養成分表示サービスです。
 
   div.news
     = link_to "https://corona.go.jp/", target: "_blank", rel: "noopener noreferrer", class: "covid-19-news"
@@ -30,32 +30,34 @@ div.p-root
       h2.r-heading-text ケトサーチの思想
     section.r-concept-section
       h3.r-concept-heading
-        |ケトジェニックダイエットを実施する人のためになる信用性の高い情報が集まる場をつくる
+        |全ての人のために栄養成分を可視化し、社会を支える
       p.r-concept-text
-        |ケトサーチ(KetoSearch)は、「食材や調味料の成分情報やケトジェニックに関する知識を共有するためのサービス
-        |」として、ケトジェニックダイエットを行っている人の役に立つ信用性の高い情報が
-        |集まる場を提供していきたいと考えています。
-        |そのため、ユーザーご自身のダイエット経験から得た知識や根拠のある文献から得た情報を投稿することで、
-        |より価値の高い情報を集めていきましょう。
-
+        |ケトサーチ(KetoSearch)は、「あらゆる食品の情報を共有し、人々の健康を守るオンライン栄養成分表示サービス
+        |」として、飲食店ご利用のお客様、健康維持に取り組む方、ご病気で食事管理をされる方など全ての方々のお役に立つ
+        |信用性の高い栄養情報を収集し、グラフ等を用いて提供していきたいと考えています。
+        |そのため、一般の方はご自身の身の回りの食品情報を、飲食店の方は店舗でご提供されているメニューの食品情報を投稿していただく
+        |き、より多くの人々が健康でいられる社会を支えていきましょう。
     section.r-concept-section
       h3.r-concept-heading
-        |「健康なカラダ」や「美しいカラダ」を追い求める全ての人を応援します
+        |飲食店とお客様の信頼を築く架け橋となる
       p.r-concept-text
-        |あなたが正しく糖質制限したり、トレーニングすることは、ダイエットの成功につながります。
+        |2015年4月1日に食品の表示について定めた法律「食品表示法」が施行され、原則として、全ての加工食品と添加物に
+        |栄養成分表示が義務化されました。しかし、飲食店においては、お客様にご提供されるメニューに関して、その栄養成分
+        |を表示する義務は2020年の現在ありません。栄養成分表示は、食事管理をしなければならない人だけでなく、あらゆる人々に知る権利があると
+        |運営は考えておりが、飲食店の経営は非常に厳しく、栄養成分表示を導入できないというのが現状です。
+        |そこでケトサーチでは、飲食店の方が完全に無料でご利用いただけるように工夫しております。
+        |栄養成分を表示すると、お客様からの信頼を獲得することができ、常連の獲得や利用者数の増加などに繋がりますので、ケトサーチは飲食店とお客様をつなぐ
+        |架け橋となれれば幸いです。
+    section.r-concept-section
+      h3.r-concept-heading
+        |「健康」や「美しさ」を追い求める全ての人を応援します
+      p.r-concept-text
+        |あなたが正しく食事管理したり、トレーニングすることは、ダイエットの成功や生活習慣病などの病気の防止につながります。
         |運営は、正しく健康的なダイエットを行えるよう理想のカラダを求める人を全力で応援します。
         |そのために、必要な機能があればどんどん追加し、サービスを改善していこうと考えています。
         |もしも何かご意見などがあれば
         = link_to "@ketosearch", "https://twitter.com/ketosearch", target: "_blank", rel: "noopener noreferrer", class: "external-link"
         |に問い合わせてください。
-    section.r-concept-section
-      h3.r-concept-heading
-        |ダイエッターとしての知識や情報を身につけ、自立していこう
-      p.r-concept-text
-        |ケトサーチは、食材の情報を提供することを通して、ケトジェニックダイエットのための糖質
-        |制限の知識を身につけ、あなたがダイエッターとして自立することを支援します。ケトサーチを
-        |利用すればするほど、食材の成分情報を覚えることができ、ダイエット中に食べることができる
-        |食材を判断する能力が身につきます。
   section.r-signup
     div.r-signup-content
       div.r-signup-image.r-signup-image--left

@@ -18,29 +18,26 @@
       border: 0;
       border-top: 1px solid #ddd;
     }
-    .d-info {
-      @include flex-space-between;
-      align-items: normal;
-      @media screen and (max-width:414px){ flex-wrap: wrap; }
-      .d-userRank {
-        width: 100%;
-        padding: 10px;
-        .u-item {
-          .u-rank-header {
-            font-size: 18px;
-            font-weight: bold;
-            letter-spacing: 2px;
-          }
-          .u-rank-info {
-            padding: 10px;
-            margin-bottom: 10px;
-            line-height: 20px;
-          }
-        }
+    #profile-edit-btn {
+      position: absolute;
+      right: 32px;
+      display: block;
+      width: 170px;
+      font-weight: bold;
+      text-align: center;
+      color: $theme-color;
+      padding: 8px;
+      border: 1px solid $theme-color;
+      border-radius: 24px;
+      background-color: #fff;
+      &:hover {
+        color: #fff;
+        background-color: $theme-color;
       }
+    }
+    .d-info {
       .d-forms {
         width: 100%;
-        padding: 10px;
       }
     }
     .field {
@@ -57,17 +54,30 @@
         border-radius: 3px;
         box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
       }
+      textarea {
+        display: block;
+        width: 100%;
+        height: 110px;
+        font-size: 14px;
+        color: #555;
+        padding: 12px;
+        resize: none;
+        background-color: #fff;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
     }
     .actions {
       input {
         display: block;
         width: 100%;
-        padding: 10px 12px;
+        padding: 12px;
         margin-top: 20px;
         font-size: 14px;
         color: #fff;
         background-color: $theme-color;
-        border-color: $dark-theme-color;
+        border: 0;
         border-radius: 3px;
         cursor: pointer;
         &:hover {

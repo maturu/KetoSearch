@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   get 'users/show'
+  get 'users/profile' => "users#edit"
+  post 'users/update' => "users#update"
 
   get 'ranking/show'
   get 'chart/show' => 'chart#show'
@@ -11,6 +13,7 @@ Rails.application.routes.draw do
   get 'chart/new' => 'chart#new'
   post 'chart/create' => "chart#create"
   post 'chart/update' => "chart#update"
+  post 'chart/destroy' => "chart#destroy"
   get 'search/privacy_policy'
   get 'search/terms'
   root "search#index"
