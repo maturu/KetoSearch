@@ -1,0 +1,21 @@
+div.p-devise
+  div.d-content
+    div.d-header-title
+      h1 プロフィールの編集
+    hr
+    = form_for @user, url: users_update_path(id: @user.id), method: :post  do |f|
+      = render "layouts/error_messages", model: f.object
+      div.field
+        = f.label :introduction
+        = f.text_area :introduction, placeholder: "自己紹介を追加", maxlength: 160
+      div.field
+        = f.label :store
+        = f.text_field :store, placeholder: "店舗の名前を追加"
+      div.field
+        = f.label :address
+        = f.text_field :address, placeholder: "店舗の住所を追加"
+      div.field
+        = f.label :website
+        = f.text_field :website, placeholder: "ウェブサイトを追加"
+      div.actions
+        = f.submit "保存する"

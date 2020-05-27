@@ -1,34 +1,9 @@
 div.p-devise
   div.d-content
     div.d-header-title
-      h1 アカウントの設定
+      h1 アカウントの一般設定
     hr
     div.d-info
-      div.d-userRank
-        div.u-item
-          div.u-rank-header
-            i.fas.fa-user.mr-1 style="color: #3366cc"
-            span 新規ユーザー
-          div.u-rank-info
-            |新規登録後、ユーザーランクが昇格されるまでは新規ユーザーに許されている操作のみ行うことができます。
-            |新規ユーザーは、通常/承認ユーザーに許されている食品情報の編集はできません。
-
-        div.u-item
-          div.u-rank-header
-            i.fas.fa-user.mr-1 style="color: #ff9900"
-            span 通常ユーザー
-          div.u-rank-info
-            |新規登録からユーザーが10回の新しい食品情報の投稿をすると、通常ユーザーとなります。
-            |通常ユーザーは、保護されていない食品情報の編集が可能となり、一部の制限が解除されます。
-
-        div.u-item
-          div.u-rank-header
-            i.fas.fa-user.mr-1 style="color: #dc3912"
-            span 承認ユーザー
-          div.u-rank-info
-            |新規登録からユーザーが500回の新しい食品情報の投稿または保護されていない食品情報の編集をすると、
-            |承認ユーザーとなります。承認ユーザーは、保護された食品情報の編集が可能となり、すべての制限が解除されます。
-
       div.d-forms
         = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
           = render "layouts/error_messages", model: f.object
@@ -42,11 +17,13 @@ div.p-devise
             div Currently waiting confirmation for:
               = resource.unconfirmed_email
           div.field
+            = f.label :password
             = f.password_field :password, autocomplete: "new-password", placeholder: "新しいパスワード"
           div.field
             = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "確認用パスワード"
           div.field
             = f.password_field :current_password, autocomplete: "current-password", placeholder: "現在のパスワード"
+
           div.actions
             = f.submit "アカウントの更新"
         = button_to "アカウントの削除", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "d-deleteButton"

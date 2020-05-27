@@ -8,13 +8,25 @@
   .d-content {
     h3 {
       margin-bottom: 8px;
+      font-weight: bold;
     }
     #heatmap {
       padding: 8px 16px;
       border: 1px solid #e1e4e8;
       border-radius: 3px;
     }
-
+    .user-profile {
+      font-size: 16px;
+      p {
+        margin-bottom: 8px;
+        letter-spacing: 1px;
+        .user-item {
+          letter-spacing: normal;
+          line-height: 32px;
+          margin: 0 8px;
+        }
+      }
+    }
     .d-contribution-activity {
       margin-top: 30px;
       .contribution-activity-listing {
@@ -36,6 +48,7 @@
           }
           .timeline-month-header {
             display: inline-block;
+            font-weight: bold;
             padding: 4px 0;
             padding-right: 8px;
             background-color: #fff;

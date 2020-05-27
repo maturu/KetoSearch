@@ -1,36 +1,59 @@
 div.p-devise.position-relative
   div.d-content.position-relative
-    div.d-header-title
+    - if @user.id == current_user.id
+      = link_to "プロフィールを編集", users_profile_path(id: @user.id), id: "profile-edit-btn"
+    div.d-header-title style="text-align: left;"
       h1
         i.fas.fa-user.mr-2
         = @user.username
+
+    - unless @user.introduction.blank? and @user.store.blank? and @user.address.blank? and @user.website.blank?
+      div.user-profile
+        p = @user.introduction
+        p
+          - unless @user.store.blank?
+            span.user-item
+              i.fas.fa-store-alt.mr-1
+              = @user.store
+          - unless @user.address.blank?
+            span.user-item
+              i.fas.fa-map-marker-alt.mr-1
+              = link_to "#{@user.address}", "https://maps.google.co.jp/maps/search/#{@user.address}",\
+              target: "_blank", rel: "noopener noreferrer"
+          - unless @user.website.blank?
+            span.user-item
+              i.fas.fa-link.mr-1
+              = link_to "#{@user.website}", @user.website, target: "_blank", rel: "noopener noreferrer"
+
     hr
     div.d-yearly-contribution
       h3
-        = @histories.count
-        |  contributions in the last year
+        |1年の食品情報の投稿履歴 
+        = @foods.count
+        |件
       div#heatmap
 
     div.d-contribution-activity
-      h3 Contribution activity
+      h3 最近の投稿履歴
       - unless @dates.include?(Time.zone.now.to_date)
         div.contribution-activity-listing
           div.timeline
             h4.timeline-month-header = Time.zone.now.in_time_zone('Asia/Tokyo').to_date
             div.no-profile-data
+              |この期間
               = @user.username
-              |  had no activity during this period.
+              |は何も投稿していません。
       - @dates.each do |date|
-        - @commits = @histories.where(created_at: date.beginning_of_day..date.end_of_day)
+        - @commits = @foods.where(created_at: date.beginning_of_day..date.end_of_day)
         div.contribution-activity-listing
           div.timeline
             h4.timeline-month-header = date.in_time_zone('Asia/Tokyo').to_date
             div.profile-wrapper
               i.fas.fa-book
               div.profile-title
-                |Created #{@commits.count} commits in foods
+                |#{@commits.count}件の食品情報を投稿しました。
               ul
                 - @commits.page(1).per(5).each do |c|
                   li
-                    a href=chart_show_path(id: c.food_id)
+                    a href=chart_show_path(id: c.id)
                       = c.name
