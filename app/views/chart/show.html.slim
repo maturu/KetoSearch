@@ -5,92 +5,109 @@ div.p-show
   div.s-chart
     div.s-chart-content
       div.s-chart-wrap
-        div.s-chart-widget-container
-          div.chart-header-title
-            div.title-content
-              i.fas.fa-tags.mr-1
-              = @food.tag
-              = "：#{@food.address}" unless @food.address.blank?
-            = render 'chart/menu', food: @food
-          div.chart-info
-            i.fas.fa-user.mr-1
-            span.mr-2 
-              = link_to @user.username, users_show_path(username: @user.username)
-              |の投稿
-            - unless @food.reference.blank? and @food.url.blank?
-              i.fas.fa-link.mr-1
-              span 参考文献: 
-              = link_to @food.reference, @food.url, class: "mr-2", target: "_blank", rel: "noopener noreferrer"
+        div.flex-100
+          div.s-chart-widget-container
+            div.chart-header-title
+              div.title-content
+                i.fas.fa-receipt.mr-1
+                |「
+                = @food.name
+                |」の主要成分
+                span.chart-unit-text
+                  |/ 
+                  = @food.gram
+                  |g あたり
+              = render 'chart/menu', food: @food
+            div.chart-table
+              div.table-content
+                div.table-item
+                  div.th カロリー
+                  div #{@food.calorie or "- -"} kcal
+                div.table-item
+                  div.th 糖質
+                  div #{@food.carbohydrate or "- -"} g
+                div.table-item
+                  div.th タンパク質
+                  div #{@food.protain or "- -"} g
+                div.table-item
+                  div.th 脂質
+                  div #{@food.lipid or "- -"} g
+                div.table-item
+                  div.th 食物繊維
+                  div #{@food.fibtg or "- -"} g
+                div.table-item
+                  div.th ナトリウム
+                  div #{@food.na or "- -"} mg
+                div.table-item
+                  div.th 水分
+                  div #{@food.water or "- -"} g
+            div.chart-info
+              i.fas.fa-user.mr-1
+              span.mr-2 
+                = link_to @user.username, users_show_path(username: @user.username)
+                |の投稿
+              - unless @food.reference.blank? and @food.url.blank?
+                i.fas.fa-link.mr-1
+                span 参考文献: 
+                = link_to @food.reference, @food.url, class: "mr-2", target: "_blank", rel: "noopener noreferrer"
 
-        div.s-chart-widget-container
-          div.chart-header-title
-            div.title-content
-              i.fas.fa-receipt.mr-1
-              |「
-              = @food.name
-              |」の主要成分
-              span.chart-unit-text
-                |/ 
-                = @food.gram
-                |g あたり
-            = render 'chart/menu', food: @food
-          div.chart-table
-            div.table-content
-              div.table-item
-                div.th カロリー
-                div #{@food.calorie or "- -"} kcal
-              div.table-item
-                div.th 糖質
-                div #{@food.carbohydrate or "- -"} g
-              div.table-item
-                div.th タンパク質
-                div #{@food.protain or "- -"} g
-              div.table-item
-                div.th 脂質
-                div #{@food.lipid or "- -"} g
-              div.table-item
-                div.th 食物繊維
-                div #{@food.fibtg or "- -"} g
-              div.table-item
-                div.th ナトリウム
-                div #{@food.na or "- -"} mg
-              div.table-item
-                div.th 水分
-                div #{@food.water or "- -"} g
+        //div.flex-50
+        //  div.s-chart-widget-container
+        //    div.chart-header-title
+        //      div.title-content
+        //        i.fas.fa-utensils.mr-1
+        //        = @food.name
+        //      = render 'chart/menu', food: @food
+        //    div.chart-image
+        //      div.widget-error
+        //        i.fas.fa-exclamation-triangle
+        //        p ここに表示するデータはありません。
 
-        div.s-chart-widget-container
-          div.chart-header-title
-            div.title-content
-              i.fas.fa-chart-pie.mr-1
-              |「
-              = @food.name
-              |」の成分割合
-              span.chart-unit-text
-                |/ 
-                = @food.gram
-                |g あたり
-            = render 'chart/menu', food: @food
-          div.chart-widget-wrapper
-            div.widget-wrapper-content
-              div.pie-chart
-                = pie_chart @f_info
-            div.widget-wrapper-content
-              div.relation-content
-                - @items.each_with_index do |item, index|
-                  = link_to chart_show_path(id: item[0]), class: "relation-content-item"
-                    div.relation-item-name
-                      span.label-line-number.mr-2 = index+1
-                      = item[1]
-                    div.progress-value
-                      = item[2]
-                      |g
-                    div.progress-bar-content
-                      div.progress-bar style="width: #{item[2]}px;"
-          div.chart-paginate-content
-            div.paginate-empty
-            = paginate @relations
+        //div.flex-50
+        //  div.s-chart-widget-container
+        //    div.chart-header-title
+        //      div.title-content
+        //        i.fas.fa-tags.mr-1
+        //        = @food.tag
+        //        = "：#{@food.address}" unless @food.address.blank?
+        //      = render 'chart/menu', food: @food
+        //    div.chart-gmap
+        //      iframe src="https://maps.google.co.jp/maps?output=embed&q=#{@food.address or @food.name}"
 
-        - if @food.content?
+        div.flex-100
+          div.s-chart-widget-container
+            div.chart-header-title
+              div.title-content
+                i.fas.fa-chart-pie.mr-1
+                |「
+                = @food.name
+                |」の成分割合
+                span.chart-unit-text
+                  |/ 
+                  = @food.gram
+                  |g あたり
+              = render 'chart/menu', food: @food
+            div.chart-widget-wrapper
+              div.widget-wrapper-content
+                div.pie-chart
+                  = pie_chart @f_info
+              div.widget-wrapper-content
+                div.relation-content
+                  - @items.each_with_index do |item, index|
+                    = link_to chart_show_path(id: item[0]), class: "relation-content-item"
+                      div.relation-item-name
+                        span.label-line-number.mr-2 = index+1
+                        = item[1]
+                      div.progress-value
+                        = item[2]
+                        |g
+                      div.progress-bar-content
+                        div.progress-bar style="width: #{item[2]}px;"
+            div.chart-paginate-content
+              div.paginate-empty
+              = paginate @relations
+
+        div.flex-100
           div.s-chart-widget-container
             div.chart-header-title
               div.title-content
@@ -98,6 +115,11 @@ div.p-show
                 |詳細
               = render 'chart/menu', food: @food
             div.preview-content
-              div.md-text
-                - @food.content.split("\n").each do |text|
-                  = markdown(text).html_safe
+              - if @food.content?
+                div.md-text
+                  - @food.content.split("\n").each do |text|
+                    = markdown(text).html_safe
+              - else
+                div.widget-error
+                  i.fas.fa-exclamation-triangle
+                  p ここに表示するデータはありません。

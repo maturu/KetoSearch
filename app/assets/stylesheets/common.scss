@@ -135,7 +135,7 @@ input {
 }
 .progress-bar-content {
   min-width: 100px;
-  background-color: #eeeeee;
+  background-color: #ddd;
   margin-right: 32px;
   margin-left: 16px;
   .progress-bar {
@@ -404,6 +404,7 @@ body {
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  min-height: 336px;
   .md-text {
     padding: 16px 24px;
     padding-bottom: 40px;
@@ -486,6 +487,90 @@ body {
     }
     &:hover {
       background-color: $hover-color;
+    }
+  }
+}
+
+.flex-50 {
+  -webkit-flex: 1 1 50%;
+  -ms-flex: 1 1 50%;
+  flex: 1 1 50%;
+  max-width: 50%;
+  max-height: 100%;
+  padding: 0 12px;
+  margin: 0 0 24px;
+  box-sizing: border-box;
+  @media screen and (max-width: 959px) {
+    -webkit-flex: 1 1 100%;
+    -ms-flex: 1 1 100%;
+    flex: 1 1 100%;
+    max-width: 100%;
+    padding: 0;
+  }
+}
+.flex-100 {
+  -webkit-flex: 1 1 100%;
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 0 12px;
+  margin: 0 0 24px;
+  box-sizing: border-box;
+  @media screen and (max-width: 959px) {
+    padding: 0;
+  }
+}
+
+.none {
+  display: none;
+}
+
+.select-btn {
+  display: block;
+  cursor: pointer;
+  width: 100%;
+  height: 44px;
+  padding: 8px 12px;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #555;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 0 #ddd;
+  i { float: right; }
+  &:hover {
+    box-shadow: none;
+    transform: translate3d(0, 2px, 0);
+  }
+}
+.incremental-dropdown {
+  display: none;
+  .incremental-wrapper {
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    .incremental-content {
+      position: absolute;
+      padding: 0;
+      padding-bottom: 16px;
+      margin: 0;
+      width: 100%;
+      height: 230px;
+      overflow-y: scroll;
+      background-color: #fff;
+      border-radius: 0 0 4px 4px;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+      border: 1px solid #e0e0e0;
+      border-top: 0;
+      z-index: 20;
+      div {
+        padding: 8px 16px;
+        cursor: pointer;
+        &:hover {
+          background-color: #eee;
+        }
+      }
     }
   }
 }

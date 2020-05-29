@@ -11,10 +11,13 @@
         padding: 0 12px;
         margin: 0 auto;
         max-width: 1152px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
         .s-chart-widget-container {
           background-color: #fff;
           margin: 0 0 24px;
-          box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2);
+          box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
           .chart-header-title {
             @include flex-space-between;
             font-family: 'Roboto','Heebo',Arial,sans-serif;
@@ -72,13 +75,29 @@
               margin-left: 16px;
             }
           }
+          .chart-image {
+            position: relative;
+            padding: 16px;
+            min-height: 336px;
+          }
+          .chart-gmap {
+            padding: 16px;
+            height: 336px;
+            iframe {
+              width: 100%;
+              height: 100%;
+              border: 1px solid #e0e0e0;
+              border-radius: 3px;
+            }
+          }
           .chart-info {
+            font-size: 14px;
             text-align: center;
             padding: 10px 32px;
+            border-top: 1px solid #e0e0e0;
           }
           .chart-table {
             padding: 16px 32px;
-            border-bottom: 1px solid #e0e0e0;
             .table-content {
               @include flex-space-between;
               flex-wrap: wrap;
@@ -103,12 +122,11 @@
             flex-wrap: wrap;
             .widget-wrapper-content {
               width: 50%;
-              @media screen and (max-width:414px){width: 100vw;}
+              @media screen and (max-width:959px){width: 100%;}
               .pie-chart {
                 padding: 16px 0;
               }
               .relation-content {
-                @media screen and (max-width:414px){padding: 0 12px;}
                 .relation-content-item {
                   @include flex-start;
                   font-size: 16px;
@@ -122,7 +140,7 @@
                     border: none;
                   }
                   &:hover {
-                    background-color: #ddd;
+                    background-color: #eee;
                   }
                   .relation-item-name {
                     width: 100%;
@@ -220,36 +238,6 @@
     }
     .field {
       margin-bottom: 15px;
-      .incremental-tags {
-        display: none;
-        .tags-wrapper {
-          margin: 0 auto;
-          width: 100%;
-          position: relative;
-          .tags-content {
-            position: absolute;
-            padding: 0;
-            padding-bottom: 16px;
-            margin: 0;
-            width: 100%;
-            height: 230px;
-            overflow-y: scroll;
-            background-color: #fff;
-            border-radius: 0 0 4px 4px;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
-            border: 1px solid #e0e0e0;
-            border-top: 0;
-            z-index: 20;
-            div {
-              padding: 8px 16px;
-              cursor: pointer;
-              &:hover {
-                background-color: #eee;
-              }
-            }
-          }
-        }
-      }
       input {
         display: block;
         width: 100%;
@@ -318,5 +306,28 @@
         }
       }
     }
+  }
+}
+
+.widget-error {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: rgba(0,0,0,0.54);
+  font-size: 20px;
+  line-height: 26px;
+  max-width: 370px;
+  height: 150px;
+  margin: auto;
+  padding: 10px;
+  text-align: center;
+  i {
+    color: #e5e5e5;
+    font-size: 80px;
+  }
+  p {
+    margin: 8px 0;
   }
 }

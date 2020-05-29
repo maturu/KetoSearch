@@ -31,19 +31,7 @@ $(document).on('keyup', '.remarks', function(e){
   }
 });
 
-$(document).on('click', '#food_tag', function(e){
-  $('.incremental-tags').css('display', 'inline');
-});
-
-$(document).on('click', '.tags-item', function(e){
-  var tag = $(this).text();
-  $('#food_tag').val(tag);
-});
-
 $(document).click(function(event) {
-  if(!$(event.target).closest('#food_tag').length) {
-    $('.incremental-tags').css('display', 'none');
-  }
   if(!$(event.target).closest('.chart-menu').length) {
     $('.chart-menu-dropdown').css('display', 'none');
   }

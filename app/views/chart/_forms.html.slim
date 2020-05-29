@@ -3,13 +3,14 @@ fieldset.form_fields
   legend 食品情報を入力してください
   div.field
     = f.label :tag
-    = f.text_field :tag, placeholder: "店名、ブランド名、食品ジャンルなど", autocomplete: "off",\
-      value: "#{food.tag or current_user.store}"
-    div.incremental-tags
-      div.tags-wrapper
-        ul.tags-content
-          - tags.each do |t|
-            div.tags-item = t
+    div.select-form
+      = f.text_field :tag, placeholder: "店名、ブランド名、食品ジャンルなど", autocomplete: "off",\
+        value: "#{food.tag or current_user.store}"
+      div.incremental-dropdown
+        div.incremental-wrapper
+          ul.incremental-content
+            - tags.each do |t|
+              div.incremental-item#tags-item = t
   div.field
     = f.label :address
     = f.text_field :address, placeholder: "店舗の住所を入力", autocomplete: "off", value: "#{food.address or current_user.address}"

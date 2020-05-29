@@ -35,4 +35,15 @@ class Food < ApplicationRecord
     )
     return results
   end
+
+  def self.refine_search(params)
+    results = Food.all
+    results = results.where("tag = ?", params[:tag]) unless params[:tag].blank?
+    results = results.search(params[:name]) unless params[:name].blank?
+    unless params[:username].blank?
+      user = User.find_by(username: params[:username])
+      results = results.where("user_id = ?", user.nil? ? nil : user.id)
+    end
+    return results
+  end
 end
