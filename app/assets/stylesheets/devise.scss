@@ -3,6 +3,9 @@
 .p-devise {
   padding-top: 24px;
   padding-bottom: 40px;
+  input {
+    -webkit-appearance: none;
+  }
   .d-content {
     max-width: 820px;
     margin: 0 auto;

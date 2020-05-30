@@ -345,15 +345,11 @@
       }
       td {
         text-align: center;
-        writing-mode: vertical-rl;
       }
       th, td {
         border: 1px solid #ccc;
         border-width: 1px 0 0 1px;
         vertical-align: middle;
-        input {
-          -webkit-appearance: auto;
-        }
       }
     }
   }

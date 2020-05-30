@@ -88,7 +88,7 @@ a {
   user-select: none;
 }
 
-input {
+input[type="submit"], input[type="button"] {
   -webkit-appearance: none;
 }
 
