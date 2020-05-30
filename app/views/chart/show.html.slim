@@ -70,49 +70,54 @@ div.p-show
                 = "「#{@food.name}」のアレルギー物質"
               = render 'chart/menu', food: @food
             div.chart-allergies.position-relative
-              table.allergies-content
-                colgroup
-                  - unless browser.device.mobile?
-                    col width="40%"
-                  col width="8%"
-                  col width="8%"
-                  col width="8%"
-                  col width="8%"
-                  col width="8%"
-                  col width="8%"
-                  col width="8%"
-                tbody
-                  tr
+              - if @food.enter_allergies?
+                table.allergies-content
+                  colgroup
                     - unless browser.device.mobile?
-                      th rowspan="2"
-                        |特定原材料7品目
-                        br
-                        span
-                          |● ： 使用しています
+                      col width="40%"
+                    col width="8%"
+                    col width="8%"
+                    col width="8%"
+                    col width="8%"
+                    col width="8%"
+                    col width="8%"
+                    col width="8%"
+                  tbody
+                    tr
+                      - unless browser.device.mobile?
+                        th rowspan="2"
+                          |特定原材料7品目
                           br
-                          |─ ： 使用していません
-                    td 卵
-                    td 乳
-                    td 小麦
-                    td 落花生
-                    td えび
-                    td かに
-                    td そば
-                  tr
-                    td = @food.egg? ? "●" : "─"
-                    td = @food.milk? ? "●" : "─"
-                    td = @food.wheat? ? "●" : "─"
-                    td = @food.peanut? ? "●" : "─"
-                    td = @food.shrimp? ? "●" : "─"
-                    td = @food.crab? ? "●" : "─"
-                    td = @food.buckwheat? ? "●" : "─"
-                  tr
-                    - unless browser.device.mobile?
-                      th
-                        |特定原材料に
-                        br
-                        |準ずるもの20品目
-                    td colspan="7" = @food.allergies.blank? ? "─" : @food.allergies
+                          span
+                            |● ： 使用しています
+                            br
+                            |─ ： 使用していません
+                      td 卵
+                      td 乳
+                      td 小麦
+                      td 落花生
+                      td えび
+                      td かに
+                      td そば
+                    tr
+                      td = @food.egg? ? "●" : "─"
+                      td = @food.milk? ? "●" : "─"
+                      td = @food.wheat? ? "●" : "─"
+                      td = @food.peanut? ? "●" : "─"
+                      td = @food.shrimp? ? "●" : "─"
+                      td = @food.crab? ? "●" : "─"
+                      td = @food.buckwheat? ? "●" : "─"
+                    tr
+                      - unless browser.device.mobile?
+                        th
+                          |特定原材料に
+                          br
+                          |準ずるもの20品目
+                      td colspan="7" = @food.allergies.blank? ? "─" : @food.allergies
+              - else
+                div.widget-error
+                  i.fas.fa-exclamation-triangle
+                  p ここに表示するデータはありません。
 
         div.flex-100
           div.s-chart-widget-container

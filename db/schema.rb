@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_30_091330) do
+ActiveRecord::Schema.define(version: 2020_05_30_135848) do
 
   create_table "foods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "tag"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2020_05_30_091330) do
     t.boolean "peanut"
     t.boolean "buckwheat"
     t.string "allergies"
+    t.boolean "enter_allergies"
     t.index ["user_id"], name: "index_foods_on_user_id"
   end
 

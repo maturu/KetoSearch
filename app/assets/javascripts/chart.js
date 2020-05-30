@@ -1,3 +1,7 @@
+$(document).on('change', '#food_enter_allergies', function(e){
+  $('#allergies_form').toggle();
+});
+
 $(document).on('click', '.chart-menu', function(e){
   $('.chart-menu-dropdown', this).toggle();
 });
@@ -46,6 +50,13 @@ $(document).on('click', '.calculate', function(e){
 });
 
 $(document).on('turbolinks:load', function() {
+  var prop = $('#food_enter_allergies').prop('checked');
+  if(prop){
+    $('#allergies_form').css("display", "block");
+  }else{
+    $('#allergies_form').css("display", "none");
+  }
+
   $('.remarks').scroll(function() {
     var h =  Math.round(this.scrollTop / (this.scrollHeight - this.clientHeight)*100) / 100;
     $('.preview-content').scrollTop(($('.preview-content')[0].scrollHeight - $('.preview-content')[0].clientHeight)*h);

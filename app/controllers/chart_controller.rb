@@ -83,6 +83,6 @@ class ChartController < ApplicationController
 
   protected
     def food_params
-      params.require(:food).permit(:tag, :name, :gram, :calorie, :water, :protain, :lipid, :carbohydrate, :content, :fibtg, :reference, :url, :na, :address, :egg, :milk, :wheat, :peanut, :shrimp, :crab, :buckwheat, :allergies)
+      params.require(:food).permit(:tag, :name, :gram, :calorie, :water, :protain, :lipid, :carbohydrate, :content, :fibtg, :reference, :url, :na, :address, :egg, :milk, :wheat, :peanut, :shrimp, :crab, :buckwheat, :allergies, :enter_allergies)
     end
 end
