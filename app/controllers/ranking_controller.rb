@@ -3,8 +3,6 @@ class RankingController < ApplicationController
   before_action :set_variables
 
   def show
-    @user = User.find_by(username: params[:username])
-    params[:user_id] = @user.nil? ? nil : @user.id
     @sorts = {
       "糖質昇順" => "carbohydrate ASC",
       "糖質降順" => "carbohydrate DESC",

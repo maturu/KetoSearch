@@ -51,6 +51,31 @@ fieldset.form_fields
     = f.text_field :na, placeholder: "数値を入力", autocomplete: "off", value: food.na
 
 fieldset.form_fields
+  legend アレルギー情報を入力してください(任意)
+  = f.label "特定原材料"
+  div.chart-allergies style="height: auto; padding: 16px 0;"
+    table.allergies-content
+      tbody
+        tr
+          td 卵
+          td 乳
+          td 小麦
+          td 落花生
+          td えび
+          td かに
+          td そば
+        tr
+          td = f.check_box :egg
+          td = f.check_box :milk
+          td = f.check_box :wheat
+          td = f.check_box :shrimp
+          td = f.check_box :crab
+          td = f.check_box :peanut
+          td = f.check_box :buckwheat
+  div.field
+    = f.label :allergies
+    = f.text_field :allergies, placeholder: "特定原材料に準ずるアレルギー食品の入力"
+fieldset.form_fields
   legend 備考 (参考にしたサイトがある場合)
   div.field
     = f.label :reference

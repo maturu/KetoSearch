@@ -86,6 +86,7 @@ ja:
         na: ナトリウム (mg)
         reference: 参考文献
         url: 文献リンク
+        allergies: 特定原材料に準ずるアレルギー食品
   views:
     pagination:
       first: '最初'

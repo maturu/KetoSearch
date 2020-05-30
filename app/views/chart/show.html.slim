@@ -51,28 +51,68 @@ div.p-show
                 span 参考文献: 
                 = link_to @food.reference, @food.url, class: "mr-2", target: "_blank", rel: "noopener noreferrer"
 
-        //div.flex-50
-        //  div.s-chart-widget-container
-        //    div.chart-header-title
-        //      div.title-content
-        //        i.fas.fa-utensils.mr-1
-        //        = @food.name
-        //      = render 'chart/menu', food: @food
-        //    div.chart-image
-        //      div.widget-error
-        //        i.fas.fa-exclamation-triangle
-        //        p ここに表示するデータはありません。
+        div.flex-50
+          div.s-chart-widget-container
+            div.chart-header-title
+              div.title-content
+                i.fas.fa-tags.mr-1
+                = @food.tag
+                = "：#{@food.address}" unless @food.address.blank?
+              = render 'chart/menu', food: @food
+            div.chart-gmap
+              iframe src="https://maps.google.co.jp/maps?output=embed&q=#{@food.address or @food.tag.chomp("類")}"
 
-        //div.flex-50
-        //  div.s-chart-widget-container
-        //    div.chart-header-title
-        //      div.title-content
-        //        i.fas.fa-tags.mr-1
-        //        = @food.tag
-        //        = "：#{@food.address}" unless @food.address.blank?
-        //      = render 'chart/menu', food: @food
-        //    div.chart-gmap
-        //      iframe src="https://maps.google.co.jp/maps?output=embed&q=#{@food.address or @food.name}"
+        div.flex-50
+          div.s-chart-widget-container
+            div.chart-header-title
+              div.title-content
+                i.fas.fa-allergies.mr-1
+                = "「#{@food.name}」のアレルギー物質"
+              = render 'chart/menu', food: @food
+            div.chart-allergies.position-relative
+              table.allergies-content
+                colgroup
+                  - unless browser.device.mobile?
+                    col width="40%"
+                  col width="8%"
+                  col width="8%"
+                  col width="8%"
+                  col width="8%"
+                  col width="8%"
+                  col width="8%"
+                  col width="8%"
+                tbody
+                  tr
+                    - unless browser.device.mobile?
+                      th rowspan="2"
+                        |特定原材料7品目
+                        br
+                        span
+                          |● ： 使用しています
+                          br
+                          |─ ： 使用していません
+                    td 卵
+                    td 乳
+                    td 小麦
+                    td 落花生
+                    td えび
+                    td かに
+                    td そば
+                  tr
+                    td = @food.egg? ? "●" : "─"
+                    td = @food.milk? ? "●" : "─"
+                    td = @food.wheat? ? "●" : "─"
+                    td = @food.peanut? ? "●" : "─"
+                    td = @food.shrimp? ? "●" : "─"
+                    td = @food.crab? ? "●" : "─"
+                    td = @food.buckwheat? ? "●" : "─"
+                  tr
+                    - unless browser.device.mobile?
+                      th
+                        |特定原材料に
+                        br
+                        |準ずるもの20品目
+                    td colspan="7" = @food.allergies.blank? ? "─" : @food.allergies
 
         div.flex-100
           div.s-chart-widget-container
@@ -91,18 +131,19 @@ div.p-show
               div.widget-wrapper-content
                 div.pie-chart
                   = pie_chart @f_info
-              div.widget-wrapper-content
-                div.relation-content
-                  - @items.each_with_index do |item, index|
-                    = link_to chart_show_path(id: item[0]), class: "relation-content-item"
-                      div.relation-item-name
-                        span.label-line-number.mr-2 = index+1
-                        = item[1]
-                      div.progress-value
-                        = item[2]
-                        |g
-                      div.progress-bar-content
-                        div.progress-bar style="width: #{item[2]}px;"
+              - unless @items.blank?
+                div.widget-wrapper-content
+                  div.relation-content
+                    - @items.each_with_index do |item, index|
+                      = link_to chart_show_path(id: item[0]), class: "relation-content-item"
+                        div.relation-item-name
+                          span.label-line-number.mr-2 = index+1
+                          = item[1]
+                        div.progress-value
+                          = item[2]
+                          |g
+                        div.progress-bar-content
+                          div.progress-bar style="width: #{item[2]}px;"
             div.chart-paginate-content
               div.paginate-empty
               = paginate @relations

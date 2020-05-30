@@ -75,11 +75,6 @@
               margin-left: 16px;
             }
           }
-          .chart-image {
-            position: relative;
-            padding: 16px;
-            min-height: 336px;
-          }
           .chart-gmap {
             padding: 16px;
             height: 336px;
@@ -329,5 +324,32 @@
   }
   p {
     margin: 8px 0;
+  }
+}
+
+.chart-allergies {
+  font-family: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HiraKakuPro-W3","ＭＳ Ｐゴシック","MS PGothic",Osaka,sans-serif;
+  padding: 16px;
+  height: 336px;
+  overflow-x: scroll;
+  .allergies-content {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    tbody {
+      vertical-align: top;
+      th {
+        white-space: nowrap;
+        background-color: rgba(0,135,197, 0.2);
+      }
+      th, td {
+        padding: 10px 15px;
+        @media screen and (max-width: 414px){ padding: 10px; }
+        border: 1px solid #ccc;
+        border-width: 1px 0 0 1px;
+        vertical-align: middle;
+      }
+    }
   }
 }
