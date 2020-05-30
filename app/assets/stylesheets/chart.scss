@@ -339,12 +339,15 @@
     tbody {
       vertical-align: top;
       th {
+        padding: 10px 15px;
         white-space: nowrap;
         background-color: rgba(0,135,197, 0.2);
       }
+      td {
+        text-align: center;
+        writing-mode: vertical-rl;
+      }
       th, td {
-        padding: 10px 15px;
-        @media screen and (max-width: 414px){ padding: 10px; }
         border: 1px solid #ccc;
         border-width: 1px 0 0 1px;
         vertical-align: middle;
