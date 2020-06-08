@@ -2,8 +2,6 @@
 
 div.p-edit-chart
   div.e-content style="max-width: 600px;"
-    div.e-header-title
-
     div.qrcode
       div.qr-content
         h1 = link_to @food.name, chart_show_path(id: @food.id)
@@ -14,23 +12,22 @@ div.p-edit-chart
 
     div.e-detail
       fieldset
+        legend 【飲食店の方】
+        p
+          |まずは、QRコードをダウンロードしてシール用紙などに印刷してください。
+          |続けて、メニュー表・ポップ・チラシなどにQRコードを貼り付けて完了です！
+          |お客様がスマートフォンのQRコードリーダーで読み取ると、登録したメニューの栄養成分情報などを閲覧することができます。
+      fieldset
         legend 【一般の方】
         p 
-          |まずは、QRコードをダウンロードしてください！
-          |続けて、TwitterやFacebookにダウンロードしたQRコードとハッシュタグ
-          = link_to "#MyFavFood", "https://twitter.com/search?q=%23MyFavFood&src=typed_query", target: "_blank"
+          |まずは、QRコードをダウンロードしてください。
+          |続けて、TwitterやFacebookにダウンロードしたQRコード
           |を投稿欄に貼り付けて投稿しましょう！
         div.share-sns
           div.twitter-button
             = render 'layouts/twitter-share'
           div.facebook-button
             = render 'layouts/facebook-share'
-      fieldset
-        legend 【飲食店オーナーの方】
-        p
-          |まずは、QRコードをダウンロードし印刷してください！
-          |続けて、メニュー表・ポップ・チラシなどに印刷したQRコードを貼り付けて完了です！
-          |お客様がスマートフォンのQRコードリーダーで読み取ると、登録したメニューの栄養成分情報などを閲覧することができます。
 
     div.actions
       = link_to "ダウンロード", qrcode_tag(chart_show_url(id: @food.id)), download: "#{@food.name}.png"

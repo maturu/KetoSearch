@@ -7,7 +7,7 @@ class ChartController < ApplicationController
     @foods = Food.search(params[:search])
     respond_to do |format|
       format.html
-      format.json {render 'index', json: @foods.limit(9).pluck(:id, :name)} unless @foods.blank?
+      format.json {render 'index', json: @foods.limit(5).pluck(:id, :name)} unless @foods.blank?
     end
 
     @food = Food.find(params[:id]) if params[:id].present?
@@ -79,6 +79,23 @@ class ChartController < ApplicationController
     redirect_to chart_show_path(id: @food.id) if @food.user_id != current_user.id
     @food.destroy
     redirect_to root_path
+  end
+
+  def ingredient_calc
+    names = params[:names].split(",").to_a
+    grams = params[:grams].split(",").to_a
+    @foods = Food.where(name: names)
+    @result = {gram: 0, calorie: 0, protain: 0, lipid: 0, carbohydrate: 0, water: 0, fibtg: 0, na: 0}
+    @result.each do |key, val|
+      @result[key] = @foods.pluck(key).each.with_index.inject(0){|sum, (i, j)|
+        sum + i*grams[j].to_i/@foods.pluck(:gram)[j]
+      }.floor(1)
+    end
+
+    respond_to do |format|
+      format.html {redirect_to root_path}
+      format.json {render 'index', json: @result}
+    end
   end
 
   protected

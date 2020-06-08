@@ -43,10 +43,8 @@ $(document).on('turbolinks:load', function() {
       });
       $(data).each(function(i, food){
         $('.incremental-search .incremental-content').append(
-          '<a href="/chart/show?id='+food[0]+'">'+ 
-            '<div>'+
-              food[1]+
-            '</div>'+
+          '<a class="incremental-item" href="/chart/show?id='+food[0]+'">'+ 
+            food[1]+
           '</a>'
         );
       });

@@ -20,3 +20,4 @@ $(document).click(function(event) {
     $('.incremental-dropdown').css('display', 'none');
   }
 });
+

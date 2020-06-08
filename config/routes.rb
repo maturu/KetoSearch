@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'chart/more' => 'chart#more'
   get 'chart/qrcode' => 'chart#qrcode'
   get 'chart/new' => 'chart#new'
+  get 'chart/calc' => 'chart#ingredient_calc'
   post 'chart/create' => "chart#create"
   post 'chart/update' => "chart#update"
   post 'chart/destroy' => "chart#destroy"

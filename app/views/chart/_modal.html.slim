@@ -1,0 +1,46 @@
+div.modal-window
+  div.modal-bg.modal-close
+  div.modal-content
+    div.close-btn.modal-close
+      i.fas.fa-times
+    div.modal-title 材料計算
+    div.list-header
+      span.name 材料・調味料
+      span.quantity 分量(g)
+
+    div.material-list
+      div.material-list-item
+        span.name.select-form
+          input.line-name type="text" placeholder="例) 成鶏肉 もも" autocomplete="off"
+          div.incremental-search
+            div.incremental-wrapper
+              ul.incremental-content
+        span.quantity
+          input.line-quantity type="text" placeholder="例) 100" autocomplete="off"
+        span.delete
+          i.fas.fa-times
+      div.material-list-item
+        span.name.select-form
+          input.line-name type="text" placeholder="例) トマト" autocomplete="off"
+          div.incremental-search
+            div.incremental-wrapper
+              ul.incremental-content
+        span.quantity
+          input.line-quantity type="text" placeholder="例) 20" autocomplete="off"
+        span.delete
+          i.fas.fa-times
+      div.material-list-item
+        span.name.select-form
+          input.line-name type="text" placeholder="例) 玉ねぎ　たまねぎ" autocomplete="off"
+          div.incremental-search
+            div.incremental-wrapper
+              ul.incremental-content
+        span.quantity
+          input.line-quantity type="text" placeholder="例) 30" autocomplete="off"
+        span.delete
+          i.fas.fa-times
+
+    div.modal-footer
+      div.footer-btn.modal-close キャンセル
+      div.footer-btn.add-item 材料を追加
+      div.footer-btn.calc-item 計算

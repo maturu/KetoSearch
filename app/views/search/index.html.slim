@@ -9,7 +9,7 @@ div.p-root
       div.r-intro-symbol
       div.r-intro-form-content
         = form_tag chart_show_path, method: :get, enforce_utf8: false, class: "r-intro-form" do
-          = text_field_tag :search, '', class: "r-intro-searchModel", placeholder: "食材名・調味料名・食品名・メニューを入力", autocomplete: "off"
+          = text_field_tag :search, '', class: "r-intro-searchModel", placeholder: "食材・調味料・メニューを検索", autocomplete: "off"
           span.fas.fa-search
           = button_tag "", type: 'submit', name: nil, class: "r-intro-searchButton"
 

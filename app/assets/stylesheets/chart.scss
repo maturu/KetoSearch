@@ -160,14 +160,6 @@
     max-width: 720px;
     margin: 0 auto;
     background-color: #fff;
-    .e-header-title {
-      background-image: url(image-path("post-food-logo.svg"));
-      background-repeat: no-repeat;
-      background-position: center;
-      max-width: 100%;
-      height: 80px;
-      margin: 25px 10px;
-    }
     #about-qrcode {
       text-align: center;
       margin: 12px;
@@ -239,8 +231,8 @@
         height: 34px;
         padding: 6px 12px;
         margin-top: 5px;
-        font-size: 14px;
-        color: #555;
+        font-size: 16px;
+        color: #4c4a40;
         background-color: #fff;
         border: 1px solid #ccc;
         border-radius: 3px;
@@ -277,7 +269,6 @@
       }
     }
     .qrcode {
-      color: #fff;
       text-align: center;
       margin: 5vh 0;
       .qr-content {
@@ -286,18 +277,18 @@
         padding: 20px;
         padding-top: 0;
         margin: 0 10px;
-        background-color: $theme-color;
         h1 {
           padding: 16px 0;
           font-weight: bold;
           text-align: center;
-          a {
-            color: #fff;
-          }
+        }
+        a {
+          color: #555;
         }
         img {
           width: 100%;
           border-radius: 20px;
+          box-shadow: 0 0 5px 3px rgba(0,0,0,0.12);
         }
       }
     }
@@ -361,4 +352,25 @@
 
 #allergies_form {
   display: none;
+}
+
+#material-calc {
+   position: absolute;
+   top: 26px;
+   right: 16px;
+   display: block;
+   width: 130px;
+   font-size: 14px;
+   font-weight: bold;
+   text-align: center;
+   color: $theme-color;
+   padding: 5px;
+   border: 1px solid $theme-color;
+   border-radius: 24px;
+   background-color: #fff;
+   cursor: pointer;
+   &:hover {
+     color: #fff;
+     background-color: $theme-color;
+   }
 }
