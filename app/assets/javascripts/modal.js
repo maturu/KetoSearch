@@ -16,9 +16,25 @@ $(document).on('click', '.material-list-item .delete', function(e){
 });
 
 $(document).on('click', '.add-item', function(e){
-  $('.material-list-item').first().clone()
-                          .find('input[type="text"]').attr("placeholder", "").val("")
-                          .end().appendTo('.material-list');
+  $('.material-list').append(
+    '<div class="material-list-item">'+
+      '<span class="name select-form">'+
+        '<input autocomplete="off" class="line-name" placeholder="" type="text">'+
+        '<div class="incremental-search" style="display: none;">'+
+          '<div class="incremental-wrapper">'+
+            '<ul class="incremental-content">'+
+            '</ul>'+
+          '</div>'+
+        '</div>'+
+      '</span>'+
+      '<span class="quantity">'+
+        '<input autocomplete="off" class="line-quantity" placeholder="" type="text">'+
+      '</span>'+
+      '<span class="delete">'+
+        '<i class="fas fa-times" aria-hidden="true"></i>'+
+      '</span>'+
+    '</div>'
+  );
   $('.material-list').scrollTop($('.material-list')[0].scrollHeight);
 });
 
@@ -110,6 +126,7 @@ $(document).on('click', '.calc-item', function(e){
     dataType: 'json'
   })
   .done(function(data){
+    console.log(data);
     $('#food_gram').val(data.gram);
     $('#food_calorie').val(data.calorie);
     $('#food_protain').val(data.protain);
