@@ -1,4 +1,5 @@
 = render 'layouts/error_messages', model: f.object
+div.modal-open#material-calc 材料計算
 fieldset.form_fields
   legend 食品情報を入力してください
   div.field
@@ -20,7 +21,6 @@ fieldset.form_fields
 
 fieldset.form_fields.position-relative
   legend 栄養成分を入力してください (必須)
-  div.modal-open#material-calc 材料計算
   div.field
     = f.label :gram
     = f.text_field :gram, placeholder: "例) 100", autocomplete: "off", value: food.gram
