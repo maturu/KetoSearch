@@ -84,11 +84,15 @@ class ChartController < ApplicationController
   def ingredient_calc
     names = params[:names].split(",").to_a
     grams = params[:grams].split(",").to_a
+    @grams = []
+    names.zip(grams) do |n, g|
+      @grams.push(g) if n != "" and g != ""
+    end
     @foods = Food.where(name: names)
     @result = {gram: 0, calorie: 0, protain: 0, lipid: 0, carbohydrate: 0, water: 0, fibtg: 0, na: 0}
     @result.each do |key, val|
       @result[key] = @foods.pluck(key).each.with_index.inject(0){|sum, (i, j)|
-        sum + i*grams[j].to_i/@foods.pluck(:gram)[j]
+        sum + i*@grams[j].to_i/@foods.pluck(:gram)[j]
       }.floor(1)
     end
 
