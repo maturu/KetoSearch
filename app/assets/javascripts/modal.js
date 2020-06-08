@@ -104,7 +104,7 @@ function update(obj){
 }
 
 function destroy(){
-  $('.incremental-content').empty();
+  $('.incremental-search .incremental-content').empty();
   $('.incremental-search').css('display', 'none');
 }
 
