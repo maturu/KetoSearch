@@ -602,9 +602,9 @@ body {
     position: fixed;
     top: 0;
     left: 0;
+    width: 100vw;
+    height: 100vh;
   }
-  width: 100vw;
-  height: 100vh;
   .modal-bg {
     @media screen and (max-width: 959px){ display: none; }
     position: absolute;
@@ -672,17 +672,21 @@ body {
         background-color: rgba(0,135,197, 0.1);
       }
     }
-    .material-list::-webkit-scrollbar {
-      display: none;
+    @media screen and (min-width: 959px){
+      .material-list::-webkit-scrollbar {
+        display: none;
+      }
     }
     .material-list {
       max-width: 350px;
       width: 100%;
-      height: 70%;
       margin: 8px auto;
-      overflow-y: scroll;
-      -ms-overflow-style: none;
-      scrollbar-width: none;
+      @media screen and (min-width: 959px){
+        height: 70%;
+        overflow-y: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
       .material-list-item {
         margin: 16px 0;
         .line-name, .line-quantity {
@@ -722,10 +726,12 @@ body {
     }
     .modal-footer {
       @include flex-space-around;
-      position: absolute;
-      left: 10px;
-      right: 10px;
-      bottom: 0;
+      @media screen and (min-width: 959px){
+        position: absolute;
+        left: 10px;
+        right: 10px;
+        bottom: 0;
+      }
       padding: 16px 0;
       margin-top: 16px;
       border-top: 1px solid #ccc;
