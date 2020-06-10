@@ -1,14 +1,20 @@
 var spos;
 $(document).on('click', '.modal-open', function(e){
   $('.modal-window').fadeIn();
-  spos = $(window).scrollTop();
-  $('body').addClass('fixed').css('top', -spos);
+  if(window.matchMedia && window.matchMedia('(max-width: 959px)').matches){
+    $('.st-header').addClass('none');
+    $('.p-edit-chart').addClass('none');
+    $('.st-footer').addClass('none');
+  }
 });
 
 $(document).on('click', '.modal-close', function(e){
   $('.modal-window').fadeOut();
-  $('body').removeClass('fixed').css('top', 0);
-  window.scrollTo(0, spos);
+  if(window.matchMedia && window.matchMedia('(max-width: 959px)').matches){
+    $('.st-header').removeClass('none');
+    $('.p-edit-chart').removeClass('none');
+    $('.st-footer').removeClass('none');
+  }
 });
 
 $(document).on('click', '.material-list-item .delete', function(e){
@@ -136,7 +142,10 @@ $(document).on('click', '.calc-item', function(e){
     $('#food_fibtg').val(data.fibtg);
     $('#food_na').val(data.na);
     $('.modal-window').fadeOut();
-    $('body').removeClass('fixed').css('top', 0);
-    window.scrollTo(0, spos);
+    if(window.matchMedia && window.matchMedia('(max-width: 959px)').matches){
+      $('.st-header').removeClass('none');
+      $('.p-edit-chart').removeClass('none');
+      $('.st-footer').removeClass('none');
+    }
   })
 });

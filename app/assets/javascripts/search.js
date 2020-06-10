@@ -1,7 +1,3 @@
-$(document).on('click', '.st-header-user', function(e){
-  $('.user-dropdown').toggle();
-});
-
 $(document).on('turbolinks:load', function() {
   var timer;
   $(document).on('keyup', '#search', function(e){

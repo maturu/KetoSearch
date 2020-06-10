@@ -21,3 +21,12 @@ $(document).click(function(event) {
   }
 });
 
+$(document).on('click', '.st-header-user', function(e){
+  $('.user-dropdown').toggle();
+});
+
+$(document).click(function(event) {
+  if(!$(event.target).closest('.st-header-user').length) {
+    $('.user-dropdown').css('display', 'none');
+  }
+});
