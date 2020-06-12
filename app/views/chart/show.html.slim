@@ -23,7 +23,7 @@ div.p-show
               div.info-item
                 - unless @food.address.blank?
                   span.mr-1
-                    = link_to "#{@user.address}", "https://maps.google.co.jp/maps/search/#{@user.address}",\
+                    = link_to "#{@food.address}", "https://maps.google.co.jp/maps/search/#{@food.address}",\
                     target: "_blank", rel: "noopener noreferrer", class: "mr-1 underline"
                     |(住所),
               div.info-item
