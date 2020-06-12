@@ -116,6 +116,12 @@ input[type="submit"], input[type="button"], input[type="text"] {
   padding: 0 16px;
 }
 
+.icon-text-separator {
+  @media screen and (max-width: 414px){ display: none; }
+  margin: 0 16px;
+  color: #ddd;
+}
+
 // kaminari custom css
 .chart-paginate-content {
   @include flex-space-around;

@@ -3,9 +3,6 @@
 .p-devise {
   padding-top: 24px;
   padding-bottom: 40px;
-  input {
-    -webkit-appearance: none;
-  }
   .d-content {
     max-width: 820px;
     margin: 0 auto;
@@ -70,6 +67,9 @@
         border: 1px solid #ccc;
         border-radius: 3px;
       }
+    }
+    .field_link {
+      margin: 16px 0;
     }
     .actions {
       input {

@@ -41,14 +41,6 @@ $(document).click(function(event) {
   }
 });
 
-$(document).on('click', '.calculate', function(e){
-  var cal = $('.calorie-form').val();
-  var pro = $('.protain-form').val();
-  var lip = $('.lipid-form').val();
-  var tmp = Math.round((cal - pro*4 - lip*9)/4 * 10) / 10
-  $('.carbohydrate-form').val(tmp);
-});
-
 $(document).on('turbolinks:load', function() {
   var prop = $('#food_enter_allergies').prop('checked');
   if(prop){

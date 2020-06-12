@@ -1,6 +1,6 @@
 div.p-devise.position-relative
   div.d-content.position-relative
-    - if @user.id == current_user.id
+    - if user_signed_in? and @user.id == current_user.id
       = link_to "プロフィールを編集", users_profile_path(id: @user.id), id: "profile-edit-btn"
     div.d-header-title style="text-align: left;"
       h1
@@ -26,6 +26,14 @@ div.p-devise.position-relative
               = link_to "#{@user.website}", @user.website, target: "_blank", rel: "noopener noreferrer"
 
     hr
+    - unless @user.address.blank?
+      div.d-gmap-address
+        h3
+          = @user.username 
+          |の店舗情報
+        div.gmap-content
+          iframe src="https://maps.google.co.jp/maps?output=embed&q=#{@user.address}"
+
     div.d-yearly-contribution
       h3
         |1年の食品情報の投稿履歴 

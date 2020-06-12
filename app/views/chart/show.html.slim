@@ -1,5 +1,5 @@
 - set_meta_tags title: "#{@food.name}の情報", description: "#{@food.name}の糖質・タンパク質・脂質などの情報について。#{@food.content}",\
-  keywords: "糖質検索, ケトジェニック, ダイエット, 野菜 糖質, 糖質 一覧 100g, 糖質制限, ケトサーチ, ketosearch, ketogenic, diet, ローカーボ, ロカボ, #{@food.name} 糖質"
+  keywords: "糖質検索, ケトジェニック, ダイエット, 野菜 糖質, 糖質 一覧 100g, 糖質制限, ケトサーチ, ketosearch, ketogenic, diet, ローカーボ, ロカボ, #{@food.name} 糖質, ケトサーチ #{@food.name}"
 
 div.p-show
   div.s-chart
@@ -7,74 +7,106 @@ div.p-show
       div.s-chart-wrap
         div.flex-100
           div.s-chart-widget-container
-            div.chart-header-title
+            div.chart-header-title#top-header
               div.title-content
-                i.fas.fa-receipt.mr-1
-                |「
-                = @food.name
-                |」の主要成分
-                span.chart-unit-text
-                  |/ 
-                  = @food.gram
-                  |g あたり
+                h1
+                  = @food.name
               = render 'chart/menu', food: @food
-            div.chart-table
-              div.table-content
-                div.table-item
-                  div.th カロリー
-                  div #{@food.calorie or "- -"} kcal
-                div.table-item
-                  div.th 糖質
-                  div #{@food.carbohydrate or "- -"} g
-                div.table-item
-                  div.th タンパク質
-                  div #{@food.protain or "- -"} g
-                div.table-item
-                  div.th 脂質
-                  div #{@food.lipid or "- -"} g
-                div.table-item
-                  div.th 食物繊維
-                  div #{@food.fibtg or "- -"} g
-                div.table-item
-                  div.th ナトリウム
-                  div #{@food.na or "- -"} mg
-                div.table-item
-                  div.th 水分
-                  div #{@food.water or "- -"} g
             div.chart-info
-              i.fas.fa-user.mr-1
-              span.mr-2 
-                = link_to @user.username, users_show_path(username: @user.username)
-                |の投稿
-              - unless @food.reference.blank? and @food.url.blank?
-                i.fas.fa-link.mr-1
-                span 参考文献: 
-                = link_to @food.reference, @food.url, class: "mr-2", target: "_blank", rel: "noopener noreferrer"
+              div.info-item
+                span.mr-1
+                  = link_to @user.username, users_show_path(username: @user.username), class: "mr-1 underline"
+                  |(投稿者), 
+                span
+                  = link_to "##{@food.tag}", ranking_show_path(tag: @food.tag), class: "underline"
+                span.icon-text-separator |
+              div.info-item
+                - unless @food.address.blank?
+                  span.mr-1
+                    = link_to "#{@user.address}", "https://maps.google.co.jp/maps/search/#{@user.address}",\
+                    target: "_blank", rel: "noopener noreferrer", class: "mr-1 underline"
+                    |(住所),
+              div.info-item
+                - unless @food.reference.blank? and @food.url.blank?
+                  span.mr-1
+                    = link_to @food.reference, @food.url, class: "mr-1 underline", target: "_blank", rel: "noopener noreferrer"
+                    |(文献)
 
         div.flex-50
           div.s-chart-widget-container
             div.chart-header-title
               div.title-content
-                i.fas.fa-tags.mr-1
-                = @food.tag
-                = "：#{@food.address}" unless @food.address.blank?
-              = render 'chart/menu', food: @food
-            div.chart-gmap
-              iframe src="https://maps.google.co.jp/maps?output=embed&q=#{@food.address or @food.tag.chomp("類")}"
+                h2
+                  i.fas.fa-receipt.mr-1
+                  |「
+                  = @food.name
+                  |」の主要成分
+                  span.chart-unit-text
+                    |/ 
+                    = @food.gram
+                    |g あたり
+            div.chart-table.position-relative
+              table.table-content
+                colgroup
+                  col.table-header-col width="20%"
+                  col width="8%"
+                  col width="8%"
+                  col width="8%"
+                  col width="8%"
+                  col width="8%"
+                  col width="8%"
+                  col width="8%"
+                tbody
+                  tr
+                    th.table-header rowspan="2"
+                      |一般栄養成分
+                      br
+                      span
+                        |- - ： データがありません 
+                    td.table-header-color
+                      span カロリー
+                    td.table-header-color
+                      span 糖質
+                    td.table-header-color
+                      span タンパク質
+                    td.table-header-color
+                      span 脂質
+                    td.table-header-color
+                      span 食物繊維
+                    td.table-header-color
+                      span ナトリウム
+                    td.table-header-color
+                      span 水分
+                  tr
+                    td #{@food.calorie or "- -"}
+                    td #{@food.carbohydrate or "- -"}
+                    td #{@food.protain or "- -"}
+                    td #{@food.lipid or "- -"}
+                    td #{@food.fibtg or "- -"}
+                    td #{@food.na or "- -"}
+                    td #{@food.water or "- -"}
+                  tr
+                    th.table-header 単位
+                    td kcal
+                    td g
+                    td g
+                    td g
+                    td g
+                    td mg
+                    td g
 
         div.flex-50
           div.s-chart-widget-container
             div.chart-header-title
               div.title-content
-                i.fas.fa-allergies.mr-1
-                = "「#{@food.name}」のアレルギー物質"
-              = render 'chart/menu', food: @food
-            div.chart-allergies.position-relative
+                h2
+                  i.fas.fa-allergies.mr-1
+                  = "「#{@food.name}」のアレルギー物質"
+            div.chart-table.position-relative
               - if @food.enter_allergies?
-                table.allergies-content
+                table.table-content
                   colgroup
-                    - unless browser.device.mobile?
-                      col width="40%"
+                    col.table-header-col width="20%"
                     col width="8%"
                     col width="8%"
                     col width="8%"
@@ -84,21 +116,27 @@ div.p-show
                     col width="8%"
                   tbody
                     tr
-                      - unless browser.device.mobile?
-                        th rowspan="2"
-                          |特定原材料7品目
+                      th.table-header rowspan="2"
+                        |特定原材料7品目
+                        br
+                        span
+                          |● ： 使用しています
                           br
-                          span
-                            |● ： 使用しています
-                            br
-                            |─ ： 使用していません
-                      td 卵
-                      td 乳
-                      td 小麦
-                      td 落花生
-                      td えび
-                      td かに
-                      td そば
+                          |─ ： 使用していません
+                      td.table-header-color
+                        span 卵
+                      td.table-header-color
+                        span 乳
+                      td.table-header-color
+                        span 小麦
+                      td.table-header-color
+                        span 落花生
+                      td.table-header-color
+                        span えび
+                      td.table-header-color
+                        span かに
+                      td.table-header-color
+                        span そば
                     tr
                       td = @food.egg? ? "●" : "─"
                       td = @food.milk? ? "●" : "─"
@@ -108,11 +146,10 @@ div.p-show
                       td = @food.crab? ? "●" : "─"
                       td = @food.buckwheat? ? "●" : "─"
                     tr
-                      - unless browser.device.mobile?
-                        th
-                          |特定原材料に
-                          br
-                          |準ずるもの20品目
+                      th.table-header
+                        |特定原材料に
+                        br
+                        |準ずるもの20品目
                       td colspan="7" = @food.allergies.blank? ? "─" : @food.allergies
               - else
                 div.widget-error
@@ -123,15 +160,15 @@ div.p-show
           div.s-chart-widget-container
             div.chart-header-title
               div.title-content
-                i.fas.fa-chart-pie.mr-1
-                |「
-                = @food.name
-                |」の成分割合
-                span.chart-unit-text
-                  |/ 
-                  = @food.gram
-                  |g あたり
-              = render 'chart/menu', food: @food
+                h2
+                  i.fas.fa-chart-pie.mr-1
+                  |「
+                  = @food.name
+                  |」の成分割合
+                  span.chart-unit-text
+                    |/ 
+                    = @food.gram
+                    |g あたり
             div.chart-widget-wrapper
               div.widget-wrapper-content
                 div.pie-chart
@@ -157,9 +194,9 @@ div.p-show
           div.s-chart-widget-container
             div.chart-header-title
               div.title-content
-                i.fas.fa-file-alt.mr-2
-                |詳細
-              = render 'chart/menu', food: @food
+                h2
+                  i.fas.fa-file-alt.mr-2
+                  |詳細
             div.preview-content
               - if @food.content?
                 div.md-text

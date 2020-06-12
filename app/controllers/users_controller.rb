@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :sign_in_required, only: [:show]
+  before_action :sign_in_required, only: [:edit]
   before_action :set_variables
 
   def show

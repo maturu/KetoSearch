@@ -35,7 +35,6 @@ fieldset.form_fields.position-relative
     = f.text_field :lipid, placeholder: "例) 4.5", autocomplete: "off", class: "lipid-form", value: food.lipid
   div.field
     = f.label :carbohydrate
-    i.fas.fa-calculator.calculate
     = f.text_field :carbohydrate, placeholder: "例) 6.7", autocomplete: "off", class: "carbohydrate-form",\
     value: food.carbohydrate
 
@@ -58,17 +57,32 @@ div#allergy_checkbox
 fieldset.form_fields#allergies_form
   legend アレルギー情報を入力してください
   = f.label "特定原材料"
-  div.chart-allergies style="height: auto; padding: 16px 0;"
-    table.allergies-content
+  div.chart-table style="height: 200px; padding: 16px 0;"
+    table.table-content
+      colgroup
+        col width="8%"
+        col width="8%"
+        col width="8%"
+        col width="8%"
+        col width="8%"
+        col width="8%"
+        col width="8%"
       tbody
         tr
-          td 卵
-          td 乳
-          td 小麦
-          td 落花生
-          td えび
-          td かに
-          td そば
+          td
+            span 卵
+          td
+            span 乳
+          td
+            span 小麦
+          td
+            span 落花生
+          td
+            span えび
+          td
+            span かに
+          td
+            span そば
         tr
           td = f.check_box :egg
           td = f.check_box :milk
