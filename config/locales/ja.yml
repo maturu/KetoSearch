@@ -88,6 +88,10 @@ ja:
         reference: 参考文献
         url: 文献リンク
         allergies: 特定原材料に準ずるアレルギー食品
+      review:
+        rate: 総合評価
+        review_title: レビュータイトル
+        review_details: レビューの詳細
   views:
     pagination:
       first: '最初'

@@ -46,7 +46,7 @@ div.p-devise.position-relative
       - unless @dates.include?(Time.zone.now.to_date)
         div.contribution-activity-listing
           div.timeline
-            h4.timeline-month-header = Time.zone.now.in_time_zone('Asia/Tokyo').to_date
+            h4.timeline-month-header = Time.zone.now.in_time_zone('Asia/Tokyo').to_date.strftime("%Y年%m月%d日")
             div.no-profile-data
               |この期間
               = @user.username
@@ -55,7 +55,7 @@ div.p-devise.position-relative
         - @commits = @foods.where(created_at: date.beginning_of_day..date.end_of_day)
         div.contribution-activity-listing
           div.timeline
-            h4.timeline-month-header = date.in_time_zone('Asia/Tokyo').to_date
+            h4.timeline-month-header = date.in_time_zone('Asia/Tokyo').to_date.strftime("%Y年%m月%d日")
             div.profile-wrapper
               i.fas.fa-book
               div.profile-title

@@ -1,0 +1,30 @@
+- set_meta_tags title: "#{@food.name}をレビュー"
+
+div.p-review
+  div.review-content
+    div.header-title
+      h2 #{@food.name}をレビュー
+
+    hr
+    = form_for @review, url: review_create_path(id: @food.id), method: :post do |f|
+      = render 'layouts/error_messages', model: f.object
+      div.field#star
+        h3 = f.label :rate
+        = f.hidden_field :rate, id: :review_star
+      hr
+      div.field
+        h3 = f.label :review_title
+        = f.text_field :review_title, placeholder: "最も伝えたいポイントは何ですか？", autocomplete: "off"
+      hr
+      div.field
+        h3 = f.label :review_details
+        = f.text_area :review_details, placeholder: "気に入ったこと/気に入らなかったことは何ですか？この食品は美味しかったですか？"
+      div.actions
+        = f.submit "投稿"
+    javascript:
+      $('#star').raty({
+        starOff: "#{asset_path('star-off.svg')}",
+        starOn: "#{asset_path('star-on.svg')}",
+        starHalf: "#{asset_path('star-half.svg')}",
+        scoreName: 'review[rate]',
+      });

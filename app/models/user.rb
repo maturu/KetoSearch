@@ -5,6 +5,7 @@ class User < ApplicationRecord
   validates :introduction, length: { maximum: 160 }
 
   has_many :foods, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,

@@ -1,0 +1,12 @@
+span.section-total-star id="star-#{id}"
+  javascript:
+    $('#star-#{id}').empty();
+    $('#star-#{id}').raty({
+      starOff: "#{asset_path('star-off.svg')}",
+      starOn: "#{asset_path('star-on.svg')}",
+      starHalf: "#{asset_path('star-half.svg')}",
+      half: true,
+      readOnly: true,
+      score: #{rate}
+    });
+    $('#star-#{id} img').css('width', '#{size}px');

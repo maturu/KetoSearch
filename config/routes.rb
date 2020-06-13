@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'review/show' => "review#show"
+  get 'review/new' => "review#new"
+  post 'review/create' => "review#create"
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   get 'users/show'

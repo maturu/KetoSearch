@@ -14,6 +14,7 @@ class Food < ApplicationRecord
   validates :content, length: { maximum: 65535 }
 
   belongs_to :user
+  has_many :reviews, dependent: :destroy
 
   def self.search(keyword)
     return nil if keyword.blank?
