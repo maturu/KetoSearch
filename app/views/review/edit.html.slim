@@ -1,0 +1,32 @@
+- set_meta_tags title: "#{@food.name}のレビューを編集"
+
+div.p-review
+  div.review-content
+    div.header-title
+      h2 #{@food.name}のレビューを編集
+
+    hr
+    = form_for @review, url: review_update_path(id: @review.id), method: :post do |f|
+      = render 'layouts/error_messages', model: f.object
+      div.field#star
+        h3 = f.label :rate
+        = f.hidden_field :rate, id: :review_star, value: @review.rate
+      hr
+      div.field
+        h3 = f.label :review_title
+        = f.text_field :review_title, placeholder: "最も伝えたいポイントは何ですか？", autocomplete: "off", value: @review.review_title
+      hr
+      div.field
+        h3 = f.label :review_details
+        = f.text_area :review_details, placeholder: "気に入ったこと/気に入らなかったことは何ですか？この食品は美味しかったですか？",\
+          value: @review.review_details
+      div.actions
+        = f.submit "編集"
+    javascript:
+      $('#star').raty({
+        starOff: "#{asset_path('star-off.svg')}",
+        starOn: "#{asset_path('star-on.svg')}",
+        starHalf: "#{asset_path('star-half.svg')}",
+        scoreName: 'review[rate]',
+        score: "#{@review.rate}"
+      });

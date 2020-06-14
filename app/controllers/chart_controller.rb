@@ -24,6 +24,13 @@ class ChartController < ApplicationController
         "ナトリウム" => na,
         "水分" => @food.water
       }
+      @rates = [0, 0, 0, 0, 0]
+      unless @food.reviews.blank?
+        @rates.each_with_index do |rate, index|
+          rate = @food.reviews.where(rate: 5-index).count.quo(@food.reviews.count).to_f * 100
+          @rates[index] = rate.to_i
+        end
+      end
       @relations = Food.related_search(@food, @food.name).order("carbohydrate DESC").page(params[:page]).per(6)
       @items = @relations.pluck(:id, :name, :carbohydrate)
     else
@@ -53,7 +60,6 @@ class ChartController < ApplicationController
 
   def create
     @food = current_user.foods.new(food_params)
-
     @tags = Food.pluck('tag').uniq
     @user = User.find(current_user.id)
     if @food.save

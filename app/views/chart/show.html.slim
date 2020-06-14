@@ -12,7 +12,7 @@ div.p-show
                 h1
                   = @food.name
               = render 'chart/menu', food: @food
-            div.chart-info
+            div.chart-info style="padding-bottom: 8px;"
               div.info-item
                 span.mr-1
                   = link_to @user.username, users_show_path(username: @user.username), class: "mr-1 underline"
@@ -31,6 +31,12 @@ div.p-show
                   span.mr-1
                     = link_to @food.reference, @food.url, class: "mr-1 underline", target: "_blank", rel: "noopener noreferrer"
                     |(文献)
+            div.chart-info
+              div.info-item
+                span.mr-1
+                  = render 'review/star', rate: @food.reviews.average(:rate).to_f.round(1), id: "top-header", size: 14
+                i.fas.fa-angle-down.mr-2
+                = link_to "#{@food.reviews.count}個の評価", "#review-widget", class: "underline"
 
         div.flex-50
           div.s-chart-widget-container
@@ -62,7 +68,7 @@ div.p-show
                       |一般栄養成分
                       br
                       span
-                        |- - ： データがありません 
+                        |- - ： 未入力データです 
                     td.table-header-color
                       span カロリー
                     td.table-header-color
@@ -78,13 +84,20 @@ div.p-show
                     td.table-header-color
                       span 水分
                   tr
-                    td #{@food.calorie or "- -"}
-                    td #{@food.carbohydrate or "- -"}
-                    td #{@food.protain or "- -"}
-                    td #{@food.lipid or "- -"}
-                    td #{@food.fibtg or "- -"}
-                    td #{@food.na or "- -"}
-                    td #{@food.water or "- -"}
+                    td
+                      span #{@food.calorie or "- -"}
+                    td
+                      span #{@food.carbohydrate or "- -"}
+                    td
+                      span #{@food.protain or "- -"}
+                    td
+                      span #{@food.lipid or "- -"}
+                    td
+                      span #{@food.fibtg or "- -"}
+                    td
+                      span #{@food.na or "- -"}
+                    td
+                      span #{@food.water or "- -"}
                   tr
                     th.table-header 単位
                     td kcal
@@ -154,7 +167,7 @@ div.p-show
               - else
                 div.widget-error
                   i.fas.fa-exclamation-triangle
-                  p ここに表示するデータはありません。
+                  p まだアレルギー情報はありません。
 
         div.flex-100
           div.s-chart-widget-container
@@ -194,6 +207,24 @@ div.p-show
           div.s-chart-widget-container
             div.chart-header-title
               div.title-content
+                h2#review-widget
+                  i.fas.fa-star.mr-1
+                  |「#{@food.name}」のカスタマーレビュー
+            div.chart-widget-wrapper
+              div.flex-50
+                = render 'review/review_graph', food: @food, rates: @rates
+              div.flex-50.position-relative
+                - if @food.reviews.any?
+                  = render 'review/review_comment', reviews: @food.reviews, limit_count: 5
+                - else
+                  div.widget-error#review-error
+                    i.fas.fa-exclamation-triangle
+                    p まだカスタマーレビューはありません。
+
+        div.flex-100
+          div.s-chart-widget-container
+            div.chart-header-title
+              div.title-content
                 h2
                   i.fas.fa-file-alt.mr-2
                   |詳細
@@ -205,4 +236,4 @@ div.p-show
               - else
                 div.widget-error
                   i.fas.fa-exclamation-triangle
-                  p ここに表示するデータはありません。
+                  p まだ詳細データはありません。

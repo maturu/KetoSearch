@@ -1,13 +1,8 @@
 @import 'common.scss';
 
 .p-show {
-  .underline {
-    &:hover {
-      text-decoration: underline;
-    }
-  }
   .s-chart {
-    margin: 64px 0;
+    margin: 48px 0;
     .s-chart-content {
       display: block;
       padding: 0 32px;
@@ -103,6 +98,12 @@
           .chart-widget-wrapper {
             @include flex-space-around;
             flex-wrap: wrap;
+            min-height: 336px;
+            #review-error {
+              @media screen and (max-width: 959px){
+                display: none;
+              }
+            }
             .widget-wrapper-content {
               width: 50%;
               @media screen and (max-width:959px){width: 100%;}
@@ -286,7 +287,6 @@
   color: rgba(0,0,0,0.54);
   font-size: 20px;
   line-height: 26px;
-  max-width: 370px;
   height: 150px;
   margin: auto;
   padding: 10px;
@@ -323,7 +323,11 @@
       }
       td {
         text-align: center;
+        span {font-size: 13px;}
+      }
+      .table-header-color {
         span {
+          font-size: 14px;
           font-weight: bold;
           writing-mode: vertical-rl;
           -ms-writing-mode:tb-rl;

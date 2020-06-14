@@ -22,3 +22,4 @@
 //= require d3
 //= require cal-heatmap
 //= require marked
+//= require jquery_raty

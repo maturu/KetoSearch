@@ -1,0 +1,41 @@
+div.chart-review-graph
+  h2 カスタマーレビュー
+  = render 'review/star', rate: food.reviews.average(:rate).to_f.round(1), id: 0, size: 20
+  span.total-star-text 星5つ中の#{food.reviews.average(:rate).to_f.round(1)}
+  div.total-review-count
+    span 評価の数 #{food.reviews.count}
+    - if request.path_info == review_show_path and browser.device.mobile?
+      span.writeReview-link
+        = link_to "レビューを書く", review_new_path(fid: food.id), class: "underline"
+  div.section-review-bar
+    div.bar-list
+      - rates.each_with_index do |rate, index|
+        div.bar-list-item
+          - if rate == 0
+            div style="color: #767676;"
+              span 星#{5-index}つ
+              div.review-progress
+                div.review-progress-bar style="width: #{rate}%;"
+              span #{rate}%
+          - else
+            = link_to review_show_path(fid: food.id, rate: 5-index),\
+              title: "レビューの#{rate}%に星#{5-index}つが付いています。", class: "underline"
+              span 星#{5-index}つ
+              div.review-progress
+                div.review-progress-bar style="width: #{rate}%;"
+              span #{rate}%
+  - if request.path_info != review_show_path
+    hr
+    div.section-soliciation
+      h3 この食品をレビュー
+      div 他のお客様にも意見を伝えましょう
+      = button_to "カスタマーレビューを書く", {controller: 'review', action: 'new'},\
+        {method: :get, params: {fid: food.id}, class: "writeReview-btn"}
+    hr
+  - if food.reviews.count > 5 and request.path_info != review_show_path
+    div.section-soliciation
+      h3 すべての食品レビュー
+      div 他のお客様の意見を参考にしましょう
+      = button_to "すべてのレビューを見る", {controller: 'review', action: 'show'},\
+        {method: :get, params: {fid: food.id}, class: "writeReview-btn"}
+    hr

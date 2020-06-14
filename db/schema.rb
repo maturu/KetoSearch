@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_30_135848) do
+ActiveRecord::Schema.define(version: 2020_06_12_111659) do
 
   create_table "foods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "tag"
@@ -40,6 +40,18 @@ ActiveRecord::Schema.define(version: 2020_05_30_135848) do
     t.string "allergies"
     t.boolean "enter_allergies"
     t.index ["user_id"], name: "index_foods_on_user_id"
+  end
+
+  create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "review_title"
+    t.text "review_details"
+    t.float "rate", default: 0.0, null: false
+    t.bigint "user_id"
+    t.bigint "food_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["food_id"], name: "index_reviews_on_food_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -76,4 +88,6 @@ ActiveRecord::Schema.define(version: 2020_05_30_135848) do
   end
 
   add_foreign_key "foods", "users"
+  add_foreign_key "reviews", "foods"
+  add_foreign_key "reviews", "users"
 end
