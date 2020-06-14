@@ -98,12 +98,7 @@ a {
   user-select: none;
 }
 
-input[type="submit"], input[type="button"], input[type="text"] {
-  -webkit-appearance: none;
-  font-family: inherit;
-}
-
-textarea {
+input[type="submit"], input[type="button"], input[type="text"], textarea {
   -webkit-appearance: none;
   box-shadow: none;
   font-family: inherit;
