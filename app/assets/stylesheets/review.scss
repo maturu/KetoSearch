@@ -71,7 +71,10 @@
           border-radius: 2px;
           width: 100%;
           height: 29px;
-          @media screen and (max-width: 414px){ height: 45px; }
+          @media screen and (max-width: 414px){
+            height: 45px;
+            font-size: 16px;
+          }
           cursor: pointer;
           background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
           background-color: #f7f8fa;
@@ -85,17 +88,21 @@
         h3 {
           margin-bottom: 8px;
           font-size: 17px;
+          @media screen and (max-width: 414px){font-size: 18px;}
         }
         input, textarea {
           line-height: 19px;
           border: 1px solid #ccc;
           border-radius: 3px;
           outline: 0;
+          font-weight: normal;
+          @media screen and (max-width: 414px){font-size: 16px;}
         }
         input {
           width: 100%;
           background-color: #fff;
           height: 31px;
+          @media screen and (max-width: 414px){height: 43px;}
           padding: 3px 7px;
         }
         textarea {

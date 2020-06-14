@@ -46,8 +46,9 @@
         display: block;
         width: 100%;
         height: 34px;
+        @media screen and (max-width: 414px){height: 43px;}
         padding: 6px 12px;
-        font-size: 14px;
+        font-size: 16px;
         color: #555;
         background-color: #fff;
         border: 1px solid #ccc;
