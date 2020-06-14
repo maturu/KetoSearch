@@ -215,7 +215,7 @@ div.p-show
                 = render 'review/review_graph', food: @food, rates: @rates
               div.flex-50.position-relative
                 - if @food.reviews.any?
-                  = render 'review/review_comment', fid: @food.id, reviews: @food.reviews, limit_count: 5
+                  = render 'review/review_comment', reviews: @food.reviews, limit_count: 5
                 - else
                   div.widget-error#review-error
                     i.fas.fa-exclamation-triangle

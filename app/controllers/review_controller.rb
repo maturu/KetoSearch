@@ -1,5 +1,5 @@
 class ReviewController < ApplicationController
-  before_action :sign_in_required, only: [:new, :create]
+  before_action :sign_in_required, only: [:new, :edit, :create, :update]
   before_action :set_variables
 
   def show
@@ -26,6 +26,12 @@ class ReviewController < ApplicationController
     @review = @food.reviews.new
   end
 
+  def edit
+    @review = Review.find(params[:id])
+    redirect_to review_show_path(fid: @review.food_id, id: @review.id) if @review.user_id != current_user.id
+    @food = Food.find(@review.food_id)
+  end
+
   def create
     @food = Food.find(params[:fid])
     @review = @food.reviews.new(review_params)
@@ -35,6 +41,23 @@ class ReviewController < ApplicationController
     else
       render review_new_path
     end
+  end
+
+  def update
+    @review = Review.find(params[:id])
+    redirect_to review_show_path(fid: @review.food_id, id: @review.id) if @review.user_id != current_user.id
+    if @review.update(review_params)
+      redirect_to review_show_path(fid: @review.food_id, id: @review.id)
+    else
+      render review_edit_path
+    end
+  end
+
+  def destroy
+    @review = Review.find(params[:id])
+    redirect_to review_show_path(fid: @review.food_id, id: @review.id) if @review.user_id != current_user.id
+    @review.destroy
+    redirect_to users_show_path(username: User.find(@review.user_id).username)
   end
 
   protected

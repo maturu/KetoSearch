@@ -2,18 +2,35 @@ div.chart-review-comment
   div.customer-review-list
     - reviews.order("created_at DESC").limit(limit_count).each do |review|
       div.review-list-item
-        div.customer
-          i.fas.fa-user.mr-1
-          span = User.find(review.user_id).username
-        div.review-title
-          span.mr-1
-            = link_to review_show_path(fid: fid, id: review.id), title: "5つ星のうち#{review.rate}"
-              = render 'review/star', rate: review.rate, id: review.id, size: 14
-          span
-            = link_to review.review_title, review_show_path(fid: fid, id: review.id), class: "underline"
-        div.review-date
-          span #{review.created_at.in_time_zone('Asia/Tokyo').to_date.strftime("%Y年%m月%d日")}にレビュー済み
-        div.review-details
-          - review.review_details.split("\n").each do |text|
-            span = text
-            br
+        div.review-item-content
+          div.customer
+            i.fas.fa-user.mr-1
+            span = User.find(review.user_id).username
+            - if user_signed_in? and current_user.id == review.user_id
+              - if request.path_info == users_show_path
+                div.customer-operations
+                  = link_to "編集", review_edit_path(id: review.id), class: "underline mr-1"
+                  = link_to "削除", review_destroy_path(id: review.id), class: "underline mr-1", method: :post,\
+                    data: { confirm: "カスタマーレビュー「#{review.review_title}」を削除しますか?" }
+          div.review-title
+            span.mr-1
+              = link_to review_show_path(fid: review.food_id, id: review.id), title: "5つ星のうち#{review.rate}"
+                = render 'review/star', rate: review.rate, id: review.id, size: 14
+            span
+              = link_to review.review_title, review_show_path(fid: review.food_id, id: review.id), class: "underline"
+          div.review-date
+            span #{review.created_at.in_time_zone('Asia/Tokyo').to_date.strftime("%Y年%m月%d日")}にレビュー済み
+          div.review-details
+            - review.review_details.split("\n").each do |text|
+              span = text
+              br
+        - if request.path_info == users_show_path
+          - food = Food.find(review.food_id)
+          = link_to chart_show_path(id: review.food_id), class: "review-food"
+            div.review-food-content
+              div
+                span = food.name
+              div
+                span.mr-1
+                  = render 'review/star', rate: food.reviews.average(:rate).to_f.round(1), id: "user-page-#{review.id}", size: 12
+                span = food.reviews.count

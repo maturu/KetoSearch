@@ -886,6 +886,10 @@ body {
           font-size: 13px;
           @media screen and (max-width: 414px){font-size: 15px;}
         }
+        .customer-operations {
+          float: right;
+          margin-top: 6px;
+        }
       }
       .review-title {
         span {

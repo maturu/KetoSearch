@@ -32,8 +32,8 @@ $(document).click(function(event) {
 });
 
 $(document).on('turbolinks:load', function() {
-  $('.review-list-item').each(function(){
-    if($('.review-details', this).height() > 300){
+  $('.review-item-content').each(function(){
+    if($('.review-details', this).height() > 150){
       $('.review-details', this).css('height', '150px');
       $(this).append(
         '<div class="details-expander-in">'+

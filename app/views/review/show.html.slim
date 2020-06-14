@@ -20,7 +20,7 @@ div.p-review
     hr
     - if params[:rate]
       span フィルタ: 星#{params[:rate]}つ
-    = render 'review/review_comment', fid: @food.id, reviews: @reviews, limit_count: @reviews.count
+    = render 'review/review_comment', reviews: @reviews, limit_count: @reviews.count
 
     div.review-back
       i.fas.fa-angle-left.mr-1
