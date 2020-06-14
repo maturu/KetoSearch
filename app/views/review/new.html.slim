@@ -6,7 +6,7 @@ div.p-review
       h2 #{@food.name}をレビュー
 
     hr
-    = form_for @review, url: review_create_path(id: @food.id), method: :post do |f|
+    = form_for @review, url: review_create_path(fid: @food.id), method: :post do |f|
       = render 'layouts/error_messages', model: f.object
       div.field#star
         h3 = f.label :rate

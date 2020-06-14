@@ -65,3 +65,6 @@ div.p-devise.position-relative
                   li
                     a href=chart_show_path(id: c.id)
                       = c.name
+
+    - @foods.pluck(:id).each do |fid|
+      = render 'review/review_comment', fid: fid, reviews: @user.reviews, limit_count: @user.reviews.count

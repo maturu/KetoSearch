@@ -104,58 +104,6 @@
                 display: none;
               }
             }
-            .chart-review-comment {
-              margin: 32px auto;
-              margin-bottom: 8px;
-              width: 100%;
-              max-width: 500px;
-              @media screen and (max-width: 959px){
-                margin: 0 auto;
-                margin-bottom: 8px;
-              }
-              padding: 0 21px;
-              .customer-review-list {
-                .review-list-item {
-                  margin-bottom: 20px;
-                  .customer {
-                    height: 34px;
-                    i {
-                      font-size: 16px;
-                      color: #999;
-                      width: 30px;
-                      height: 30px;
-                      padding: 7px;
-                      border-radius: 34px;
-                      border: 1px solid #999;
-                    }
-                    span {
-                      font-size: 13px;
-                      @media screen and (max-width: 414px){font-size: 15px;}
-                    }
-                  }
-                  .review-title {
-                    span {
-                      vertical-align: text-bottom;
-                      font-size: 13px;
-                    }
-                  }
-                  .review-date {
-                    color: #555;
-                    font-size: 13px;
-                  }
-                  .review-details {
-                    overflow: hidden;
-                    font-size: 13px;
-                    @media screen and (max-width: 414px){font-size: 15px;}
-                  }
-                  .details-expander-in, .details-expander-out {
-                    span {
-                      font-size: 13px;
-                    }
-                  }
-                }
-              }
-            }
             .widget-wrapper-content {
               width: 50%;
               @media screen and (max-width:959px){width: 100%;}

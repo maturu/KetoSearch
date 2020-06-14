@@ -10,3 +10,5 @@ span.section-total-star id="star-#{id}"
       score: #{rate}
     });
     $('#star-#{id} img').css('width', '#{size}px');
+    $('#star-#{id} img').removeAttr("title");
+    $('#star-#{id}').removeAttr("title");

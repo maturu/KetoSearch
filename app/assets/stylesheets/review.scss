@@ -1,3 +1,5 @@
+@import 'common.scss';
+
 .p-review {
   padding-top: 24px;
   padding-bottom: 40px;
@@ -6,6 +8,48 @@
     margin: 0 auto;
     background-color: #fff;
     padding: 32px;
+    @media screen and (max-width: 414px){padding: 32px 16px;}
+    .review-header {
+      @include flex-space-between;
+      flex-wrap: wrap;
+      align-items: start;
+      .header-title-content {
+        @media screen and (max-width: 414px){display: none;}
+        margin-right: auto;
+        height: 178px;
+        h1 {
+          font-size: 21px;
+        }
+        .writeReview-btn {
+          position: absolute;
+          bottom: 0;
+          width: 112px;
+          font-size: 13px;
+          padding: 0 10px;
+        }
+      }
+      .chart-review-graph {
+        max-width: 320px;
+        margin: 0;
+        @media screen and (max-width: 414px){
+          padding: 0;
+          max-width: none;
+        }
+      }
+    }
+    .chart-review-comment {
+      margin: 32px 0;
+      @media screen and (max-width: 414px){padding: 0;}
+      max-width: none;
+    }
+    .review-back {
+      display: none;
+      padding: 8px 21px;
+      @media screen and (max-width: 414px){
+        display: initial;
+        padding: 8px 0;
+      }
+    }
     hr {
       border: 0;
       border-top: 1px solid #e0e0e0;

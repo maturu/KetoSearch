@@ -215,24 +215,7 @@ div.p-show
                 = render 'review/review_graph', food: @food, rates: @rates
               div.flex-50.position-relative
                 - if @food.reviews.any?
-                  div.chart-review-comment
-                    div.customer-review-list
-                      - @food.reviews.order("created_at DESC").limit(5).each do |review|
-                        div.review-list-item
-                          div.customer
-                            i.fas.fa-user.mr-1
-                            span = User.find(review.user_id).username
-                          div.review-title
-                            span.mr-1
-                              = render 'review/star', rate: review.rate, id: review.id, size: 14
-                            span
-                              = review.review_title
-                          div.review-date
-                            span #{review.created_at.in_time_zone('Asia/Tokyo').to_date.strftime("%Y年%m月%d日")}にレビュー済み
-                          div.review-details
-                            - review.review_details.split("\n").each do |text|
-                              span = text
-                              br
+                  = render 'review/review_comment', fid: @food.id, reviews: @food.reviews, limit_count: 5
                 - else
                   div.widget-error#review-error
                     i.fas.fa-exclamation-triangle
