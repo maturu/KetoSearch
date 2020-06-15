@@ -23,6 +23,8 @@ class ReviewController < ApplicationController
 
   def new
     @food = Food.find(params[:fid])
+    @review = @food.reviews.find_by(user_id: current_user.id)
+    redirect_to review_edit_path(id: @review.id) if @review.present?
     @review = @food.reviews.new
   end
 
