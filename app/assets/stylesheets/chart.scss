@@ -32,6 +32,8 @@
             .title-content {
               white-space: nowrap;
               overflow-x: scroll;
+              -ms-overflow-style: none;
+              scrollbar-width: none;
               h1 {
                 font-size: 19px;
                 font-weight: 400;
@@ -312,7 +314,10 @@
     @media screen and (max-width: 959px){
       .table-header { display: none; }
       .table-header-color { background-color: rgba(0,135,197, 0.2); }
-      .table-header-col { width: 8%; }
+      .table-header-col {
+        display: none;
+        width: 8%;
+      }
     }
     tbody {
       vertical-align: top;

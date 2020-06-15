@@ -13,14 +13,14 @@ div.chart-review-graph
         div.bar-list-item
           - if rate == 0
             div style="color: #767676;"
-              span 星#{5-index}つ
+              span.star-count 星#{5-index}つ
               div.review-progress
                 div.review-progress-bar style="width: #{rate}%;"
               span #{rate}%
           - else
             = link_to review_show_path(fid: food.id, rate: 5-index),\
               title: "レビューの#{rate}%に星#{5-index}つが付いています。", class: "underline"
-              span 星#{5-index}つ
+              span.star-count 星#{5-index}つ
               div.review-progress
                 div.review-progress-bar style="width: #{rate}%;"
               span #{rate}%
