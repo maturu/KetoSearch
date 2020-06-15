@@ -41,6 +41,6 @@ div.modal-window
           i.fas.fa-times
 
     div.modal-footer
-      div.footer-btn.modal-close キャンセル
-      div.footer-btn.add-item 材料を追加
-      div.footer-btn.calc-item 計算
+      = button_tag "材料を追加", type: 'button', class: "footer-btn add-item"
+      = button_tag "計算", type: 'button', class: "footer-btn calc-item"
+      = button_tag "キャンセル", type: 'button', class: "footer-btn modal-close"

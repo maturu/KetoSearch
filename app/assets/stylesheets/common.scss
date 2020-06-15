@@ -708,25 +708,22 @@ body {
         margin: 16px 0;
         .line-name, .line-quantity {
           width: 100%;
-          height: 40px;
+          height: 31px;
+          @media screen and (max-width: 414px){
+            height: 43px;
+          }
           box-sizing: border-box;
           color: #4c4a40;
           border: 1px solid #ccc;
           padding: 0 8px;
           font-size: 16px;
-          border-radius: 5px;
+          border-radius: 3px;
         }
         .delete {
-          display: inline-block;
-          width: 24px;
-          height: 24px;
           font-size: 14px;
           text-align: center;
-          color: #fff;
           padding: 4px;
           margin-left: 5px;
-          background-color: #ccc;
-          border-radius: 3px;
           cursor: pointer;
         }
       }
@@ -743,6 +740,7 @@ body {
     }
     .modal-footer {
       @include flex-space-around;
+      flex-wrap: wrap;
       @media screen and (min-width: 959px){
         position: absolute;
         left: 10px;
@@ -754,15 +752,23 @@ body {
       border-top: 1px solid #ccc;
       background-color: #fff;
       .footer-btn {
-        padding: 8px;
-        font-size: 12px;
-        color: #41484c;
-        text-align: center;
-        min-width: 60px;
-        line-height: 1.9;
-        background-color: #ccc;
-        border-radius: 5px;
+        border: 1px solid #999;
+        border-radius: 2px;
+        width: 100%;
+        max-width: 100px;
+        height: 29px;
+        @media screen and (max-width: 414px){
+          max-width: none;
+          height: 45px;
+          font-size: 16px;
+          margin: 8px 0;
+        }
         cursor: pointer;
+        background: linear-gradient(to bottom,#f7f8fa,#e7e9ec);
+        background-color: #f7f8fa;
+        &:hover {
+          background: linear-gradient(to bottom,#e7e9ec,#e7e9ec);
+        }
       }
     }
   }
