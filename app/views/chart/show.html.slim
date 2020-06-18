@@ -15,8 +15,8 @@ div.p-show
             div.chart-info style="padding-bottom: 8px;"
               div.info-item
                 span.mr-1
-                  = link_to @user.username, users_show_path(username: @user.username), class: "mr-1 underline"
-                  |(投稿者), 
+                  = link_to @store.name, store_show_path(id: @store.id), class: "underline"
+                  |(店), 
                 span
                   = link_to "##{@food.tag}", ranking_show_path(tag: @food.tag), class: "underline"
                 span.icon-text-separator |
@@ -37,6 +37,10 @@ div.p-show
                   = render 'review/star', rate: @food.reviews.average(:rate).to_f.round(1), id: "top-header", size: 14
                 i.fas.fa-angle-down.mr-2
                 = link_to "#{@food.reviews.count}個の評価", "#review-widget", class: "underline"
+            div.chart-info
+              div.info-item
+                span.price-text 価格: 
+                span.price-number ￥#{@food.price}
 
         div.flex-50
           div.s-chart-widget-container

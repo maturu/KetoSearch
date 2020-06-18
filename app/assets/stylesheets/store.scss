@@ -1,0 +1,178 @@
+@import 'common.scss';
+
+.p-store {
+  .store-container {
+    .store-header {
+      width: 100%;
+      padding: 16px 107px 4px;
+      background-color: #fff;
+      .store-header-container {
+        max-width: 1284px;
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+        .user-icon {
+          @include flex-center;
+          width: 80px;
+          height: 80px;
+          border: 1px solid #ccc;
+          border-radius: 50%;
+          margin-right: 24px;
+          color: #ccc;
+          font-size: 50px;
+          flex: none;
+        }
+        .inner-header-container {
+          display: flex;
+          flex: 1;
+          flex-direction: row;
+          align-items: center;
+          max-width: 1284px;
+          .meta{
+            flex: 2;
+            .store-name {font-size: 24px;}
+            .subscriber-count {color: #606060;}
+          }
+          .buttons {
+            flex: 1;
+            .customize-btn, .subscribe-btn {
+              display: block;
+              text-align: center;
+              padding: 10px 0;
+              margin-left: auto;
+              background-color: $theme-color;
+              width: 130px;
+              height: 41px;
+              font-size: 14px;
+              color: #fff;
+              border: 0;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+    .store-tabs {
+      width: 100%;
+      height: 48px;
+      background-color: #fff;
+      .store-tabs-container {
+        @include flex-start;
+        max-width: 1284px;
+        margin: auto;
+        height: 100%;
+        .tabs-item {
+          display: block;
+          color: #555;
+          padding: 12px 32px;
+          margin-bottom: 3px;
+          vertical-align: middle;
+          &:hover {color: #111;}
+        }
+        .tabs-select {
+          color: #111;
+          border-bottom: 3px solid #555;
+          margin-bottom: 0;
+        }
+      }
+    }
+    .foods-grid, .store-about {
+      max-width: 1284px;
+      width: 100%;
+      min-height: calc(100vh - 56px - 48px - 16px);
+      margin: 32px auto;
+    }
+    .store-about {
+      .store-about-container {
+        display: flex;
+        flex-direction: row;
+        .left-column {
+          padding-right: 96px;
+          flex: 2;
+          .description-container, .details-container {
+            padding-bottom: 32px;
+            border-bottom: 1px solid #ccc;
+            .description-title, .details-title {
+              font-size: 16px;
+              margin: 24px 0;
+            }
+            .details-list {
+              color: #555;
+              padding: 0;
+              margin: 0;
+              list-style: none;
+              .details-list-header {
+                display: inline-block;
+                padding: 4px;
+                padding-right: 32px;
+                width: 200px;
+              }
+            }
+          }
+        }
+        .right-column {
+          flex: 1;
+          margin-top: 24px;
+          .line-title, .line-text {
+            padding: 12px 0;
+            border-bottom: 1px solid #ccc;
+          }
+          .line-title {font-size: 16px;}
+          .line-text {font-size: 14px;}
+        }
+      }
+    }
+    .foods-grid {
+      .foods-grid-container {
+        .grid-header {
+          line-height: 48px;
+          font-weight: 500;
+          font-size: 16px;
+        }
+        .grid-foods {
+          .grid-food-item {
+            display: inline-block;
+            position: relative;
+            vertical-align: top;
+            margin-right: 4px;
+            margin-bottom: 24px;
+            padding: 16px;
+            width: 210px;
+            min-height: 170px;
+            color: #111;
+            background-color: #fff;
+            box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.12);
+            &:hover {
+              background-color: #eee;
+            }
+            .food-name {font-size: 16px;}
+            .food-review {
+              margin-top: 4px;
+              .review-count {
+                font-size: 13px;
+                color: #555;
+              }
+            }
+            .food-browse {
+              font-size: 13px;
+              color: #555;
+            }
+            .food-price {
+              position: absolute;
+              bottom: 0;
+              padding: 16px 0;
+              .price-text {
+                font-size: 13px;
+                color: #555;
+              }
+              .price-number {
+                font-size: 17px;
+                color: #b12704;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

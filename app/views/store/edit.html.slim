@@ -1,0 +1,25 @@
+div.p-devise
+  div.d-content
+    div.d-header-title
+      h1 ストアの編集
+    hr
+    = form_for @store, url: store_update_path(id: @store.id), method: :post do |f|
+      = render "layouts/error_messages", model: f.object
+
+      div.field
+        = f.label :description
+        = f.text_area :description, placeholder: "ストアの説明を入力", value: @store.description
+      div.field
+        = f.label :name
+        = f.text_field :name, placeholder: "ストア名を入力", autocomplete: "off", value: @store.name
+      div.field
+        = f.label :postal_code
+        = f.text_field :postal_code, placeholder: "郵便番号を入力", autocomplete: "off", value: @store.postal_code
+      div.field
+        = f.label :address
+        = f.text_field :address, placeholder: "住所を入力", autocomplete: "off", value: @store.address
+      div.field
+        = f.label :phone_number
+        = f.text_field :phone_number, placeholder: "電話番号を入力", autocomplete: "off", value: @store.phone_number
+      div.actions
+        = f.submit "編集"

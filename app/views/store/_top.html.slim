@@ -1,0 +1,21 @@
+div.store-header
+  div.store-header-container
+    div.user-icon
+      i.fas.fa-user
+    div.inner-header-container
+      div.meta
+        div.store-name
+          span #{store.name}
+        div.subscriber-count
+          span ストア登録者数 0人
+      div.buttons
+        - if current_user.id == store.user_id
+          = link_to "カスタマイズ", store_edit_path(id: store.id), class: "customize-btn"
+        - else
+          = link_to "ストア登録", "#", class: "subscribe-btn"
+div.store-tabs
+  div.store-tabs-container
+    = link_to "ホーム", store_show_path(id: store.id),\
+      class: "tabs-item #{"tabs-select" if request.path_info == store_show_path}"
+    = link_to "概要", store_about_path(id: store.id),\
+      class: "tabs-item #{"tabs-select" if request.path_info == store_about_path}"

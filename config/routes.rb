@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
+  get 'store/show' => "store#show"
+  get 'store/new' => "store#new"
+  get 'store/edit' => "store#edit"
+  get 'store/about' => "store#about"
+  post 'store/create' => "store#create"
+  post 'store/update' => "store#update"
+
   get 'review/show' => "review#show"
   get 'review/new' => "review#new"
   get 'review/edit' => "review#edit"
   post 'review/create' => "review#create"
   post 'review/update' => "review#update"
   post 'review/destroy' => "review#destroy"
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   get 'users/show'
@@ -21,6 +29,7 @@ Rails.application.routes.draw do
   post 'chart/create' => "chart#create"
   post 'chart/update' => "chart#update"
   post 'chart/destroy' => "chart#destroy"
+
   get 'search/privacy_policy'
   get 'search/terms'
   root "search#index"

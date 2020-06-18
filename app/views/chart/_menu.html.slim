@@ -1,5 +1,5 @@
 = link_to "", chart_qrcode_path(id: food.id), class: "fas fa-qrcode qr-icon"
-- if user_signed_in? and current_user.id == food.user_id
+- if user_signed_in? and current_user.store and current_user.store.id == food.store_id
   div.chart-menu
     i.fas.fa-ellipsis-v
     div.chart-menu-dropdown

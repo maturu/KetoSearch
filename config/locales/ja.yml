@@ -74,9 +74,9 @@ ja:
         current_password: 現在のパスワード
         remember_me: ログイン情報を記憶する
       food:
-        tag: 食品タグ
-        address: 店舗 (飲食店の方のみ)
+        tag: 食品ジャンル
         name: 食品名、商品名、メニュー名
+        price: 値段
         gram: グラムあたり
         calorie: カロリー (kcal)
         water: 水分 (g)
@@ -92,6 +92,12 @@ ja:
         rate: 総合評価
         review_title: レビュータイトル
         review_details: レビューの詳細
+      store:
+        name: ストア名
+        postal_code: 郵便番号
+        address: 住所
+        phone_number: 電話番号
+        description: 説明
   views:
     pagination:
       first: '最初'

@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   def set_variables
     gon.data = {}.to_json
     flash['alert']=nil
+    gon.store_id = params[:id]
   end
 
   def after_sign_in_path_for(resource)
@@ -23,6 +24,10 @@ class ApplicationController < ActionController::Base
   private
     def sign_in_required
       redirect_to new_user_session_url unless user_signed_in?
+    end
+
+    def store_open_required
+      redirect_to store_new_path unless current_user.store
     end
 
     def pc_only

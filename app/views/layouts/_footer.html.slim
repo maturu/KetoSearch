@@ -1,0 +1,16 @@
+footer#grobal-footer.st-footer
+  div.st-footer-container
+    div.st-footer-start
+      = image_tag "logo.svg", alt: "", class: "st-footer-logo"
+      div.st-footer-entitle - KetoSearch -
+      div.st-footer-socials
+        a.fab.fa-twitter href="https://twitter.com/ketosearch" target="_blank"
+    div.st-footer-end
+      div.st-footer-ketosearch
+        div.st-footer-label KetoSearch
+        div.st-footer-list
+          div.st-footer-column
+            = link_to "利用規約", search_terms_path
+            = link_to "プライバシーポリシー", search_privacy_policy_path
+            = link_to "フィードバック", "https://twitter.com/ketosearch", target: "_blank"
+  div.st-footer-copyright Copyright © 2020 KetoSearch.

@@ -95,6 +95,14 @@
             padding-bottom: 15px;
             .info-item {
               display: inline-block;
+              .price-text {
+                font-size: 13px;
+                color: #555;
+              }
+              .price-number {
+                font-size: 17px;
+                color: #b12704;
+              }
             }
           }
           .chart-widget-wrapper {

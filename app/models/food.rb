@@ -1,19 +1,15 @@
 class Food < ApplicationRecord
   validates :tag, presence: true
   validates :name, presence: true, uniqueness: true
+  validates :price, presence: true, numericality: true
   validates :gram, presence: true, numericality: true
   validates :calorie, presence: true, numericality: true
   validates :protain, presence: true, numericality: true
   validates :lipid, presence: true, numericality: true
   validates :carbohydrate, presence: true, numericality: true
-  #validates :water, numericality: true
-  #validates :fibtg, numericality: true
-  #validates :na, numericality: true
-  #validates :reference, presence: true
-  #validates :url, presence: true
   validates :content, length: { maximum: 65535 }
 
-  belongs_to :user
+  belongs_to :store
   has_many :reviews, dependent: :destroy
 
   def self.search(keyword)

@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(username: params[:username])
-    @foods = @user.foods.all.order(created_at: "DESC")
+    @foods = @user.store.foods.all.order(created_at: "DESC")
     @dates = @foods.map{|f| f.created_at.to_date}.uniq
 
     data = @foods.map{|f|
