@@ -1,3 +1,4 @@
+= include_gon
 div.p-store
   div.store-container
     = render 'store/top', store: @store
@@ -19,3 +20,5 @@ div.p-store
               div.food-price
                 span.price-text 価格: 
                 span.price-number ￥#{food.price}
+        - if @store.foods.count >= 25
+          = button_tag "もっと読み込む", type: 'button', class: "btn none", id: "more-load"

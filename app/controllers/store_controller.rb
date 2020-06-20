@@ -9,7 +9,7 @@ class StoreController < ApplicationController
     gon.star_off = helpers.image_path('star-off.svg')
     gon.star_on = helpers.image_path('star-on.svg')
     gon.star_half = helpers.image_path('star-half.svg')
-    @foods = @store.foods.page(params[:page]).per(12)
+    @foods = @store.foods.page(params[:page]).per(24)
 
     respond_to do |format|
       format.html

@@ -65,9 +65,10 @@ ja:
       user:
         username: ユーザー名
         email: メールアドレス
-        introduction: 自己紹介
-        store: 店舗名
+        introduction: プロフィール
         address: 場所
+        job: 職業
+        age: 年齢
         website: ウェブサイト
         password: パスワード
         password_confirmation: 確認用パスワード

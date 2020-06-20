@@ -11,7 +11,7 @@ class ReviewController < ApplicationController
     else
       @reviews = @food.reviews
     end
-    @user = User.find(@food.user_id)
+    @store = Store.find(@food.store_id)
     @rates = [0, 0, 0, 0, 0]
     unless @food.reviews.blank?
       @rates.each_with_index do |rate, index|

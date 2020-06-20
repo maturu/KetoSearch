@@ -38,6 +38,8 @@ gem 'rqrcode'
 gem 'chunky_png'
 # Use for detection of Device/Browser
 gem 'browser'
+# Use for FontAwesome
+gem 'font-awesome-sass', '~> 5.4.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'

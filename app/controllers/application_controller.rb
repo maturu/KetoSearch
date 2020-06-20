@@ -4,9 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def set_variables
-    gon.data = {}.to_json
     flash['alert']=nil
-    gon.store_id = params[:id]
   end
 
   def after_sign_in_path_for(resource)

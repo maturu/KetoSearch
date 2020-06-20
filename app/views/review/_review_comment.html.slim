@@ -4,8 +4,10 @@ div.chart-review-comment
       div.review-list-item
         div.review-item-content
           div.customer
-            i.fas.fa-user.mr-1
-            span = User.find(review.user_id).username
+            div.user-icon.mr-1
+              = icon('fas', 'user')
+            - user = User.find(review.user_id)
+            = link_to user.username, users_show_path(username: user.username), class: "underline user-name"
             - if user_signed_in? and current_user.id == review.user_id
               - if request.path_info == users_show_path
                 div.customer-operations

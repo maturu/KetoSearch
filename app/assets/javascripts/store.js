@@ -4,14 +4,20 @@ $(document).on('turbolinks:load', function() {
   page = 1;
 });
 
-$(window).on('scroll', function(){
-  var doc_h = $(document).innerHeight(),
-      win_h = $(window).innerHeight(),
-      win_bottom = doc_h - win_h;
-  if($(window).scrollTop() >= win_bottom) {
-    page += 1;
-    update(page);
+$(window).on({
+  'scroll': function(){
+    var scrollHeight = $(document).height();
+    var scrollPosition = $(window).height() + $(window).scrollTop();
+    if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
+      page += 1;
+      update(page);
+    }
   }
+});
+
+$(document).on('click', '#more-load', function(){
+  page += 1;
+  update(page);
 });
 
 function update(page){

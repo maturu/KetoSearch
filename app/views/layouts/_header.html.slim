@@ -7,7 +7,7 @@ div
         - unless current_page?(root_path)
           div.st-header-search
             = form_tag chart_show_path, method: :get, enforce_utf8: false, class: "st-search-form" do
-              span.fas.fa-search
+              = icon('fas', 'search')
               = text_field_tag :search, '', class: "st-form-searchModel", placeholder: "キーワードを入力", autocomplete: "off"
               = button_tag "", type: 'submit', style: "display: none;"
             div.incremental-search
@@ -16,13 +16,14 @@ div
       div.st-header-end
         - if user_signed_in?
           = link_to ranking_show_path, class: "st-header-rank mr-2"
-            i.fas.fa-list-alt.mr-1
+            span.mr-1
+              = icon('fas', 'list-alt')
             span.rank-text 食品一覧
           = link_to chart_new_path, class: "st-header-postButton mr-2 px-2"
-            i.fas.fa-pen-square
+            = icon('fas', 'pen-square')
             span.post-text 投稿する
           div.st-header-user
-            i.fas.fa-user style="color: #3366cc"
+            = icon('fas', 'user')
             div.user-dropdown
               div.user-dropdown-header
                 div
@@ -31,8 +32,7 @@ div
                 = link_to 'ストア', store_show_path(id: current_user.store.id), class: "user-dropdown-item"
               - else
                 = link_to 'ストアを開設', store_new_path, class: "user-dropdown-item"
-              = link_to 'KetoSearch Studio', "#", class: "user-dropdown-item"
-              = link_to 'マイページ', users_show_path(username: current_user.username), class: "user-dropdown-item"
+              = link_to 'プロフィール', users_show_path(username: current_user.username), class: "user-dropdown-item"
               = link_to '一般設定', edit_user_registration_path, class: "user-dropdown-item"
               = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "user-dropdown-item"
         - else

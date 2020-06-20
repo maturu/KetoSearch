@@ -1,75 +1,87 @@
-div.p-devise.position-relative
-  div.d-content.position-relative
-    - if user_signed_in? and @user.id == current_user.id
-      = link_to "プロフィールを編集", users_profile_path(id: @user.id), id: "profile-edit-btn"
-    div.d-header-title style="text-align: left;"
-      h1
-        i.fas.fa-user.mr-2
-        = @user.username
-
-    - unless @user.introduction.blank? and @user.store.blank? and @user.address.blank? and @user.website.blank?
-      div.user-profile
-        p = @user.introduction
-        p
-          - unless @user.store.blank?
-            span.user-item
-              i.fas.fa-store-alt.mr-1
-              = @user.store
-          - unless @user.address.blank?
-            span.user-item
-              i.fas.fa-map-marker-alt.mr-1
-              = link_to "#{@user.address}", "https://maps.google.co.jp/maps/search/#{@user.address}",\
-              target: "_blank", rel: "noopener noreferrer"
-          - unless @user.website.blank?
-            span.user-item
-              i.fas.fa-link.mr-1
-              = link_to "#{@user.website}", @user.website, target: "_blank", rel: "noopener noreferrer"
-
-    hr
-    - unless @user.address.blank?
-      div.d-gmap-address
-        h3
-          = @user.username 
-          |の店舗情報
-        div.gmap-content
-          iframe src="https://maps.google.co.jp/maps?output=embed&q=#{@user.address}"
-
-    div.d-yearly-contribution
-      h3
-        |1年の食品情報の投稿履歴 
-        = @foods.count
-        |件
-      div#heatmap
-
-    div.d-contribution-activity
-      h3 最近の投稿履歴
-      - unless @dates.include?(Time.zone.now.to_date)
-        div.contribution-activity-listing
-          div.timeline
-            h4.timeline-month-header = Time.zone.now.in_time_zone('Asia/Tokyo').to_date.strftime("%Y年%m月%d日")
-            div.no-profile-data
-              |この期間
-              = @user.username
-              |は何も投稿していません。
-      - @dates.each do |date|
-        - @commits = @foods.where(created_at: date.beginning_of_day..date.end_of_day)
-        div.contribution-activity-listing
-          div.timeline
-            h4.timeline-month-header = date.in_time_zone('Asia/Tokyo').to_date.strftime("%Y年%m月%d日")
-            div.profile-wrapper
-              i.fas.fa-book
-              div.profile-title
-                |#{@commits.count}件の食品情報を投稿しました。
-              ul
-                - @commits.page(1).per(5).each do |c|
-                  li
-                    a href=chart_show_path(id: c.id)
-                      = c.name
-
-    div.d-review-activity
-      h3 レビュー履歴
-      - if @user.reviews.any?
-        = render 'review/review_comment', reviews: @user.reviews, limit_count: @user.reviews.count
-      - else
-        div.no-review
-          span まだ#{@user.username}は何もレビューしていません。
+div.p-profile
+  div.profile-container
+    div.profile-header
+      div.profile-header-container
+        div.inner-header-container
+          div.user-icon
+            = icon('fas', 'user')
+          div.meta
+            div.user-name
+              span #{@user.username}
+            div.user-info
+              span.mr-1 #{@user.age}
+              span.mr-1 #{@user.job}
+              span #{@user.address}
+        - if user_signed_in? and current_user.id == @user.id
+          div.button
+            = link_to "プロフィール編集", users_profile_path(id: @user.id), class: "profile-btn"
+    div.activity-area-container
+      div.profile-container-sub
+        div.profile-card
+          div.card-header
+            span プロフィール
+          div.card-container
+            - unless @user.introduction.blank?
+              span #{@user.introduction}
+            - else
+              - if user_signed_in? and current_user.id == @user.id
+                = link_to "公開プロフィールはまだありません。ご自身についての情報を追加しましょう。",\
+                  users_profile_path(id: @user.id), class: "underline"
+              - else
+                span.error-text 公開プロフィールはまだありません。
+        div.profile-card
+          div.card-header
+            span 登録ストア
+          div.card-container
+            - if user_signed_in? and current_user.id == @user.id
+              = link_to "お気に入りのストアを登録しましょう。",\
+                root_path, class: "underline"
+            - else
+              span.error-text 登録ストアはまだありません。
+        div.profile-card
+          div.card-header
+            span 獲得クーポン
+          div.card-container
+            - if user_signed_in? and current_user.id == @user.id
+              = link_to "獲得クーポンはまだありません。他のお客様の参考になるレビューを書いてクーポンを獲得しましょう。",\
+                root_path, class: "underline"
+            - else
+              span.error-text 獲得クーポンはまだありません。
+      div.profile-container-main
+        div.profile-card
+          div.card-header
+            span 詳細
+          div.card-container
+            div.card-row
+              div.card-row-item
+                div.item-value
+                  span #{0}
+                div.item-desc
+                  span 登録ストア数
+              div.card-row-item
+                div.item-value
+                  span #{@user.reviews.count}
+                div.item-desc
+                  span レビュー数
+              div.card-row-item
+                div.item-value
+                  span #{0}
+                div.item-desc
+                  span クーポン数
+        div.customer-timeline
+          div.timeline-header
+            span 書き込み履歴
+          div.timeline-container
+            - unless @user.reviews.blank?
+              = render 'review/review_comment', reviews: @user.reviews, limit_count: @user.reviews.count
+            - else
+              div.timeline-error
+                div.error-container
+                  - if user_signed_in? and current_user.id == @user.id
+                    span.mr-2
+                      = icon('fas', 'money-check-alt')
+                    div
+                      span 飲食店のメニューをレビューして、
+                      span お店のクーポンを獲得しましょう！
+                  - else
+                    span.error-text まだ#{@user.username}はレビューを投稿していません。

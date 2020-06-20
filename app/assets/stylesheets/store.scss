@@ -5,22 +5,28 @@
     .store-header {
       width: 100%;
       padding: 16px 107px 4px;
+      @media screen and (max-width: 414px){padding: 16px 10px 4px;}
       background-color: #fff;
       .store-header-container {
         max-width: 1284px;
         margin: auto;
         display: flex;
         flex-direction: row;
-        .user-icon {
+        .store-icon {
           @include flex-center;
           width: 80px;
           height: 80px;
-          border: 1px solid #ccc;
+          background-color: #555;
           border-radius: 50%;
           margin-right: 24px;
-          color: #ccc;
-          font-size: 50px;
+          color: #fff;
+          font-size: 40px;
           flex: none;
+          @media screen and (max-width: 414px){
+            width: 55px;
+            height: 55px;
+            font-size: 27px;
+          }
         }
         .inner-header-container {
           display: flex;
@@ -30,10 +36,20 @@
           max-width: 1284px;
           .meta{
             flex: 2;
-            .store-name {font-size: 24px;}
-            .subscriber-count {color: #606060;}
+            .store-name {
+              font-size: 24px;
+              @media screen and (max-width: 414px){font-size: 18px;}
+            }
+            .subscriber {
+              .underline {
+                display: none;
+                @media screen and (max-width: 414px){display: inline;}
+              }
+              .count {color: #606060;}
+            }
           }
           .buttons {
+            @media screen and (max-width: 414px){display: none;}
             flex: 1;
             .customize-btn, .subscribe-btn {
               display: block;
@@ -86,9 +102,14 @@
       .store-about-container {
         display: flex;
         flex-direction: row;
+        @media screen and (max-width: 414px){flex-direction: column;}
         .left-column {
           padding-right: 96px;
           flex: 2;
+          @media screen and (max-width: 414px){
+            padding: 0 10px;
+            flex: 1;
+          }
           .description-container, .details-container {
             padding-bottom: 32px;
             border-bottom: 1px solid #ccc;
@@ -113,6 +134,7 @@
         .right-column {
           flex: 1;
           margin-top: 24px;
+          @media screen and (max-width: 414px){padding: 0 10px;}
           .line-title, .line-text {
             padding: 12px 0;
             border-bottom: 1px solid #ccc;
@@ -142,6 +164,10 @@
             color: #111;
             background-color: #fff;
             box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.12);
+            @media screen and (max-width: 414px){
+              width: 100%;
+              margin-bottom: 10px;
+            }
             &:hover {
               background-color: #eee;
             }

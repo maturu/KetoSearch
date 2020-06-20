@@ -1,18 +1,24 @@
 div.store-header
   div.store-header-container
-    div.user-icon
-      i.fas.fa-user
+    div.store-icon
+      = icon('fas', 'store-alt')
     div.inner-header-container
       div.meta
         div.store-name
           span #{store.name}
-        div.subscriber-count
-          span ストア登録者数 0人
-      div.buttons
-        - if current_user.id == store.user_id
-          = link_to "カスタマイズ", store_edit_path(id: store.id), class: "customize-btn"
-        - else
-          = link_to "ストア登録", "#", class: "subscribe-btn"
+        div.subscriber
+          - if user_signed_in?
+            - if current_user.id == store.user_id
+              = link_to "カスタマイズ", store_edit_path(id: store.id), class: "underline mr-2"
+            - else
+              = link_to "ストア登録", "#", class: "underline mr-2"
+          span.count ストア登録者数 0人
+      - if user_signed_in?
+        div.buttons
+          - if current_user.id == store.user_id
+            = link_to "カスタマイズ", store_edit_path(id: store.id), class: "customize-btn"
+          - else
+            = link_to "ストア登録", "#", class: "subscribe-btn"
 div.store-tabs
   div.store-tabs-container
     = link_to "ホーム", store_show_path(id: store.id),\
