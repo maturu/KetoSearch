@@ -89,6 +89,36 @@
         flex: 1;
         .profile-card {
           background-color: #f5f7f5;
+          .card-container {
+            .subscribe-container {
+              @include flex-start;
+              align-items: flex-start;
+              padding: 8px;
+              margin: 4px 0;
+              border: 1px solid #ccc;
+              border-radius: 3px;
+              .store-icon {
+                @include flex-center;
+                width: 30px;
+                height: 30px;
+                background-color: #555;
+                border-radius: 50%;
+                color: #fff;
+                font-size: 14px;
+                flex: none;
+              }
+              .inner-subscribe-container {
+                .subscribe-header {
+                  color: #111;
+                  font-size: 14px;
+                }
+                .subscribe-count {
+                  color: #555;
+                  font-size: 12px;
+                }
+              }
+            }
+          }
         }
       }
       .profile-container-main {

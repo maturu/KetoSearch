@@ -51,18 +51,23 @@
           .buttons {
             @media screen and (max-width: 414px){display: none;}
             flex: 1;
-            .customize-btn, .subscribe-btn {
+            .customize-btn, .subscribe-btn, .unsubscribe-btn {
               display: block;
               text-align: center;
               padding: 10px 0;
               margin-left: auto;
-              background-color: $theme-color;
               width: 130px;
               height: 41px;
               font-size: 14px;
               color: #fff;
               border: 0;
+              border-radius: 3px;
               cursor: pointer;
+            }
+            .customize-btn, .subscribe-btn {background-color: $dark-theme-color;}
+            .unsubscribe-btn {
+              color: #eee;
+              background-color: #999;
             }
           }
         }

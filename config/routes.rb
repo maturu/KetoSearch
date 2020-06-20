@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'store/about' => "store#about"
   post 'store/create' => "store#create"
   post 'store/update' => "store#update"
+  post 'store/subscribe' => "subscribe#create"
+  post 'store/unsubscribe' => "subscribe#destroy"
 
   get 'review/show' => "review#show"
   get 'review/new' => "review#new"

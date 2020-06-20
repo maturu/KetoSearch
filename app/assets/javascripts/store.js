@@ -20,6 +20,46 @@ $(document).on('click', '#more-load', function(){
   update(page);
 });
 
+$(document).on('click', '.subscribe-btn', function(){
+  subscribe();
+});
+
+$(document).on('click', '.unsubscribe-btn', function(){
+  unsubscribe();
+});
+
+function subscribe(){
+  $.ajax({
+    url: '/store/subscribe',
+    type: 'POST',
+    data: ('id='+gon.store_id),
+    processData: false,
+    contetType: false,
+    dataType: 'json'
+  })
+  .done(function(data){
+    $('.buttons').html('<button name="button" type="button" class="unsubscribe-btn">登録済み</button>')
+    var obj = $('.subscriber .count .count-val');
+    obj.text(parseInt(obj.text())+1);
+  })
+}
+
+function unsubscribe(){
+  $.ajax({
+    url: '/store/unsubscribe',
+    type: 'POST',
+    data: ('id='+gon.store_id),
+    processData: false,
+    contetType: false,
+    dataType: 'json'
+  })
+  .done(function(data){
+    $('.buttons').html('<button name="button" type="button" class="subscribe-btn">ストア登録</button>')
+    var obj = $('.subscriber .count .count-val');
+    obj.text(parseInt(obj.text())-1);
+  })
+}
+
 function update(page){
   $.ajax({
     url: '/store/show',

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_19_000545) do
+ActiveRecord::Schema.define(version: 2020_06_20_055928) do
 
   create_table "foods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "tag"
@@ -68,6 +68,15 @@ ActiveRecord::Schema.define(version: 2020_06_19_000545) do
     t.index ["user_id"], name: "index_stores_on_user_id"
   end
 
+  create_table "subscribes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "store_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["store_id"], name: "index_subscribes_on_store_id"
+    t.index ["user_id"], name: "index_subscribes_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -106,4 +115,6 @@ ActiveRecord::Schema.define(version: 2020_06_19_000545) do
   add_foreign_key "reviews", "foods"
   add_foreign_key "reviews", "users"
   add_foreign_key "stores", "users"
+  add_foreign_key "subscribes", "stores"
+  add_foreign_key "subscribes", "users"
 end

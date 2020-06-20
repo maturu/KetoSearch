@@ -12,13 +12,19 @@ div.store-header
               = link_to "カスタマイズ", store_edit_path(id: store.id), class: "underline mr-2"
             - else
               = link_to "ストア登録", "#", class: "underline mr-2"
-          span.count ストア登録者数 0人
+          span.count
+            span ストア登録者数 
+            span.count-val #{store.subscribes.count}
+            span 人
       - if user_signed_in?
         div.buttons
           - if current_user.id == store.user_id
             = link_to "カスタマイズ", store_edit_path(id: store.id), class: "customize-btn"
           - else
-            = link_to "ストア登録", "#", class: "subscribe-btn"
+            - if Subscribe.find_by(user_id: current_user.id)
+              = button_tag "登録済み", type: 'button', class: "unsubscribe-btn"
+            - else
+              = button_tag "ストア登録", type: 'button', class: "subscribe-btn"
 div.store-tabs
   div.store-tabs-container
     = link_to "ホーム", store_show_path(id: store.id),\
