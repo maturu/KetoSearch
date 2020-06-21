@@ -24,7 +24,15 @@ $(document).on('click', '.subscribe-btn', function(){
   subscribe();
 });
 
+$(document).on('click', '.subscribe-text', function(){
+  subscribe();
+});
+
 $(document).on('click', '.unsubscribe-btn', function(){
+  unsubscribe();
+});
+
+$(document).on('click', '.unsubscribe-text', function(){
   unsubscribe();
 });
 
@@ -38,7 +46,9 @@ function subscribe(){
     dataType: 'json'
   })
   .done(function(data){
-    $('.buttons').html('<button name="button" type="button" class="unsubscribe-btn">登録済み</button>')
+    $('.buttons').html('<button name="button" type="button" class="unsubscribe-btn">登録済み</button>');
+    $('.subscribe-text').remove();
+    $('.subscriber').prepend('<span class="unsubscribe-text underline mr-2">登録済み</span>');
     var obj = $('.subscriber .count .count-val');
     obj.text(parseInt(obj.text())+1);
   })
@@ -54,7 +64,9 @@ function unsubscribe(){
     dataType: 'json'
   })
   .done(function(data){
-    $('.buttons').html('<button name="button" type="button" class="subscribe-btn">ストア登録</button>')
+    $('.buttons').html('<button name="button" type="button" class="subscribe-btn">ストア登録</button>');
+    $('.unsubscribe-text').remove();
+    $('.subscriber').prepend('<span class="subscribe-text underline mr-2">ストア登録</span>');
     var obj = $('.subscriber .count .count-val');
     obj.text(parseInt(obj.text())-1);
   })

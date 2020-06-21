@@ -45,6 +45,8 @@
                 display: none;
                 @media screen and (max-width: 414px){display: inline;}
               }
+              .unsubscribe-text {color: #555;}
+              .subscribe-text {color: #337ab7;}
               .count {color: #606060;}
             }
           }
@@ -202,6 +204,9 @@
               }
             }
           }
+        }
+        #more-load {
+          width: 100%;
         }
       }
     }

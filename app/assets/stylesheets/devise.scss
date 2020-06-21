@@ -12,6 +12,9 @@
       margin-bottom: 30px;
       letter-spacing: 1px;
       text-align: center;
+      h1 {
+        @media screen and (max-width: 414px){font-size: 21px;}
+      }
     }
     hr {
       margin: 20px 0;

@@ -23,6 +23,7 @@ class StoreController < ApplicationController
 
   def about
     @store = Store.find(params[:id])
+    gon.store_id = params[:id]
   end
 
   def edit

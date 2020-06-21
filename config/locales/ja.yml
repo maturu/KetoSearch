@@ -76,7 +76,7 @@ ja:
         remember_me: ログイン情報を記憶する
       food:
         tag: 食品ジャンル
-        name: 食品名、商品名、メニュー名
+        name: メニュー名
         price: 値段
         gram: グラムあたり
         calorie: カロリー (kcal)

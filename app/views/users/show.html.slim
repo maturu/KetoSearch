@@ -71,6 +71,11 @@ div.p-profile
                   span 登録ストア数
               div.card-row-item
                 div.item-value
+                  span #{@user.reviews.sum(:helpful)}
+                div.item-desc
+                  span 参考になった投票
+              div.card-row-item
+                div.item-value
                   span #{@user.reviews.count}
                 div.item-desc
                   span レビュー数

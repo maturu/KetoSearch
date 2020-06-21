@@ -19,7 +19,7 @@ div.p-show
                   |(店), 
                 span
                   = link_to "##{@food.tag}", ranking_show_path(tag: @food.tag), class: "underline"
-                span.icon-text-separator |
+                span.text-separator |
               div.info-item
                 - unless @food.address.blank?
                   span.mr-1

@@ -117,8 +117,6 @@ input[type="submit"], input[type="button"], input[type="text"], textarea {
 .btn {
   border: 1px solid #999;
   border-radius: 2px;
-  width: 100%;
-  max-width: 100px;
   height: 29px;
   @media screen and (max-width: 414px){
     max-width: none;
@@ -134,7 +132,15 @@ input[type="submit"], input[type="button"], input[type="text"], textarea {
   }
 }
 
-.icon-text-separator {
+.alert-container {
+  color: #007600;
+  font-size: 12px;
+  @media screen and (max-width: 414px){
+    font-size: 15px;
+  }
+}
+
+.text-separator {
   @media screen and (max-width: 414px){ display: none; }
   margin: 0 16px;
   color: #ddd;
@@ -956,6 +962,23 @@ body {
       .details-expander-in, .details-expander-out {
         span {
           font-size: 13px;
+        }
+      }
+      .review-operation {
+        margin: 8px 0;
+        font-size: 13px;
+        @media screen and (max-width: 414px){font-size: 15px;}
+        min-height: 41px;
+        .helpful-text {
+          font-size: 13px;
+          color: #767676;
+          margin-bottom: 8px;
+        }
+        .inner-review-operation {
+          @include flex-start;
+          .violation-report {
+            @media screen and (max-width: 414px){margin-left: 16px;}
+          }
         }
       }
     }

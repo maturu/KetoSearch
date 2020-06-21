@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_20_055928) do
+ActiveRecord::Schema.define(version: 2020_06_21_061420) do
 
   create_table "foods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "tag"
@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(version: 2020_06_20_055928) do
     t.bigint "food_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "report", default: 0, null: false
+    t.integer "helpful", default: 0, null: false
     t.index ["food_id"], name: "index_reviews_on_food_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end

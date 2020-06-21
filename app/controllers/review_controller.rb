@@ -1,5 +1,5 @@
 class ReviewController < ApplicationController
-  before_action :sign_in_required, only: [:new, :edit, :create, :update]
+  before_action :sign_in_required, only: [:new, :edit, :create, :update, :report]
   before_action :set_variables
 
   def show
@@ -60,6 +60,16 @@ class ReviewController < ApplicationController
     redirect_to review_show_path(fid: @review.food_id, id: @review.id) if @review.user_id != current_user.id
     @review.destroy
     redirect_to users_show_path(username: User.find(@review.user_id).username)
+  end
+
+  def report
+    @review = Review.find(params[:id])
+    @review.update(report: @review.report+1)
+  end
+
+  def helpful
+    @review = Review.find(params[:id])
+    @review.update(helpful: @review.helpful+1)
   end
 
   protected

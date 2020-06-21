@@ -26,13 +26,28 @@ div.chart-review-comment
             - review.review_details.split("\n").each do |text|
               span = text
               br
-        - if request.path_info == users_show_path
-          - food = Food.find(review.food_id)
-          = link_to chart_show_path(id: review.food_id), class: "review-food"
-            div.review-food-content
-              div
-                span = food.name
-              div
-                span.mr-1
-                  = render 'review/star', rate: food.reviews.average(:rate).to_f.round(1), id: "user-page-#{review.id}", size: 12
-                span = food.reviews.count
+        - food = Food.find(review.food_id)
+        - if user_signed_in?
+          - if request.path_info == users_show_path
+            = link_to chart_show_path(id: review.food_id), class: "review-food"
+              div.review-food-content
+                div
+                  span = food.name
+                div
+                  span.mr-1
+                    = render 'review/star', rate: food.reviews.average(:rate).to_f.round(1), id: "user-page-#{review.id}", size: 12
+                  span = food.reviews.count
+          - else
+            div.review-operation
+              - if review.helpful > 0
+                div.helpful-text
+                  span #{review.helpful}人のお客様がこれが役に立ったと考えています。
+              div.inner-review-operation
+                - if current_user.store and current_user.store.id == food.store_id
+                  = button_tag "クーポンの送信", type: 'button', class: "btn"
+                - else
+                  = button_to "役に立った", review_helpful_path(id: review.id), method: :post, remote: true, class: "helpful btn"
+                span.text-separator |
+                = link_to "違反を報告", review_report_path(id: review.id), class: "violation-report underline", \
+                  data: { confirm: "このレビューは不適切であり、www.ketosearch.orgのサイトから削除する必要があると思われる場合は、OKボタンをクリックしてお知らせください。" },
+                  method: :post, remote: true

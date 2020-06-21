@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   post 'review/create' => "review#create"
   post 'review/update' => "review#update"
   post 'review/destroy' => "review#destroy"
+  post 'review/report' => "review#report"
+  post 'review/helpful' => "review#helpful"
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
