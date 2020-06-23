@@ -40,6 +40,8 @@ gem 'chunky_png'
 gem 'browser'
 # Use for FontAwesome
 gem 'font-awesome-sass', '~> 5.4.1'
+# Use for Heroku Domain Redirect
+gem 'rack-rewrite'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
