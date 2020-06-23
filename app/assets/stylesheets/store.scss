@@ -207,6 +207,8 @@
         }
         #more-load {
           width: 100%;
+          display: none;
+          @media screen and (max-width: 414px){display: block;}
         }
       }
     }

@@ -7,4 +7,5 @@ class Store < ApplicationRecord
   belongs_to :user
   has_many :foods, dependent: :destroy
   has_many :subscribes, dependent: :destroy
+  has_many :coupons, dependent: :destroy
 end

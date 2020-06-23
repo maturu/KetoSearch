@@ -36,7 +36,7 @@ class ChartController < ApplicationController
           redirect_to root_path
         end
       }
-      format.json {render 'index', json: @foods.limit(5).pluck(:id, :name)} unless @foods.blank?
+      format.json {render json: @foods.limit(5).pluck(:id, :name)} unless @foods.blank?
     end
   end
 

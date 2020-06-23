@@ -8,4 +8,5 @@ class Review < ApplicationRecord
 
   belongs_to :user
   belongs_to :food
+  has_one :coupon
 end

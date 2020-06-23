@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_21_061420) do
+ActiveRecord::Schema.define(version: 2020_06_23_083319) do
+
+  create_table "coupons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "review_id"
+    t.bigint "store_id"
+    t.string "signature"
+    t.date "expiration_date"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "coupon_color"
+    t.boolean "used", default: false, null: false
+    t.boolean "confirmed", default: false, null: false
+    t.index ["review_id"], name: "index_coupons_on_review_id"
+    t.index ["store_id"], name: "index_coupons_on_store_id"
+    t.index ["user_id"], name: "index_coupons_on_user_id"
+  end
 
   create_table "foods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "tag"
@@ -113,6 +130,9 @@ ActiveRecord::Schema.define(version: 2020_06_21_061420) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "coupons", "reviews"
+  add_foreign_key "coupons", "stores"
+  add_foreign_key "coupons", "users"
   add_foreign_key "foods", "stores"
   add_foreign_key "reviews", "foods"
   add_foreign_key "reviews", "users"

@@ -99,6 +99,10 @@ ja:
         address: 住所
         phone_number: 電話番号
         description: 説明
+      coupon:
+        signature: 署名
+        price: クーポン価格
+        expiration_date: 有効期限
   views:
     pagination:
       first: '最初'

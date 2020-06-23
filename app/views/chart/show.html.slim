@@ -16,16 +16,7 @@ div.p-show
               div.info-item
                 span.mr-1
                   = link_to @store.name, store_show_path(id: @store.id), class: "underline"
-                  |(店), 
-                span
-                  = link_to "##{@food.tag}", ranking_show_path(tag: @food.tag), class: "underline"
-                span.text-separator |
-              div.info-item
-                - unless @food.address.blank?
-                  span.mr-1
-                    = link_to "#{@food.address}", "https://maps.google.co.jp/maps/search/#{@food.address}",\
-                    target: "_blank", rel: "noopener noreferrer", class: "mr-1 underline"
-                    |(住所),
+                  |(店) 
               div.info-item
                 - unless @food.reference.blank? and @food.url.blank?
                   span.mr-1

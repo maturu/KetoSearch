@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'coupon/show' => "coupon#show"
+  get 'coupon/new' => "coupon#new"
+  post 'coupon/create' => "coupon#create"
+  post 'coupon/use' => "coupon#use"
+  post 'coupon/confirm' => "coupon#confirm"
+
   get 'store/show' => "store#show"
   get 'store/new' => "store#new"
   get 'store/edit' => "store#edit"
@@ -23,7 +29,6 @@ Rails.application.routes.draw do
   get 'users/profile' => "users#edit"
   post 'users/update' => "users#update"
 
-  get 'ranking/show'
   get 'chart/show' => 'chart#show'
   get 'chart/edit' => 'chart#edit'
   get 'chart/more' => 'chart#more'

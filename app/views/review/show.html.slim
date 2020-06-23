@@ -12,10 +12,6 @@ div.p-review
         h1 = link_to @food.name, chart_show_path(id: @food.id), class: "underline"
         span.mr-1
           = link_to @store.name, store_show_path(id: @store.id), class: "mr-1 underline"
-        span
-          = link_to "##{@food.tag}", ranking_show_path(tag: @food.tag), class: "underline"
-        = button_to "レビューを書く", {controller: 'review', action: 'new'},\
-          {method: :get, params: {fid: @food.id}, class: "writeReview-btn"}
     hr
     - if params[:rate]
       span フィルタ: 星#{params[:rate]}つ

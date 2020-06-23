@@ -1,0 +1,37 @@
+div.p-coupon
+  div.coupon-container
+    div.coupon-header
+      h1 獲得したクーポンの使用
+    hr
+    div.coupon-card class="#{@coupon.coupon_color}"
+      div.coupon-card-container.position-relative
+        div.coupon-card-header
+          span COUPON
+        div.coupon-price
+          span.yen ￥
+          span.price-num.mr-1 #{@coupon.price}
+          span.off OFF
+          div.signature
+            span.mr-1 #{@store.name}(Store ID:#{@store.id})
+            span#signature-text #{@coupon.signature}
+            br
+        div.coupon-expiration
+          span #{@coupon.expiration_date}
+    hr
+    div.coupon-use
+      - if !@coupon.used
+        = link_to "クーポンを使用", coupon_use_path(id: @coupon.id), class: "coupon-use-btn", \
+          data: { confirm: "このクーポンを使用しますか？" },
+          method: :post, remote: true
+      - elsif !@coupon.confirmed
+        div.meta
+          span
+            |下のボタンをお会計の際、店員さんにお見せください。
+            |お客様が誤って押してしまった場合、このクーポンはもう使えなくなります。
+          span 飲食店の方はこのクーポンの使用を許可する場合、下のボタンを押してください。
+        = link_to "飲食店用確認ボタン", coupon_confirm_path(id: @coupon.id), class: "coupon-use-confirm-btn", \
+          data: { confirm: "このクーポンの使用を許可しますか？" },
+          method: :post, remote: true
+      - else
+        div.used-and-confirmed
+          span 使用済み

@@ -10,14 +10,14 @@ $(window).on({
     var scrollPosition = $(window).height() + $(window).scrollTop();
     if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
       page += 1;
-      update(page);
+      more_data(page);
     }
   }
 });
 
 $(document).on('click', '#more-load', function(){
   page += 1;
-  update(page);
+  more_data(page);
 });
 
 $(document).on('click', '.subscribe-btn', function(){
@@ -72,7 +72,7 @@ function unsubscribe(){
   })
 }
 
-function update(page){
+function more_data(page){
   $.ajax({
     url: '/store/show',
     type: 'GET',

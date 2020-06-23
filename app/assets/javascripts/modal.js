@@ -51,7 +51,7 @@ $(document).on('keyup', '.line-name', function(e){
   e.preventDefault();
   clearTimeout(timer);
   timer = setTimeout(function() {
-    update(obj)
+    modal_inc(obj)
   }, 250);
   destroy();
   if(!$(this).next().find('.incremental-item').length && $(this).val() != ""){
@@ -68,7 +68,7 @@ $(document).on('click', '.line-name', function(e){
   obj = this;
   e.preventDefault();
   destroy();
-  update(obj)
+  modal_inc(obj)
 });
 
 $(document).click(function(event) {
@@ -86,7 +86,7 @@ $(document).on('click', '.incremental-item', function(e){
   $(this).parent().parent().parent().prev().val(name);
 });
 
-function update(obj){
+function modal_inc(obj){
   $.ajax({
     url: '/chart/show',
     type: 'GET',
@@ -132,7 +132,6 @@ $(document).on('click', '.calc-item', function(e){
     dataType: 'json'
   })
   .done(function(data){
-    console.log(data);
     $('#food_gram').val(data.gram);
     $('#food_calorie').val(data.calorie);
     $('#food_protain').val(data.protain);
