@@ -1,0 +1,28 @@
+div.p-store
+  div.store-container
+    = render 'store/top', store: @store
+    div.store-about
+      div.store-about-container
+        div.left-column
+          - if @store.description
+            div.description-container
+              div.description-title 説明
+              span.description-text #{@store.description}
+
+          div.details-container
+            div.details-title 詳細
+            ul.details-list
+              li 
+                div.details-list-header 郵便番号:
+                span #{@store.postal_code}
+              li
+                div.details-list-header 住所:
+                span #{@store.address}
+              li
+                div.details-list-header 電話番号:
+                span #{@store.phone_number}
+
+        div.right-column
+          div.line-title 統計情報
+          div.line-text #{@store.created_at.in_time_zone('Asia/Tokyo').to_date.strftime("%Y年%m月%d日")} に登録
+          div.line-text #{@store.foods.sum(:browse)} 回閲覧

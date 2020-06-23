@@ -15,17 +15,8 @@ div.p-show
             div.chart-info style="padding-bottom: 8px;"
               div.info-item
                 span.mr-1
-                  = link_to @user.username, users_show_path(username: @user.username), class: "mr-1 underline"
-                  |(投稿者), 
-                span
-                  = link_to "##{@food.tag}", ranking_show_path(tag: @food.tag), class: "underline"
-                span.icon-text-separator |
-              div.info-item
-                - unless @food.address.blank?
-                  span.mr-1
-                    = link_to "#{@food.address}", "https://maps.google.co.jp/maps/search/#{@food.address}",\
-                    target: "_blank", rel: "noopener noreferrer", class: "mr-1 underline"
-                    |(住所),
+                  = link_to @store.name, store_show_path(id: @store.id), class: "underline"
+                  |(店) 
               div.info-item
                 - unless @food.reference.blank? and @food.url.blank?
                   span.mr-1
@@ -35,15 +26,21 @@ div.p-show
               div.info-item
                 span.mr-1
                   = render 'review/star', rate: @food.reviews.average(:rate).to_f.round(1), id: "top-header", size: 14
-                i.fas.fa-angle-down.mr-2
+                span.mr-1
+                  = icon('fas', 'angle-down')
                 = link_to "#{@food.reviews.count}個の評価", "#review-widget", class: "underline"
+            div.chart-info
+              div.info-item
+                span.price-text 価格: 
+                span.price-number ￥#{@food.price}
 
         div.flex-50
           div.s-chart-widget-container
             div.chart-header-title
               div.title-content
                 h2
-                  i.fas.fa-receipt.mr-1
+                  span.mr-1
+                    = icon('fas', 'receipt')
                   |「
                   = @food.name
                   |」の主要成分
@@ -113,7 +110,7 @@ div.p-show
             div.chart-header-title
               div.title-content
                 h2
-                  i.fas.fa-allergies.mr-1
+                  = icon('fas', 'allergies')
                   = "「#{@food.name}」のアレルギー物質"
             div.chart-table.position-relative
               - if @food.enter_allergies?
@@ -166,7 +163,7 @@ div.p-show
                       td colspan="7" = @food.allergies.blank? ? "─" : @food.allergies
               - else
                 div.widget-error
-                  i.fas.fa-exclamation-triangle
+                  = icon('fas', 'exclamation-triangle')
                   p まだアレルギー情報はありません。
 
         div.flex-100
@@ -174,7 +171,8 @@ div.p-show
             div.chart-header-title
               div.title-content
                 h2
-                  i.fas.fa-chart-pie.mr-1
+                  span.mr-1
+                    = icon('fas', 'chart-pie')
                   |「
                   = @food.name
                   |」の成分割合
@@ -208,7 +206,8 @@ div.p-show
             div.chart-header-title
               div.title-content
                 h2#review-widget
-                  i.fas.fa-star.mr-1
+                  span.mr-1
+                    = icon('fas', 'star')
                   |「#{@food.name}」のカスタマーレビュー
             div.chart-widget-wrapper
               div.flex-50
@@ -218,7 +217,7 @@ div.p-show
                   = render 'review/review_comment', reviews: @food.reviews, limit_count: 5
                 - else
                   div.widget-error#review-error
-                    i.fas.fa-exclamation-triangle
+                    = icon('fas', 'exclamation-triangle')
                     p まだカスタマーレビューはありません。
 
         div.flex-100
@@ -226,7 +225,8 @@ div.p-show
             div.chart-header-title
               div.title-content
                 h2
-                  i.fas.fa-file-alt.mr-2
+                  span.mr-1
+                    = icon('fas', 'file-alt')
                   |詳細
             div.preview-content
               - if @food.content?
@@ -235,5 +235,5 @@ div.p-show
                     = markdown(text).html_safe
               - else
                 div.widget-error
-                  i.fas.fa-exclamation-triangle
+                  = icon('fas', 'exclamation-triangle')
                   p まだ詳細データはありません。

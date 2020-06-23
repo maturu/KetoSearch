@@ -27,8 +27,12 @@ div.chart-review-graph
   - if request.path_info != review_show_path
     hr
     div.section-soliciation
-      h3 この食品をレビュー
-      div 他のお客様にも意見を伝えましょう
+      div.inner-soliciation-container
+        span.mr-2
+          = icon('fas', 'money-check-alt')
+        div
+          h3 レビューしてクーポン獲得
+          div 他のお客様にも意見を伝え、クーポンを獲得しましょう
       = button_to "カスタマーレビューを書く", {controller: 'review', action: 'new'},\
         {method: :get, params: {fid: food.id}, class: "writeReview-btn"}
     hr

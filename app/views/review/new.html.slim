@@ -4,7 +4,8 @@ div.p-review
   div.review-content
     div.header-title
       h2 #{@food.name}をレビュー
-
+      span ＊不適切なレビューを書いた場合、クーポンが獲得できない可能性があります。
+      span 例) ああああああ
     hr
     = form_for @review, url: review_create_path(fid: @food.id), method: :post do |f|
       = render 'layouts/error_messages', model: f.object

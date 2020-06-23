@@ -7,67 +7,17 @@ html
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     meta name="google-site-verification" content="T_gDC6MPZ4HBjx47WVxnulMMrIB8YmklFfQw89WjMVk"
 
-    = include_gon
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload', async: "async"
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_include_tag "https://platform.twitter.com/widgets.js", charset: "utf-8", async: "async"
     = analytics_init if Rails.env.production?
-    script src="https://kit.fontawesome.com/2c60105a2c.js" crossorigin="anonymous" rel="preload" async="async"
     - if Rails.env.production?
       script data-ad-client="ca-pub-8950479201307972" async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
 
   body
-    div
-      div.st-header
-        div.st-header-container
-          div.st-header-start
-            a href=root_path
-              = image_tag "logo.svg", alt: "", class: "st-header-logo"
-            - unless current_page?(root_path)
-              div.st-header-search
-                = form_tag chart_show_path, method: :get, enforce_utf8: false, class: "st-search-form" do
-                  span.fas.fa-search
-                  = text_field_tag :search, '', class: "st-form-searchModel", placeholder: "キーワードを入力", autocomplete: "off"
-                  = button_tag "", type: 'submit', style: "display: none;"
-                div.incremental-search
-                  div.incremental-wrapper
-                    ul.incremental-content
-          div.st-header-end
-            - if user_signed_in?
-              = link_to ranking_show_path, class: "st-header-rank mr-2"
-                i.fas.fa-list-alt.mr-1
-                span.rank-text 食品一覧
-              = link_to chart_new_path, class: "st-header-postButton mr-2 px-2"
-                i.fas.fa-pen-square
-                span.post-text 投稿する
-              div.st-header-user
-                i.fas.fa-user style="color: #3366cc"
-                div.user-dropdown
-                  div.user-dropdown-header
-                    div
-                      = current_user.username
-                  = link_to 'マイページ', users_show_path(username: current_user.username), class: "user-dropdown-item"
-                  = link_to '一般設定', edit_user_registration_path, class: "user-dropdown-item"
-                  = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "user-dropdown-item"
-            - else
-              = link_to 'ユーザー登録', new_user_registration_path, class: "st-header-signupButton mr-2"
-              = link_to 'ログイン', new_user_session_path, class: "st-header-loginLink"
+    = include_gon
+    = render 'layouts/header'
 
     = yield
 
-    footer#grobal-footer.st-footer
-      div.st-footer-container
-        div.st-footer-start
-          = image_tag "logo.svg", alt: "", class: "st-footer-logo"
-          div.st-footer-entitle - KetoSearch -
-          div.st-footer-socials
-            a.fab.fa-twitter href="https://twitter.com/ketosearch" target="_blank"
-        div.st-footer-end
-          div.st-footer-ketosearch
-            div.st-footer-label KetoSearch
-            div.st-footer-list
-              div.st-footer-column
-                = link_to "利用規約", search_terms_path
-                = link_to "プライバシーポリシー", search_privacy_policy_path
-                = link_to "フィードバック", "https://twitter.com/ketosearch", target: "_blank"
-      div.st-footer-copyright Copyright © 2020 KetoSearch.
+    = render 'layouts/footer'

@@ -4,7 +4,7 @@ $(document).on('turbolinks:load', function() {
     e.preventDefault();
     clearTimeout(timer);
     timer = setTimeout(function() {
-      update($.trim($('#search').val()))
+      searcu_inc($.trim($('#search').val()))
     }, 250);
     destroy($.trim($('#search').val()));
   });
@@ -13,11 +13,11 @@ $(document).on('turbolinks:load', function() {
     if(!$(event.target).closest('#search').length) {
       destroy($.trim($('#search').val()));
     }else{
-      update($.trim($('#search').val()));
+      searcu_inc($.trim($('#search').val()));
     }
   });
 
-  function update(input){
+  function searcu_inc(input){
     $.ajax({
       url: '/chart/show',
       type: 'GET',

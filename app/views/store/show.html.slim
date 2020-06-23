@@ -1,0 +1,23 @@
+div.p-store
+  div.store-container
+    = render 'store/top', store: @store
+    div.foods-grid
+      div.foods-grid-container
+        div.grid-header
+          span アップロードメニュー
+        div.grid-foods
+          - @foods.each do |food|
+            = link_to chart_show_path(id: food.id), class: "grid-food-item"
+              div.food-name
+                span #{food.name}
+              div.food-review
+                span.mr-1
+                  = render 'review/star', rate: food.reviews.average(:rate).to_f.round(1), id: food.id, size: 14
+                span.review-count #{food.reviews.count}個の評価
+              div.food-browse
+                span #{food.browse} 回閲覧・#{food.created_at.in_time_zone('Asia/Tokyo').to_date.strftime("%Y年%m月%d日")}
+              div.food-price
+                span.price-text 価格: 
+                span.price-number ￥#{food.price}
+        - if @store.foods.count >= 25
+          = button_tag "もっと読み込む", type: 'button', class: "btn", id: "more-load"

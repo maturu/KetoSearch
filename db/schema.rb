@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_12_111659) do
+ActiveRecord::Schema.define(version: 2020_06_23_083319) do
+
+  create_table "coupons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "review_id"
+    t.bigint "store_id"
+    t.string "signature"
+    t.date "expiration_date"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "coupon_color"
+    t.boolean "used", default: false, null: false
+    t.boolean "confirmed", default: false, null: false
+    t.index ["review_id"], name: "index_coupons_on_review_id"
+    t.index ["store_id"], name: "index_coupons_on_store_id"
+    t.index ["user_id"], name: "index_coupons_on_user_id"
+  end
 
   create_table "foods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "tag"
@@ -27,7 +44,6 @@ ActiveRecord::Schema.define(version: 2020_06_12_111659) do
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
     t.float "na"
     t.string "address"
     t.boolean "egg"
@@ -39,7 +55,10 @@ ActiveRecord::Schema.define(version: 2020_06_12_111659) do
     t.boolean "buckwheat"
     t.string "allergies"
     t.boolean "enter_allergies"
-    t.index ["user_id"], name: "index_foods_on_user_id"
+    t.bigint "store_id"
+    t.integer "browse", default: 0, null: false
+    t.integer "price"
+    t.index ["store_id"], name: "index_foods_on_store_id"
   end
 
   create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -50,8 +69,31 @@ ActiveRecord::Schema.define(version: 2020_06_12_111659) do
     t.bigint "food_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "report", default: 0, null: false
+    t.integer "helpful", default: 0, null: false
     t.index ["food_id"], name: "index_reviews_on_food_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "stores", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "phone_number"
+    t.string "postal_code"
+    t.text "description"
+    t.index ["user_id"], name: "index_stores_on_user_id"
+  end
+
+  create_table "subscribes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "store_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["store_id"], name: "index_subscribes_on_store_id"
+    t.index ["user_id"], name: "index_subscribes_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -80,14 +122,21 @@ ActiveRecord::Schema.define(version: 2020_06_12_111659) do
     t.string "introduction"
     t.string "address"
     t.string "website"
-    t.string "store"
+    t.integer "age"
+    t.string "job"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
-  add_foreign_key "foods", "users"
+  add_foreign_key "coupons", "reviews"
+  add_foreign_key "coupons", "stores"
+  add_foreign_key "coupons", "users"
+  add_foreign_key "foods", "stores"
   add_foreign_key "reviews", "foods"
   add_foreign_key "reviews", "users"
+  add_foreign_key "stores", "users"
+  add_foreign_key "subscribes", "stores"
+  add_foreign_key "subscribes", "users"
 end

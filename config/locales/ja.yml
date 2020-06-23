@@ -65,18 +65,19 @@ ja:
       user:
         username: ユーザー名
         email: メールアドレス
-        introduction: 自己紹介
-        store: 店舗名
+        introduction: プロフィール
         address: 場所
+        job: 職業
+        age: 年齢
         website: ウェブサイト
         password: パスワード
         password_confirmation: 確認用パスワード
         current_password: 現在のパスワード
         remember_me: ログイン情報を記憶する
       food:
-        tag: 食品タグ
-        address: 店舗 (飲食店の方のみ)
-        name: 食品名、商品名、メニュー名
+        tag: 食品ジャンル
+        name: メニュー名
+        price: 値段
         gram: グラムあたり
         calorie: カロリー (kcal)
         water: 水分 (g)
@@ -92,6 +93,16 @@ ja:
         rate: 総合評価
         review_title: レビュータイトル
         review_details: レビューの詳細
+      store:
+        name: ストア名
+        postal_code: 郵便番号
+        address: 住所
+        phone_number: 電話番号
+        description: 説明
+      coupon:
+        signature: 署名
+        price: クーポン価格
+        expiration_date: 有効期限
   views:
     pagination:
       first: '最初'

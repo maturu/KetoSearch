@@ -1,0 +1,60 @@
+div
+  div.st-header
+    div.st-header-container
+      div.st-header-start
+        a href=root_path
+          = image_tag "logo.svg", alt: "", class: "st-header-logo"
+        - unless current_page?(root_path)
+          div.st-header-search
+            = form_tag chart_show_path, method: :get, enforce_utf8: false, class: "st-search-form" do
+              = icon('fas', 'search')
+              = text_field_tag :search, '', class: "st-form-searchModel", placeholder: "キーワードを入力", autocomplete: "off"
+              = button_tag "", type: 'submit', style: "display: none;"
+            div.incremental-search
+              div.incremental-wrapper
+                ul.incremental-content
+      div.st-header-end
+        - if user_signed_in?
+          = link_to chart_new_path, class: "st-header-postButton mr-2 px-2"
+            = icon('fas', 'pen-square')
+            span.post-text 投稿する
+          div.st-header-user
+            = icon('fas', 'user')
+          div.user-dropdown
+            div.user-dropdown-header
+              span.user-dropdown-close = icon('fas', 'times')
+              span アカウント
+            div.user-dropdown-container
+              - if Store.find_by(user_id: current_user.id)
+                = link_to store_show_path(id: current_user.store.id), class: "user-dropdown-item"
+                  span.mr-2
+                    = icon('fas', 'store-alt')
+                  span ストア
+              - else
+                = link_to store_new_path, class: "user-dropdown-item"
+                  span.mr-2
+                    = icon('fas', 'store-alt')
+                  span ストア開設
+              = link_to users_show_path(username: current_user.username), class: "user-dropdown-item"
+                span.mr-2
+                  = icon('fas', 'address-card')
+                span プロフィール
+              = link_to edit_user_registration_path, class: "user-dropdown-item"
+                span.mr-2
+                  = icon('fas', 'cog')
+                span 一般設定
+              = link_to destroy_user_session_path, method: :delete, class: "user-dropdown-item"
+                span.mr-2
+                  = icon('fas', 'sign-out-alt')
+                span ログアウト
+              = link_to "https://twitter.com/ketosearch", target: "_blank", class: "user-dropdown-item"
+                span.mr-2
+                  = icon('fas', 'comment-alt')
+                span フィードバック
+            div.user-dropdown-footer
+              = link_to "プライバシーポリシー", search_privacy_policy_path
+              span ・
+              = link_to "利用規約", search_terms_path
+        - else
+          = link_to 'ユーザー登録', new_user_registration_path, class: "st-header-signupButton mr-2"
+          = link_to 'ログイン', new_user_session_path, class: "st-header-loginLink"

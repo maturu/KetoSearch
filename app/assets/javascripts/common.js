@@ -1,36 +1,3 @@
-$(document).on('click', '#tags-item', function(e){
-  var tag = $(this).text();
-  $('#food_tag').val(tag);
-  $('.tags-selector').val(tag);
-  $('.tags-selector .select-btn-text').text(tag);
-});
-
-$(document).on('click', '#sort-item', function(e){
-  var sort = $(this).text();
-  $('.sort-selector').val(sort);
-  $('.sort-selector .select-btn-text').text(sort);
-});
-
-$(document).on('click', '.select-form', function(e){
-  $('.incremental-dropdown', this).toggle();
-});
-
-$(document).click(function(event) {
-  if(!$(event.target).closest('.select-form').length) {
-    $('.incremental-dropdown').css('display', 'none');
-  }
-});
-
-$(document).on('click', '.st-header-user', function(e){
-  $('.user-dropdown').toggle();
-});
-
-$(document).click(function(event) {
-  if(!$(event.target).closest('.st-header-user').length) {
-    $('.user-dropdown').css('display', 'none');
-  }
-});
-
 $(document).on('turbolinks:load', function() {
   $('.review-item-content').each(function(){
     if($('.review-details', this).height() > 150){
@@ -61,4 +28,37 @@ $(document).on('turbolinks:load', function() {
     $(this).removeClass();
     $(this).addClass("details-expander-in");
   });
+
+  $('.st-header-user').on('click', function(e){
+    $('.user-dropdown').toggle();
+    if($('.user-dropdown').css('display') == 'none'){
+      $('body').css('position', 'initial');
+      $('body').css('width', 'auto');
+      $('body').css('overflow-y', 'auto');
+    }else{
+      $('body').css('position', 'fixed');
+      $('body').css('width', '100%');
+      $('body').css('overflow-y', 'scroll');
+    }
+    if(window.matchMedia && window.matchMedia('(max-width: 414px)').matches){
+      $('.user-dropdown').css('left', 0);
+    }else{
+      $('.user-dropdown').css('left', $(this).offset().left-$('.user-dropdown').width()+32);
+    }
+  });
+
+  $('.user-dropdown-close').on('click', function(e){
+    $('.user-dropdown').css('display', 'none');
+    $('body').css('position', 'initial');
+    $('body').css('width', 'auto');
+    $('body').css('overflow-y', 'auto');
+  });
+});
+
+$(window).resize(function(){
+  if(window.matchMedia && window.matchMedia('(max-width: 414px)').matches){
+    $('.user-dropdown').css('left', 0);
+  }else{
+    $('.user-dropdown').css('left', $('.st-header-user').offset().left-$('.user-dropdown').width()+32);
+  }
 });

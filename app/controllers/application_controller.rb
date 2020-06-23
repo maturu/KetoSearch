@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def set_variables
-    gon.data = {}.to_json
     flash['alert']=nil
   end
 
@@ -25,14 +24,19 @@ class ApplicationController < ActionController::Base
       redirect_to new_user_session_url unless user_signed_in?
     end
 
+    def store_open_required
+      redirect_to store_new_path unless current_user.store
+    end
+
     def pc_only
       redirect_to root_path if browser.device.mobile?
     end
 
     def store_location
-      if (request.fullpath != "/users/sign_in" &&
-          request.fullpath != "/users/sign_up" &&
-          request.fullpath !~ Regexp.new("\\A/users/password.*\\z") &&
+      if (request.fullpath != "/users/sign_in" and
+          request.fullpath != "/users/sign_up" and
+          request.path_info != "/users/confirmation" and
+          request.fullpath !~ Regexp.new("\\A/users/password.*\\z") and
           !request.xhr?) # don't store ajax calls
         session[:previous_url] = request.fullpath 
       end

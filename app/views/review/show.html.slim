@@ -9,14 +9,9 @@ div.p-review
     div.review-header.position-relative
       = render 'review/review_graph', food: @food, rates: @rates
       div.header-title-content
-        h1 = link_to "#{@food.name}", chart_show_path(id: @food.id), class: "underline"
+        h1 = link_to @food.name, chart_show_path(id: @food.id), class: "underline"
         span.mr-1
-          i.fas.fa-user.mr-1
-          = link_to @user.username, users_show_path(username: @user.username), class: "mr-1 underline"
-        span
-          = link_to "##{@food.tag}", ranking_show_path(tag: @food.tag), class: "underline"
-        = button_to "レビューを書く", {controller: 'review', action: 'new'},\
-          {method: :get, params: {fid: @food.id}, class: "writeReview-btn"}
+          = link_to @store.name, store_show_path(id: @store.id), class: "mr-1 underline"
     hr
     - if params[:rate]
       span フィルタ: 星#{params[:rate]}つ

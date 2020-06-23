@@ -9,11 +9,14 @@ div.p-devise
         = f.label :introduction
         = f.text_area :introduction, placeholder: "自己紹介を追加", maxlength: 160
       div.field
-        = f.label :store
-        = f.text_field :store, placeholder: "店舗の名前を追加"
+        = f.label :age
+        = f.text_field :age, placeholder: "年齢を追加"
+      div.field
+        = f.label :job
+        = f.text_field :job, placeholder: "職業を追加"
       div.field
         = f.label :address
-        = f.text_field :address, placeholder: "店舗の住所を追加"
+        = f.text_field :address, placeholder: "居住地を追加"
       div.field
         = f.label :website
         = f.text_field :website, placeholder: "ウェブサイトを追加"

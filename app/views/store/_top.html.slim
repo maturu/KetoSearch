@@ -1,0 +1,37 @@
+div.store-header
+  div.store-header-container
+    div.store-icon
+      = icon('fas', 'store-alt')
+    div.inner-header-container
+      div.meta
+        div.store-name
+          span #{store.name}
+        div.subscriber
+          - subscribe = Subscribe.find_by(user_id: current_user.id)
+          - if user_signed_in?
+            - if current_user.id == store.user_id
+              = link_to "カスタマイズ", store_edit_path(id: store.id), class: "underline mr-2"
+            - else
+              - if subscribe
+                span.unsubscribe-text.underline.mr-2 登録済み
+              - else
+                span.subscribe-text.underline.mr-2 ストア登録
+          span.count
+            span ストア登録者数 
+            span.count-val #{store.subscribes.count}
+            span 人
+      - if user_signed_in?
+        div.buttons
+          - if current_user.id == store.user_id
+            = link_to "カスタマイズ", store_edit_path(id: store.id), class: "customize-btn"
+          - else
+            - if subscribe
+              = button_tag "登録済み", type: 'button', class: "unsubscribe-btn"
+            - else
+              = button_tag "ストア登録", type: 'button', class: "subscribe-btn"
+div.store-tabs
+  div.store-tabs-container
+    = link_to "ホーム", store_show_path(id: store.id),\
+      class: "tabs-item #{"tabs-select" if request.path_info == store_show_path}"
+    = link_to "概要", store_about_path(id: store.id),\
+      class: "tabs-item #{"tabs-select" if request.path_info == store_about_path}"
