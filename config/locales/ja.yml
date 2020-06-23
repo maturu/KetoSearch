@@ -95,9 +95,9 @@ ja:
         review_details: レビューの詳細
       store:
         name: ストア名
-        postal_code: 郵便番号
+        postal_code: 郵便番号(ハイフンあり)
         address: 住所
-        phone_number: 電話番号
+        phone_number: 電話番号(ハイフンなし)
         description: 説明
       coupon:
         signature: 署名
