@@ -7,8 +7,8 @@ div.store-header
         div.store-name
           span #{store.name}
         div.subscriber
-          - subscribe = Subscribe.find_by(user_id: current_user.id)
           - if user_signed_in?
+            - subscribe = Subscribe.find_by(user_id: current_user.id)
             - if current_user.id == store.user_id
               = link_to "カスタマイズ", store_edit_path(id: store.id), class: "underline mr-2"
             - else
