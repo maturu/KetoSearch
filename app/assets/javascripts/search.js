@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function() {
   var timer;
-  $(document).on('keyup', '#search', function(e){
+  $(document).on('input', '#search', function(e){
     e.preventDefault();
     clearTimeout(timer);
     timer = setTimeout(function() {
