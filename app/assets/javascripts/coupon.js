@@ -43,11 +43,11 @@ $(document).on('turbolinks:load', function() {
     white();
   });
 
-  $(document).on("keyup", '#coupon_signature', function(){
+  $(document).on("input", '#coupon_signature', function(){
     $('.signature #signature-text').text($(this).val());
   });
 
-  $(document).on("keyup", '#coupon_price', function(){
+  $(document).on("input", '#coupon_price', function(){
     var num = Number($(this).val());
     if(window.matchMedia && window.matchMedia('(max-width: 414px)').matches){
       var font = 35;

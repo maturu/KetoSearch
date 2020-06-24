@@ -46,7 +46,7 @@ $(document).on('click', '.add-item', function(e){
 
 var timer;
 var obj;
-$(document).on('keyup', '.line-name', function(e){
+$(document).on('input', '.line-name', function(e){
   obj = this;
   e.preventDefault();
   clearTimeout(timer);
