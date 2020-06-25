@@ -213,6 +213,17 @@
         padding: 0 5px;
       }
     }
+    .checkboxs {
+      margin-left: 10px;
+      .checkbox-item {
+        display: inline-block;
+        margin-right: 8px;
+        @media screen and (max-width: 414px){
+          display: block;
+          margin: 4px 0;
+        }
+      }
+    }
     .detail {
       @media screen and (max-width: 414px){ display: none; }
     }
@@ -356,10 +367,6 @@
       }
     }
   }
-}
-
-#allergy_checkbox {
-  margin-left: 10px;
 }
 
 #allergies_form {

@@ -42,13 +42,11 @@ class ChartController < ApplicationController
 
   def new
     @food = Food.new
-    @tags = Food.pluck('tag').uniq
   end
 
   def edit
     @food = Food.find(params[:id])
     redirect_to chart_show_path(id: @food.id) if @food.store_id != current_user.store.id
-    @tags = Food.pluck('tag').uniq
   end
 
   def more
@@ -62,8 +60,6 @@ class ChartController < ApplicationController
 
   def create
     @food = current_user.store.foods.new(food_params)
-    @tags = Food.pluck('tag').uniq
-    @user = User.find(current_user.id)
     if @food.save
       redirect_to chart_qrcode_path(id: @food.id)
     else
@@ -74,7 +70,6 @@ class ChartController < ApplicationController
   def update
     @food = Food.find(params[:id])
     redirect_to chart_show_path(id: @food.id) if @food.store_id != current_user.store.id
-
     if @food.update(food_params)
       redirect_to chart_show_path(id: @food.id)
     else

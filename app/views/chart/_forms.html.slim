@@ -44,9 +44,22 @@ fieldset.form_fields
     = f.label :na
     = f.text_field :na, placeholder: "例) 2300", autocomplete: "off", value: food.na
 
-div#allergy_checkbox
-  = f.check_box :enter_allergies, class: "mr-1"
-  = f.label "アレルギー情報を入力する"
+fieldset.form_fields
+  legend 備考 (参考にしたサイトがある場合)
+  div.field
+    = f.label :reference
+    = f.text_field :reference, placeholder: "参照先のタイトル", autocomplete: "off", value: food.reference
+  div.field
+    = f.label :url
+    = f.text_field :url, placeholder: "例) https://www.example.com", autocomplete: "off", value: food.url
+
+div.checkboxs
+  div.checkbox-item#allergy_checkbox
+    = f.check_box :enter_allergies, class: "mr-1"
+    = f.label "アレルギー情報を入力する"
+  div.checkbox-item
+    = f.check_box :review_permit, class: "mr-1"
+    = f.label "このメニューへのレビューを許可する"
 
 fieldset.form_fields#allergies_form
   legend アレルギー情報を入力してください
@@ -88,14 +101,7 @@ fieldset.form_fields#allergies_form
   div.field
     = f.label :allergies
     = f.text_field :allergies, placeholder: "アレルギー食品の入力"
-fieldset.form_fields
-  legend 備考 (参考にしたサイトがある場合)
-  div.field
-    = f.label :reference
-    = f.text_field :reference, placeholder: "参照先のタイトル", autocomplete: "off", value: food.reference
-  div.field
-    = f.label :url
-    = f.text_field :url, placeholder: "例) https://www.example.com", autocomplete: "off", value: food.url
+
 div.actions
   - if food.id.present?
     = f.submit "編集する"

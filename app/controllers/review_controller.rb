@@ -24,18 +24,21 @@ class ReviewController < ApplicationController
   def new
     @food = Food.find(params[:fid])
     @review = @food.reviews.find_by(user_id: current_user.id)
+    redirect_to chart_show_path(id: @food.id) unless @food.review_permit
     redirect_to review_edit_path(id: @review.id) if @review.present?
     @review = @food.reviews.new
   end
 
   def edit
     @review = Review.find(params[:id])
-    redirect_to review_show_path(fid: @review.food_id, id: @review.id) if @review.user_id != current_user.id
     @food = Food.find(@review.food_id)
+    redirect_to chart_show_path(id: @food.id) unless @food.review_permit
+    redirect_to review_show_path(fid: @review.food_id, id: @review.id) if @review.user_id != current_user.id
   end
 
   def create
     @food = Food.find(params[:fid])
+    redirect_to chart_show_path(id: @food.id) unless @food.review_permit
     @review = @food.reviews.new(review_params)
     @review.user_id = current_user.id
     if @review.save
@@ -47,6 +50,8 @@ class ReviewController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
+    @food = Food.find(@review.food_id)
+    redirect_to chart_show_path(id: @food.id) unless @food.review_permit
     redirect_to review_show_path(fid: @review.food_id, id: @review.id) if @review.user_id != current_user.id
     if @review.update(review_params)
       redirect_to review_show_path(fid: @review.food_id, id: @review.id)

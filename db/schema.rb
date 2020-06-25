@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_23_083319) do
+ActiveRecord::Schema.define(version: 2020_06_25_123805) do
 
   create_table "coupons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 2020_06_23_083319) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "na"
-    t.string "address"
     t.boolean "egg"
     t.boolean "milk"
     t.boolean "wheat"
@@ -58,6 +57,7 @@ ActiveRecord::Schema.define(version: 2020_06_23_083319) do
     t.bigint "store_id"
     t.integer "browse", default: 0, null: false
     t.integer "price"
+    t.boolean "review_permit", default: true, null: false
     t.index ["store_id"], name: "index_foods_on_store_id"
   end
 
@@ -124,6 +124,7 @@ ActiveRecord::Schema.define(version: 2020_06_23_083319) do
     t.string "website"
     t.integer "age"
     t.string "job"
+    t.boolean "admin", default: false, null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

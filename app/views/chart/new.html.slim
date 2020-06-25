@@ -3,7 +3,7 @@
 div.p-edit-chart
   div.e-content
     = form_for @food, url: chart_create_path, method: :post  do |f|
-      = render 'chart/forms', food: @food, tags: @tags, f: f
+      = render 'chart/forms', food: @food, f: f
 
     div#about-qrcode ＊投稿後、QRコードが自動的に生成されます。
 

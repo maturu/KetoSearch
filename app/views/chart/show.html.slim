@@ -22,17 +22,19 @@ div.p-show
                   span.mr-1
                     = link_to @food.reference, @food.url, class: "mr-1 underline", target: "_blank", rel: "noopener noreferrer"
                     |(文献)
-            div.chart-info
-              div.info-item
-                span.mr-1
-                  = render 'review/star', rate: @food.reviews.average(:rate).to_f.round(1), id: "top-header", size: 14
-                span.mr-1
-                  = icon('fas', 'angle-down')
-                = link_to "#{@food.reviews.count}個の評価", "#review-widget", class: "underline"
-            div.chart-info
-              div.info-item
-                span.price-text 価格: 
-                span.price-number ￥#{@food.price}
+            - if @food.review_permit
+              div.chart-info
+                div.info-item
+                  span.mr-1
+                    = render 'review/star', rate: @food.reviews.average(:rate).to_f.round(1), id: "top-header", size: 14
+                  span.mr-1
+                    = icon('fas', 'angle-down')
+                  = link_to "#{@food.reviews.count}個の評価", "#review-widget", class: "underline"
+            - if @food.price > 0
+              div.chart-info
+                div.info-item
+                  span.price-text 価格: 
+                  span.price-number ￥#{@food.price}
 
         div.flex-50
           div.s-chart-widget-container
@@ -201,24 +203,25 @@ div.p-show
               div.paginate-empty
               = paginate @relations
 
-        div.flex-100
-          div.s-chart-widget-container
-            div.chart-header-title
-              div.title-content
-                h2#review-widget
-                  span.mr-1
-                    = icon('fas', 'star')
-                  |「#{@food.name}」のカスタマーレビュー
-            div.chart-widget-wrapper
-              div.flex-50
-                = render 'review/review_graph', food: @food, rates: @rates
-              div.flex-50.position-relative
-                - if @food.reviews.any?
-                  = render 'review/review_comment', reviews: @food.reviews, limit_count: 5
-                - else
-                  div.widget-error#review-error
-                    = icon('fas', 'exclamation-triangle')
-                    p まだカスタマーレビューはありません。
+        - if @food.review_permit
+          div.flex-100
+            div.s-chart-widget-container
+              div.chart-header-title
+                div.title-content
+                  h2#review-widget
+                    span.mr-1
+                      = icon('fas', 'star')
+                    |「#{@food.name}」のカスタマーレビュー
+              div.chart-widget-wrapper
+                div.flex-50
+                  = render 'review/review_graph', food: @food, rates: @rates
+                div.flex-50.position-relative
+                  - if @food.reviews.any?
+                    = render 'review/review_comment', reviews: @food.reviews, limit_count: 5
+                  - else
+                    div.widget-error#review-error
+                      = icon('fas', 'exclamation-triangle')
+                      p まだカスタマーレビューはありません。
 
         div.flex-100
           div.s-chart-widget-container

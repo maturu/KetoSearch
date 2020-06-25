@@ -89,39 +89,47 @@ function more_data(page){
             '<span>'+food.name+'</span>'+
           '</div>'+
           '<div class="food-review">'+
-            '<span class="mr-1">'+
-              '<span class="section-total-star" id="star-'+food.id+'"></span>'+
-            '</span>'+
-            '<span class="review-count">'+food.reviews.length+'個の評価</span>'+
           '</div>'+
           '<div class="food-browse">'+
             '<span>'+food.browse+' 回閲覧・2020年06月14日</span>'+
           '</div>'+
           '<div class="food-price">'+
-            '<span class="price-text">価格: </span>'+
-            '<span class="price-number">￥'+food.price+'</span>'+
           '</div>'+
         '</a>'
       );
 
-      var rate = 0;
-      $(food.reviews).each(function(i, review){
-        rate += review.rate;
-      });
-      rate = (rate / food.reviews.length).toFixed(1);
+      if(food.price > 0){
+        $('.food-price').html(
+          '<span class="price-text">価格: </span>'+
+          '<span class="price-number">￥'+food.price+'</span>'
+        )
+      }
 
-      $('#star-'+food.id).empty();
-      $('#star-'+food.id).raty({
-        starOff: gon.star_off,
-        starOn: gon.star_on,
-        starHalf: gon.star_half,
-        half: true,
-        readOnly: true,
-        score: rate
-      });
-      $('#star-'+food.id+' img').css('width', '14px');
-      $('#star-'+food.id+' img').removeAttr("title");
-      $('#star-'+food.id).removeAttr("title");
+      if(food.review_permit){
+        $('.food-review').html(
+          '<span class="mr-1">'+
+            '<span class="section-total-star" id="star-'+food.id+'"></span>'+
+          '</span>'+
+          '<span class="review-count">'+food.reviews.length+'個の評価</span>'
+        );
+        var rate = 0;
+        $(food.reviews).each(function(i, review){
+          rate += review.rate;
+        });
+        rate = (rate / food.reviews.length).toFixed(1);
+        $('#star-'+food.id).empty();
+        $('#star-'+food.id).raty({
+          starOff: gon.star_off,
+          starOn: gon.star_on,
+          starHalf: gon.star_half,
+          half: true,
+          readOnly: true,
+          score: rate
+        });
+        $('#star-'+food.id+' img').css('width', '14px');
+        $('#star-'+food.id+' img').removeAttr("title");
+        $('#star-'+food.id).removeAttr("title");
+      }
     });
   })
 }
