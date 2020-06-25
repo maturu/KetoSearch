@@ -412,40 +412,64 @@ body {
           font-size: 18px;
           cursor: pointer;
         }
+        .mobile-user-dropdown {
+          top: 0;
+          width: 100%;
+          height: 100%;
+          .user-dropdown-header {
+            display: block;
+            font-size: 17px;
+          }
+          .user-dropdown-footer {
+            display: block;
+          }
+          .user-dropdown-container {
+            overflow-y: scroll;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            &:-webkit-scrollbar {
+              display: none;
+            }
+            .user-dropdown-item {
+              font-size: 16px;
+            }
+          }
+        }
+        .pc-user-dropdown {
+          top: 48px;
+          width: 250px;
+          .user-dropdown-header {
+            display: none;
+            font-size: 14px;
+          }
+          .user-dropdown-footer {
+            display: none;
+          }
+          .user-dropdown-container {
+            .user-dropdown-item {
+              font-size: 14px;
+            }
+          }
+        }
         .user-dropdown {
           display: none;
           position: fixed;
-          top: 48px;
           z-index: 20;
-          width: 250px;
           background-color: #fff;
           padding: 4px 0;
           border: 1px solid #ddd;
           border-radius: 2px;
           box-shadow: 0 0 8px 0 rgba(0,0,0,0.15);
-          @media screen and (max-width: 414px){
-            top: 0;
-            width: 100%;
-            height: 100%;
-          }
           .user-dropdown-header {
-            display: none;
-            font-size: 14px;
             padding: 12px 16px;
             color: #555;
             margin-bottom: 4px;
             box-shadow: 0 2px 5px 0 rgba(0,0,0,0.1);
-            @media screen and (max-width: 414px){
-              display: block;
-              font-size: 17px;
-            }
             .user-dropdown-close {
               margin-right: 32px;
             }
           }
           .user-dropdown-footer {
-            display: none;
-            @media screen and (max-width: 414px){display: block;}
             position: fixed;
             bottom: 0;
             width: 100%;
@@ -453,6 +477,7 @@ body {
             text-align: center;
             font-size: 13px;
             box-shadow: 0 0 3px 1px rgba(0,0,0,0.2);
+            background-color: #fff;
             a, span {
               color: #767676;
               line-height: 51px;
@@ -461,8 +486,6 @@ body {
           .user-dropdown-container {
             .user-dropdown-item {
               display: block;
-              font-size: 14px;
-              @media screen and (max-width: 414px){font-size: 16px;}
               font-weight: normal;
               padding: 12px 16px;
               color: #767676;

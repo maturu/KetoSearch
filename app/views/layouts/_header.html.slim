@@ -20,7 +20,7 @@ div
             span.post-text 投稿する
           div.st-header-user
             = icon('fas', 'user')
-          div.user-dropdown
+          div.user-dropdown class="#{browser.device.mobile? ? "mobile-user-dropdown" : "pc-user-dropdown"}"
             div.user-dropdown-header
               span.user-dropdown-close = icon('fas', 'times')
               span アカウント
