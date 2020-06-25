@@ -414,6 +414,7 @@ body {
         }
         .mobile-user-dropdown {
           top: 0;
+          left: 0;
           width: 100%;
           height: 100%;
           .user-dropdown-header {
@@ -471,6 +472,7 @@ body {
           }
           .user-dropdown-footer {
             position: fixed;
+            left: 0;
             bottom: 0;
             width: 100%;
             height: 55px;
