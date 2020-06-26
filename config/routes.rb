@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'notifications/index' => "notifications#index"
+
   get 'coupon/show' => "coupon#show"
   get 'coupon/new' => "coupon#new"
   post 'coupon/create' => "coupon#create"

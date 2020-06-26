@@ -18,6 +18,16 @@ div
           = link_to chart_new_path, class: "st-header-postButton mr-2 px-2"
             = icon('fas', 'pen-square')
             span.post-text 投稿する
+
+          div.st-header-notification.mr-2
+            = icon('fas', 'bell')
+            div#notification-check
+          div.notification-dropdown class="#{browser.device.mobile? ? "mobile-notification-dropdown" : "pc-notification-dropdown"}"
+            div.notification-dropdown-header
+              span.notification-dropdown-close = icon('fas', 'times')
+              span 通知
+            div.notification-dropdown-container
+
           div.st-header-user
             = icon('fas', 'user')
           div.user-dropdown class="#{browser.device.mobile? ? "mobile-user-dropdown" : "pc-user-dropdown"}"
@@ -25,6 +35,15 @@ div
               span.user-dropdown-close = icon('fas', 'times')
               span アカウント
             div.user-dropdown-container
+              div.inner-dropdown-header
+                div.user-icon.mr-2
+                  = icon('fas', 'user')
+                div.meta
+                  span.username = current_user.username
+                  br
+                  span.email = current_user.email
+                = link_to chart_new_path, class: "user-dropdown-post-btn"
+                  = icon('fas', 'plus')
               - if Store.find_by(user_id: current_user.id)
                 = link_to store_show_path(id: current_user.store.id), class: "user-dropdown-item"
                   span.mr-2

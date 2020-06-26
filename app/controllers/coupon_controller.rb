@@ -28,6 +28,12 @@ class CouponController < ApplicationController
     @coupon.user_id = @review.user_id
     @coupon.store_id = current_user.store.id
     if @coupon.save
+      current_user.active_notifications.create!(
+        food_id: @review.food_id,
+        coupon_id: @coupon.id,
+        visited_id: @review.user_id,
+        action: "coupon"
+      )
       redirect_to review_show_path(fid: @review.food_id, id: @review.id)
     else
       render coupon_new_path

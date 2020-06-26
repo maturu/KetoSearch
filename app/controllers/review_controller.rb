@@ -41,7 +41,14 @@ class ReviewController < ApplicationController
     redirect_to chart_show_path(id: @food.id) unless @food.review_permit
     @review = @food.reviews.new(review_params)
     @review.user_id = current_user.id
+    @store = Store.find(@food.store_id)
     if @review.save
+      current_user.active_notifications.create!(
+        food_id: @review.food_id,
+        review_id: @review.id,
+        visited_id: @store.user_id,
+        action: "review"
+      )
       redirect_to chart_show_path(id: @food.id)
     else
       render review_new_path

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_25_123805) do
+ActiveRecord::Schema.define(version: 2020_06_26_140237) do
 
   create_table "coupons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -59,6 +59,21 @@ ActiveRecord::Schema.define(version: 2020_06_25_123805) do
     t.integer "price"
     t.boolean "review_permit", default: true, null: false
     t.index ["store_id"], name: "index_foods_on_store_id"
+  end
+
+  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "visiter_id"
+    t.integer "visited_id"
+    t.bigint "review_id"
+    t.bigint "coupon_id"
+    t.string "action"
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "food_id"
+    t.index ["coupon_id"], name: "index_notifications_on_coupon_id"
+    t.index ["food_id"], name: "index_notifications_on_food_id"
+    t.index ["review_id"], name: "index_notifications_on_review_id"
   end
 
   create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -135,6 +150,9 @@ ActiveRecord::Schema.define(version: 2020_06_25_123805) do
   add_foreign_key "coupons", "stores"
   add_foreign_key "coupons", "users"
   add_foreign_key "foods", "stores"
+  add_foreign_key "notifications", "coupons"
+  add_foreign_key "notifications", "foods"
+  add_foreign_key "notifications", "reviews"
   add_foreign_key "reviews", "foods"
   add_foreign_key "reviews", "users"
   add_foreign_key "stores", "users"
