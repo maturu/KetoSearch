@@ -1,24 +1,24 @@
-# README
+<p align="center">
+  <img width="300" src="https://user-images.githubusercontent.com/15319238/77824645-971b8000-7147-11ea-8c4a-d7adcec3e2b6.png">
+</p>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# KetoSearch
+<p>
+  <a href=""><img src="https://img.shields.io/badge/Compute-Heroku-ff69b4.svg"></a>
+  <a href=""><img src="https://img.shields.io/badge/Code-Ruby2.5.3-red.svg"></a>
+  <a href=""><img src="https://img.shields.io/badge/Backend-Rails5.2.2-red.svg"></a>
+  <a href=""><img src="https://img.shields.io/badge/RDBMS-MySQL5.7-blue.svg"></a>
+</p>
 
-Things you may want to cover:
+![Website](https://keto-search.herokuapp.com/) | [Twitter](https://twitter.com/ketosearch)
 
-* Ruby version
+## Searvice
+ KetoSearch is a service to search for information such as carbohydrates, proteins, and lipids of ingredients and seasonings.
 
-* System dependencies
+## Author
+- ![maturu](https://github.com/maturu)
 
-* Configuration
+## References
+1. ![日本食品標準成分表2015年版（七訂）](https://www.mext.go.jp/a_menu/syokuhinseibun/1365297.htm)
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+2. ![小売物価統計調査（動向編）](https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00200571&tstat=000000680001&cycle=1&year=20200&month=11010302&result_back=1)
