@@ -9,4 +9,5 @@ class Coupon < ApplicationRecord
   belongs_to :user
   belongs_to :review
   belongs_to :store
+  has_one :notification, dependent: :destroy
 end

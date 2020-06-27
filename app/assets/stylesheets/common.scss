@@ -16,8 +16,14 @@ $hover-color: #f7f7f7;
   .rank-text {
     display: none;
   }
+  .st-header-notification {
+    .fas {
+      font-size: 18px;
+    }
+  }
   .st-header-postButton {
     .fas {
+      font-size: 16px;
       margin: 0;
     }
   }
@@ -111,6 +117,9 @@ input[type="submit"], input[type="button"], input[type="text"], textarea {
 }
 .mr-2 {
   margin-right: 16px;
+}
+.mr-3 {
+  margin-right: 32px;
 }
 
 .px-1 {
@@ -383,10 +392,125 @@ body {
       }
       .st-header-end {
         @include flex-center;
-        .st-header-rank {
+        .st-header-notification {
           color: #fff;
-          font-size: 1.2rem;
-          line-height: 1;
+          font-size: 16px;
+          position: relative;
+          cursor: pointer;
+          #notification-check {
+            display: none;
+            position: absolute;
+            bottom: -4px;
+            right: -8px;
+            background-color: red;
+            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+          }
+        }
+        .mobile-notification-dropdown {
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          .notification-dropdown-header{
+            font-size: 17px;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+            .notification-dropdown-close {
+              margin-right: 32px;
+            }
+          }
+          .notification-dropdown-container {
+            .notification-error-text {
+              font-size: 16px;
+            }
+            .notification-dropdown-item {
+              .meta {
+                .text {
+                  font-size: 16px;
+                }
+                .date {
+                  font-size: 14px;
+                }
+              }
+            }
+          }
+        }
+        .pc-notification-dropdown {
+          top: 48px;
+          width: 370px;
+          .notification-dropdown-header{
+            font-size: 14px;
+            border-bottom: 1px solid #ddd;
+            .notification-dropdown-close {
+              display: none;
+            }
+          }
+          .notification-dropdown-container{
+            height: 420px;
+            .notification-error-text {
+              font-size: 14px;
+            }
+            .notification-dropdown-item {
+              .meta {
+                .text {
+                  font-size: 14px;
+                }
+                .date {
+                  font-size: 12px;
+                }
+              }
+            }
+          }
+        }
+        .notification-dropdown {
+          display: none;
+          position: fixed;
+          padding: 4px 0;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border-radius: 2px;
+          box-shadow: 0 0 8px 0 rgba(0,0,0,0.15);
+          z-index: 20;
+          color: #111;
+          .notification-dropdown-header {
+            padding: 12px 16px;
+          }
+          .notification-error-text {
+            padding: 12px 16px;
+            color: #767676;
+          }
+          .notification-dropdown-container::-webkit-scrollbar {
+            display: none;
+          }
+          .notification-dropdown-container {
+            overflow-y: scroll;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            .notification-dropdown-item {
+              @include flex-start;
+              align-items: start;
+              padding: 20px 16px;
+              color: #111;
+              &:hover {
+                background-color: #eee;
+              }
+              .user-icon {
+                width: 32px;
+                height: 32px;
+                border: 1px solid #111;
+                border-radius: 50%;
+                @include flex-center;
+                i {font-size: 18px;}
+              }
+              .meta {
+                width: 80%;
+                .date {
+                  color: #767676;
+                }
+              }
+            }
+          }
         }
         .st-header-postButton {
           @include flex-center;
@@ -394,7 +518,7 @@ body {
           background-color: $dark-theme-color;
           color: #fff;
           border-radius: 4px;
-          font-size: 1.2rem;
+          font-size: 14px;
           user-select: none;
           padding: 0 16px;
           .post-text {
@@ -431,6 +555,28 @@ body {
             &:-webkit-scrollbar {
               display: none;
             }
+            .inner-dropdown-header {
+              height: 90px;
+              position: relative;
+              .user-dropdown-post-btn {
+                display: block;
+                position: absolute;
+                right: 30px;
+                bottom: -22.5px;
+                width: 45px;
+                height: 45px;
+                background-color: $theme-color;
+                color: #fff;
+                border-radius: 50%;
+                font-size: 16px;
+                box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.7);
+                @include flex-center;
+              }
+              .meta {
+                .username {font-size: 16px;}
+                .email {font-size: 14px;}
+              }
+            }
             .user-dropdown-item {
               font-size: 16px;
             }
@@ -447,6 +593,16 @@ body {
             display: none;
           }
           .user-dropdown-container {
+            .inner-dropdown-header {
+              height: 70px;
+              .user-dropdown-post-btn {
+                display: none;
+              }
+              .meta {
+                .username {font-size: 14px;}
+                .email {font-size: 13px;}
+              }
+            }
             .user-dropdown-item {
               font-size: 14px;
             }
@@ -463,7 +619,7 @@ body {
           box-shadow: 0 0 8px 0 rgba(0,0,0,0.15);
           .user-dropdown-header {
             padding: 12px 16px;
-            color: #555;
+            color: #111;
             margin-bottom: 4px;
             box-shadow: 0 2px 5px 0 rgba(0,0,0,0.1);
             .user-dropdown-close {
@@ -486,6 +642,28 @@ body {
             }
           }
           .user-dropdown-container {
+            .inner-dropdown-header {
+              @include flex-start;
+              color: #111;
+              border-bottom: 1px solid #ddd;
+              padding: 12px 16px;
+              margin-bottom: 16px;
+              .user-icon {
+                width: 32px;
+                height: 32px;
+                border: 1px solid #111;
+                border-radius: 50%;
+                @include flex-center;
+                i {font-size: 18px;}
+              }
+              .meta {
+                line-height: 24px;
+                .username {
+                  font-weight: bold;
+                }
+                .email {color: #555;}
+              }
+            }
             .user-dropdown-item {
               display: block;
               font-weight: normal;

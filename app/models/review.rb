@@ -9,4 +9,5 @@ class Review < ApplicationRecord
   belongs_to :user
   belongs_to :food
   has_one :coupon, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 end

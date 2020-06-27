@@ -11,6 +11,7 @@ class Food < ApplicationRecord
 
   belongs_to :store
   has_many :reviews, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   def self.search(keyword)
     return nil if keyword.blank?
