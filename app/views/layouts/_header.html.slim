@@ -19,7 +19,7 @@ div
             = icon('fas', 'pen-square')
             span.post-text 投稿する
 
-          div.st-header-notification.mr-2
+          = link_to notifications_check_path, method: :post, remote: true, class: "st-header-notification mr-2"
             = icon('fas', 'bell')
             div#notification-check
           div.notification-dropdown class="#{browser.device.mobile? ? "mobile-notification-dropdown" : "pc-notification-dropdown"}"

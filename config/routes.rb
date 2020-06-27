@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get 'notifications/index' => "notifications#index"
+  get 'notifications/attention' => "notifications#attention"
+  post 'notifications/check' => "notifications#update"
 
   get 'coupon/show' => "coupon#show"
   get 'coupon/new' => "coupon#new"
