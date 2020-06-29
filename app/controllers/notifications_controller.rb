@@ -1,8 +1,8 @@
 class NotificationsController < ApplicationController
   def index
-    from  = Time.current.at_beginning_of_day
-    to    = (from + 6.day).at_end_of_day
-    @notifications = current_user.passive_notifications.where(created_at: from..to)
+    to  = Time.current.at_beginning_of_day
+    from    = (to - 6.day)
+    @notifications = current_user.passive_notifications.where(created_at: from...to)
     @items = []
     @notifications.each do |n|
       coupon_confirmed = n.coupon_id.blank? ? false : Coupon.find(n.coupon_id).confirmed
