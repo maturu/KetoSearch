@@ -132,6 +132,7 @@ $(document).on('click', '.calc-item', function(e){
     dataType: 'json'
   })
   .done(function(data){
+    console.log(data);
     $('#food_gram').val(data.gram);
     $('#food_calorie').val(data.calorie);
     $('#food_protain').val(data.protain);

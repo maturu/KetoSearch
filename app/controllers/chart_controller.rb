@@ -95,6 +95,7 @@ class ChartController < ApplicationController
     @result = {gram: 0, calorie: 0, protain: 0, lipid: 0, carbohydrate: 0, water: 0, fibtg: 0, na: 0}
     @result.each do |key, val|
       @result[key] = @foods.pluck(key).each.with_index.inject(0){|sum, (i, j)|
+        i = 0 if i.nil?
         sum + i*@grams[j].to_i/@foods.pluck(:gram)[j]
       }.floor(1)
     end
