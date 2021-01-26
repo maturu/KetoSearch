@@ -43,14 +43,12 @@ div.chart-review-comment
                 div.helpful-text
                   span #{review.helpful}人のお客様がこれが役に立ったと考えています。
               div.inner-review-operation
-                - if current_user.store and current_user.store.id == food.store_id
-                  - unless review.coupon
-                    = button_to "クーポンの発行", {controller: 'coupon', action: 'new'},\
-                      {method: :get, params: {id: review.id}, class: "btn"}
-                  - else
-                    div.alert-container
-                      span.mr-1 = icon('fas', 'check')
-                      span クーポンは発行済みです。
+                - if current_user.id == review.user_id
+                  = button_to "編集", {controller: 'review', action: 'edit'},\
+                    {method: :get, params: {id: review.id}, class: "btn mr-1"}
+                  = button_to "削除", {controller: 'review', action: 'destroy'},\
+                    {method: :post, data: { confirm: "カスタマーレビュー「#{review.review_title}」を削除しますか?" },\
+                    params: {id: review.id}, class: "btn"}
                 - else
                   = button_to "役に立った", review_helpful_path(id: review.id), method: :post, remote: true, class: "helpful btn"
                 span.text-separator |

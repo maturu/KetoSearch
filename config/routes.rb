@@ -3,12 +3,6 @@ Rails.application.routes.draw do
   get 'notifications/attention' => "notifications#attention"
   post 'notifications/check' => "notifications#update"
 
-  get 'coupon/show' => "coupon#show"
-  get 'coupon/new' => "coupon#new"
-  post 'coupon/create' => "coupon#create"
-  post 'coupon/use' => "coupon#use"
-  post 'coupon/confirm' => "coupon#confirm"
-
   get 'store/show' => "store#show"
   get 'store/new' => "store#new"
   get 'store/edit' => "store#edit"
@@ -38,7 +32,8 @@ Rails.application.routes.draw do
   get 'chart/more' => 'chart#more'
   get 'chart/qrcode' => 'chart#qrcode'
   get 'chart/new' => 'chart#new'
-  get 'chart/calc' => 'chart#ingredient_calc'
+  get 'chart/calc' => 'chart#calc'
+  get 'chart/incremental' => 'chart#incremental'
   post 'chart/create' => "chart#create"
   post 'chart/update' => "chart#update"
   post 'chart/destroy' => "chart#destroy"

@@ -214,6 +214,8 @@
       }
     }
     .checkboxs {
+      @media screen and (min-width: 414px){ display: flex; }
+      justify-content: space-around;
       margin-left: 10px;
       .checkbox-item {
         display: inline-block;

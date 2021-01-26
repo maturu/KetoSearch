@@ -49,38 +49,6 @@ div.p-profile
                   root_path, class: "underline"
               - else
                 span.error-text 登録ストアはまだありません。
-        div.profile-card
-          div.card-header
-            span 獲得クーポン
-          div.card-container
-            - if @coupons.blank?
-              - if user_signed_in? and current_user.id == @user.id
-                = link_to "他のお客様の参考になるレビューを書いてクーポンを獲得しましょう。",\
-                  root_path, class: "underline"
-              - else
-                span.error-text 獲得クーポンはまだありません。
-            - else
-              - @coupons.each do |coupon|
-                - if user_signed_in? and current_user.id == @user.id
-                  = link_to coupon_show_path(id: coupon.id), class: 'get-coupon'
-                    div.mr-1 class="coupon-icon#{"-silver" if coupon.coupon_color == "silver"}"
-                      i.fas.fa-money-check-alt class="icon-gradient #{coupon.coupon_color}"
-                    div.inner-get-coupon-container
-                      span.get-coupon-header ￥#{coupon.price} OFF
-                      br
-                      span.get-coupon-store.mr-1 #{Store.find(coupon.store_id).name}
-                      br
-                      span.get-coupon-expiration 有効期限#{coupon.expiration_date}
-                - else
-                  div.get-coupon
-                    div.mr-1 class="coupon-icon#{"-silver" if coupon.coupon_color == "silver"}"
-                      i.fas.fa-money-check-alt class="icon-gradient #{coupon.coupon_color}"
-                    div.inner-get-coupon-container
-                      span.get-coupon-header ￥#{coupon.price} OFF
-                      br
-                      span.get-coupon-store.mr-1 #{Store.find(coupon.store_id).name}
-                      br
-                      span.get-coupon-expiration 有効期限#{coupon.expiration_date}
       div.profile-container-main
         div.profile-card
           div.card-header
@@ -102,11 +70,6 @@ div.p-profile
                   span #{@user.reviews.count}
                 div.item-desc
                   span レビュー数
-              div.card-row-item
-                div.item-value
-                  span #{@user.coupons.count}
-                div.item-desc
-                  span 総クーポン数
         div.customer-timeline
           div.timeline-header
             span 書き込み履歴
@@ -121,6 +84,6 @@ div.p-profile
                       = icon('fas', 'money-check-alt')
                     div
                       span 飲食店のメニューをレビューして、
-                      span お店のクーポンを獲得しましょう！
+                      span 情報を共有しましょう！
                   - else
                     span.error-text まだ#{@user.username}はレビューを投稿していません。

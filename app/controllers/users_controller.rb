@@ -4,7 +4,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(username: params[:username])
-    @coupons = @user.coupons.where("confirmed = false")
   end
 
   def edit

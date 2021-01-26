@@ -129,102 +129,12 @@ input[type="submit"], input[type="button"], input[type="text"], textarea {
   padding: 0 16px;
 }
 
-.gold, .bronze, .normal {
-  .coupon-card-container {
-    border: 3px dashed;
-    border-color: #fff;
-    color: #fff;
-    .coupon-card-header {
-      background-color: #fff;
-    }
-    .coupon-price {
-      .signature {
-        border-color: #fff;
-      }
-    }
-    .coupon-expiration {
-      background-color: #fff;
-    }
-  }
-}
-
-.used {
-  background: #999;
-  .coupon-card-container {
-    border: 3px dashed;
-    border-color: #eee;
-    color: #eee;
-    .coupon-card-header {
-      color: #999;
-      background-color: #eee;
-    }
-    .coupon-price {
-      .signature {
-        border-color: #eee;
-      }
-    }
-    .coupon-expiration {
-      color: #999;
-      background-color: #eee;
-    }
-  }
-}
-
-.gold {
-  background: linear-gradient(to bottom, #ffce00, #ffa700);
-  .coupon-card-container {
-    .coupon-card-header {
-      color: #ffce00;
-    }
-    .coupon-expiration {
-      color: #ffa700;
-    }
-  }
-}
-.silver {
-  background: linear-gradient(to bottom,#f7f8fa,#e7e9ec);
-  .coupon-card-container {
-    border: 3px dashed;
-    border-color: #767676;
-    color: #fff;
-    .coupon-card-header {
-      background-color: #767676;
-    }
-    .coupon-price {
-      color: #767676;
-      .signature {
-        border-color: #767676;
-      }
-    }
-    .coupon-expiration {
-      background-color: #767676;
-    }
-  }
-}
-.bronze {
-  background: linear-gradient(to bottom, #ffe8d7, #ab6300);
-  .coupon-card-container {
-    .coupon-card-header {
-      color: #ffe8d7;
-    }
-    .coupon-expiration{
-      color: #ab6300;
-    }
-  }
-}
-.normal {
-  background: linear-gradient(to bottom, #00b8ff, #0053ff);
-  .coupon-card-container {
-    .coupon-card-header {
-      color: #00b8ff;
-    }
-    .coupon-expiration {
-      color: #0053ff;
-    }
-  }
+.bf {
+  font-weight: 700;
 }
 
 .btn {
+  font-size: 13px;
   border: 1px solid #999;
   border-radius: 2px;
   height: 29px;
@@ -782,6 +692,21 @@ body {
   padding: 12px;
   margin: 20px 0;
 }
+.notify {
+  padding: .75rem 1.25rem;
+  font-size: 14px;
+  border-radius: .25rem;
+}
+.notify-warning {
+  color: #856404;
+  background-color: #fff3cd;
+  border: 1px solid #856404;
+}
+.notify-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #721c24;
+}
 
 // markdown preview style
 .preview-content::-webkit-scrollbar {
@@ -1217,6 +1142,7 @@ body {
   }
 }
 .writeReview-btn {
+  font-size: 13px;
   border: 1px solid #999;
   border-radius: 2px;
   width: 100%;

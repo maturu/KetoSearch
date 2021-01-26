@@ -36,7 +36,9 @@ class ChartController < ApplicationController
           redirect_to root_path
         end
       }
-      format.json {render json: @foods.limit(5).pluck(:id, :name)} unless @foods.blank?
+      format.json {
+        render json: @foods.limit(5).pluck(:id, :name)
+      } unless @foods.blank?
     end
   end
 
@@ -84,7 +86,17 @@ class ChartController < ApplicationController
     redirect_to root_path
   end
 
-  def ingredient_calc
+  def incremental
+    @user = User.find_by(admin: 1)
+    @foods = @user.store.foods.search(params[:search])
+    respond_to do |format|
+      format.json {
+        render json: @foods.limit(5).pluck(:id, :name)
+      } unless @foods.blank?
+    end
+  end
+
+  def calc
     names = params[:names].split(",").to_a
     grams = params[:grams].split(",").to_a
     @grams = []
@@ -99,6 +111,8 @@ class ChartController < ApplicationController
         sum + i*@grams[j].to_i/@foods.pluck(:gram)[j]
       }.floor(1)
     end
+    @result["reference"] = @foods.first.reference
+    @result["url"] = @foods.first.url
 
     respond_to do |format|
       format.html {redirect_to root_path}

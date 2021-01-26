@@ -6,6 +6,11 @@ div.p-show
     div.s-chart-content
       div.s-chart-wrap
         div.flex-100
+          - unless @food.reference.blank?
+            div.notify.notify-warning この表示値は「#{@food.reference}」を参考に計算しており, 目安となるものです。
+          - else
+            div.notify.notify-danger この表示値は「#{@store.name}」独自に計算しており, 目安となるものです。
+        div.flex-100
           div.s-chart-widget-container
             div.chart-header-title#top-header
               div.title-content
@@ -68,6 +73,9 @@ div.p-show
                       br
                       span
                         |- - ： 未入力データです 
+                      br
+                      span
+                        |(推定値)
                     td.table-header-color
                       span カロリー
                     td.table-header-color

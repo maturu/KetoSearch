@@ -142,30 +142,6 @@ function get_notification(){
               '</div>'+
             '</div>'
           );
-        }else if(notification.action == "coupon"){
-          if(notification.coupon_confirmed){
-            $('.notification-dropdown-container').append(
-              '<div class="notification-dropdown-item" data-id="'+notification.id+'">'+
-                '<div class="user-icon mr-2"><i class="fas fa-user"></i></div>'+
-                '<div class="meta">'+
-                  '<span class="text">'+notification.food_name+'に書いたレビューにより、'+notification.visiter_name+'からクーポンを獲得することができました!</span>'+
-                  '<br>'+
-                  '<span class="date">'+notification.created_at+'</span>'+
-                '</div>'+
-              '</div>'
-            );
-          }else{
-            $('.notification-dropdown-container').append(
-              '<a class="notification-dropdown-item" data-id="'+notification.id+'" href="/coupon/show?id='+notification.coupon_id+'">'+
-                '<div class="user-icon mr-2"><i class="fas fa-user"></i></div>'+
-                '<div class="meta">'+
-                  '<span class="text">'+notification.food_name+'に書いたレビューにより、'+notification.visiter_name+'からクーポンを獲得することができました!</span>'+
-                  '<br>'+
-                  '<span class="date">'+notification.created_at+'</span>'+
-                '</div>'+
-              '</a>'
-            );
-          }
         }
       });
     }else{

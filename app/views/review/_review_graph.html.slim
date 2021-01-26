@@ -1,5 +1,5 @@
 div.chart-review-graph
-  h2 カスタマーレビュー
+  h2.bf カスタマーレビュー
   = render 'review/star', rate: food.reviews.average(:rate).to_f.round(1), id: 0, size: 20
   span.total-star-text 星5つ中の#{food.reviews.average(:rate).to_f.round(1)}
   div.total-review-count
@@ -31,8 +31,8 @@ div.chart-review-graph
         span.mr-2
           = icon('fas', 'money-check-alt')
         div
-          h3 レビューしてクーポン獲得
-          div 他のお客様にも意見を伝え、クーポンを獲得しましょう
+          h3.bf このメニューをレビュー
+          div 他のお客様にも意見を伝えましょう
       = button_to "カスタマーレビューを書く", {controller: 'review', action: 'new'},\
         {method: :get, params: {fid: food.id}, class: "writeReview-btn"}
     hr

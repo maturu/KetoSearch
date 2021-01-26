@@ -88,7 +88,7 @@ $(document).on('click', '.incremental-item', function(e){
 
 function modal_inc(obj){
   $.ajax({
-    url: '/chart/show',
+    url: '/chart/incremental',
     type: 'GET',
     data: ('search=' + $.trim($(obj).val())),
     processData: false,
@@ -132,7 +132,6 @@ $(document).on('click', '.calc-item', function(e){
     dataType: 'json'
   })
   .done(function(data){
-    console.log(data);
     $('#food_gram').val(data.gram);
     $('#food_calorie').val(data.calorie);
     $('#food_protain').val(data.protain);
@@ -141,6 +140,8 @@ $(document).on('click', '.calc-item', function(e){
     $('#food_water').val(data.water);
     $('#food_fibtg').val(data.fibtg);
     $('#food_na').val(data.na);
+    $('#food_reference').val(data.reference);
+    $('#food_url').val(data.url);
     $('.modal-window').fadeOut();
     if(window.matchMedia && window.matchMedia('(max-width: 959px)').matches){
       $('.st-header').removeClass('none');
