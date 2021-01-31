@@ -26,3 +26,6 @@ div.p-store
           div.line-title 統計情報
           div.line-text #{@store.created_at.in_time_zone('Asia/Tokyo').to_date.strftime("%Y年%m月%d日")} に登録
           div.line-text #{@store.foods.sum(:browse)} 回閲覧
+          div.line-title.qrcode-header QRコード
+          div.store-qrcode
+            = image_tag qrcode_tag store_show_url(id: @store.id)

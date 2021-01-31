@@ -22,10 +22,15 @@ Rails.application.routes.draw do
   post 'review/helpful' => "review#helpful"
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users
-  get 'users/show'
-  get 'users/profile' => "users#edit"
-  post 'users/update' => "users#update"
+  devise_for :users, :controllers =>{
+    :registrations => 'users/registrations'
+  }
+  devise_scope :user do
+    get 'users/sent/confirmation' => 'users/registrations#sent_confirmation'
+    get 'users/show' => "users/registrations#show"
+    get 'users/profile' => "users/registrations#profile"
+    post 'users/update' => "users/registrations#update"
+  end
 
   get 'chart/show' => 'chart#show'
   get 'chart/edit' => 'chart#edit'

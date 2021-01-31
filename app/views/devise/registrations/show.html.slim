@@ -33,22 +33,21 @@ div.p-profile
           div.card-header
             span 登録ストア
           div.card-container
-            - unless @user.subscribes.blank?
-              - @user.subscribes.each do |subscribe|
-                - store = Store.find(subscribe.store_id)
-                = link_to store_show_path(id: store.id), class: "subscribe-container"
-                  div.store-icon.mr-1
-                    = icon('fas', 'store-alt')
-                  div.inner-subscribe-container
-                    span.subscribe-header #{store.name}
-                    br
-                    span.subscribe-count ストア登録者数 #{store.subscribes.count}人
-            - else
+            - if @user.subscribes.blank?
               - if user_signed_in? and current_user.id == @user.id
-                = link_to "お気に入りのストアを登録しましょう。",\
-                  root_path, class: "underline"
+                = link_to "お気に入りのストアを登録しましょう。", root_path, class: "underline"
               - else
                 span.error-text 登録ストアはまだありません。
+            - else
+              - @items.each do |item|
+                = link_to store_show_path(id: item["id"]), id: "#{item["id"]}"
+                  div.subscriber-container
+                    div.store-icon.mr-1
+                      = icon('fas', 'store-alt')
+                    div.inner-subscriber-container
+                      span.subscribe-header #{item["name"]}
+                      br
+                      span.subscribe-count ストア登録者数 #{item["number"]}人
       div.profile-container-main
         div.profile-card
           div.card-header
