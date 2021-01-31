@@ -153,10 +153,12 @@
             margin-bottom: 16px;
           }
           .store-qrcode {
-            display: flex;
-            justify-content: center;
+            display: inline-block;
+            text-align: center;
+            max-width: 350px;
+            padding: 20px;
             img {
-              width: 300px;
+              width: 100%;
               border-radius: 20px;
               box-shadow: 0 0 5px 3px rgba(0,0,0,0.12);
             }
