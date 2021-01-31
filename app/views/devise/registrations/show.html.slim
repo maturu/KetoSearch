@@ -41,10 +41,10 @@ div.p-profile
             - else
               - @items.each do |item|
                 = link_to store_show_path(id: item["id"]), id: "#{item["id"]}"
-                  div.subscriber-container
+                  div.subscribe-container
                     div.store-icon.mr-1
                       = icon('fas', 'store-alt')
-                    div.inner-subscriber-container
+                    div.inner-subscribe-container
                       span.subscribe-header #{item["name"]}
                       br
                       span.subscribe-count ストア登録者数 #{item["number"]}人
