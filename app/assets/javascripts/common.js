@@ -90,15 +90,17 @@ $(window).resize(function(){
   $('.mobile-user-dropdown').css('left', 0);
   $('.pc-user-dropdown').css('left', $('.st-header-user').offset().left-$('.user-dropdown').width()+32);
   $('.mobile-notification-dropdown').css('left', 0);
-  $('.pc-notification-dropdown').css('left', $(this).offset().left-$('.notification-dropdown').width()+14);
+  $('.pc-notification-dropdown').css('left', $('.st-header-notification').offset().left-$('.notification-dropdown').width()+14);
 });
 
 $(function(){
-  $(function(){
-    setInterval(function(){
-      get_attention();
-    }, 5000);
-  });
+  if($('.st-header-notification').size()){
+    $(function(){
+      setInterval(function(){
+        get_attention();
+      }, 5000);
+    });
+  }
 });
 
 function get_attention(){
