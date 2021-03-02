@@ -4,17 +4,6 @@ $(document).on('turbolinks:load', function() {
   page = 1;
 });
 
-$(window).on({
-  'scroll': function(){
-    var scrollHeight = $(document).height();
-    var scrollPosition = $(window).height() + $(window).scrollTop();
-    if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
-      page += 1;
-      more_data(page);
-    }
-  }
-});
-
 $(document).on('click', '#more-load', function(){
   page += 1;
   more_data(page);

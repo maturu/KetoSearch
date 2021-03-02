@@ -222,9 +222,12 @@
           }
         }
         #more-load {
-          width: 100%;
-          display: none;
-          @media screen and (max-width: 414px){display: block;}
+          width: 33%;
+          margin: 0 33%;
+          @media screen and (max-width: 414px){
+            width: 100%;
+            margin: 0;
+          }
         }
       }
     }

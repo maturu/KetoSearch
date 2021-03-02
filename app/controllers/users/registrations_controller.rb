@@ -25,23 +25,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     redirect_to root_path if @user.id != current_user.id
   end
 
-  # GET /resource/sign_up
-  def new
-    super
-  end
-
-  # POST /resource
-  #def create
-  #  super
-  #end
-
-  # GET /resource/edit
-  def edit
-    super
-  end
-
-  # PUT /resource
-  def update
+  def profile_update
     @user = User.find(params[:id])
     redirect_to root_path if @user.id != current_user.id
     if @user.update(user_params)
@@ -49,10 +33,33 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  # DELETE /resource
-  def destroy
-    super
+  def sent_confirmation
   end
+
+  # GET /resource/sign_up
+  #def new
+  #  super
+  #end
+
+  # POST /resource
+  #def create
+  #  super
+  #end
+
+  # GET /resource/edit
+  #def edit
+  #  super
+  #end
+
+  # PUT /resource
+  #def update
+  #  super
+  #end
+
+  # DELETE /resource
+  #def destroy
+  #  super
+  #end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -62,9 +69,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
-
-  def sent_confirmation
-  end
 
   # protected
 
