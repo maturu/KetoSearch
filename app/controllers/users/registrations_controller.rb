@@ -37,9 +37,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # GET /resource/sign_up
-  #def new
-  #  super
-  #end
+  def new
+    super
+  end
 
   # POST /resource
   #def create
@@ -47,9 +47,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #end
 
   # GET /resource/edit
-  #def edit
-  #  super
-  #end
+  def edit
+    super
+  end
 
   # PUT /resource
   #def update
