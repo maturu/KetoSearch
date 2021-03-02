@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   post 'review/helpful' => "review#helpful"
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
   devise_for :users, :controllers => {
     :registrations => 'users/registrations'
   }
@@ -29,8 +30,6 @@ Rails.application.routes.draw do
     get 'users/sent/confirmation' => 'users/registrations#sent_confirmation'
     get 'users/show' => "users/registrations#show"
     get 'users/profile' => "users/registrations#profile"
-    get 'users/edit' => "users/registrations#edit"
-    get 'users/sign_up' => "users/registrations#new"
     post 'users/profile_update' => "users/registrations#profile_update"
   end
 

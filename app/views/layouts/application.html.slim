@@ -9,7 +9,6 @@ html
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload', async: "async"
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag "https://platform.twitter.com/widgets.js", charset: "utf-8", async: "async"
     = analytics_init if Rails.env.production?
     - if Rails.env.production?
       script data-ad-client="ca-pub-8950479201307972" async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
